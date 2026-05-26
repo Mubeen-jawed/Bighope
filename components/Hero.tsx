@@ -30,26 +30,8 @@ type Slide = SplitSlide | FullWidthSlide;
 const slides: Slide[] = [
   {
     fullWidth: true,
-    pcImage: "/hero/slider-desktop.png",
-    mbImage: "/hero/slider-mobile.png",
-    topText: "CUSTOM SPORTSWEAR",
-    mainText: "BUILT FOR CHAMPIONS",
-    description:
-      "Premium fully-sublimated uniforms for every sport, designed by you, crafted by us.",
-    link: "/range/soccer",
-  },
-  {
-    leftImage: "/sports/rugby-kit-front.webp",
-    rightImage: "/sports/rugby-kit-back.webp",
-    topText: "CUSTOM RUGBY",
-    mainText: "KITS",
-    description:
-      "Premium quality rugby kits, 100% customized for your team. Free design service included with every order.",
-    link: "/range/rugby",
-  },
-  {
-    leftImage: "/sports/soccer-kit.webp",
-    rightImage: "/sports/soccer-jersey.webp",
+    pcImage: "/hero/FOOTBALL.DESK.SLIDER.png",
+    mbImage: "/hero/FOOTBALL.mbl.SLIDER.png",
     topText: "CUSTOM SOCCER",
     mainText: "UNIFORMS",
     description:
@@ -57,13 +39,34 @@ const slides: Slide[] = [
     link: "/range/soccer",
   },
   {
-    leftImage: "/sports/7v7-football-uniform.webp",
-    rightImage: "/sports/7v7-hooded-uniform.webp",
-    topText: "7v7 FOOTBALL",
+    fullWidth: true,
+    pcImage: "/hero/cricket.DESK.SLIDER.png",
+    mbImage: "/hero/cricket.mb.SLIDER.png",
+    topText: "CUSTOM CRICKET",
+    mainText: "KITS",
+    description:
+      "Premium quality cricket kits, 100% customized for your team. Free design service included with every order.",
+    link: "/range/cricket",
+  },
+  {
+    fullWidth: true,
+    pcImage: "/hero/baseBALL.DESK.SLIDER.png",
+    mbImage: "/hero/baseBALL.mb.SLIDER.png",
+    topText: "CUSTOM BASEBALL",
     mainText: "UNIFORMS",
     description:
-      "Custom 7v7 football uniforms built for champions, designed by you, manufactured by us.",
-    link: "/range/7v7",
+      "Custom baseball uniforms built for champions, designed by you, manufactured by us.",
+    link: "/range/baseball",
+  },
+  {
+    fullWidth: true,
+    pcImage: "/hero/RUGBY.DSK.SL.png",
+    mbImage: "/hero/RUGBY.mb.SL.png",
+    topText: "CUSTOM RUGBY",
+    mainText: "KITS",
+    description:
+      "Premium quality rugby kits, 100% customized for your team. Free design service included with every order.",
+    link: "/range/rugby",
   },
 ];
 

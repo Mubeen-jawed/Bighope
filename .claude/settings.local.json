@@ -38,7 +38,9 @@
       "Bash(Select-Object FullName)",
       "PowerShell(Move-Item *)",
       "PowerShell(Remove-Item *)",
-      "PowerShell(Get-ChildItem \"public\\\\ranges\" -Recurse -File | ForEach-Object { \"$\\($_.Directory.Name\\)\\\\$\\($_.Name\\) \\($\\([math]::Round\\($_.Length/1024\\)\\)KB\\)\" } | Sort-Object)"
+      "PowerShell(Get-ChildItem \"public\\\\ranges\" -Recurse -File | ForEach-Object { \"$\\($_.Directory.Name\\)\\\\$\\($_.Name\\) \\($\\([math]::Round\\($_.Length/1024\\)\\)KB\\)\" } | Sort-Object)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\jawed\\\\Downloads\\\\BigHope\\\\src\" -Recurse -Filter \"*.tsx\" -ErrorAction SilentlyContinue)",
+      "Bash(Select-Object -First 20)"
     ]
   }
 }

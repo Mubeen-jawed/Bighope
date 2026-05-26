@@ -4,33 +4,33 @@ import Link from "next/link";
 const categories = [
   {
     name: "Soccer / Football",
-    image: "/sports/soccer-kit.webp",
+    image: "/ranges/soccer/FOOTBALL CTG.png",
     href: "/sport/soccer",
   },
   {
     name: "Rugby",
-    image: "/sports/rugby-kit-front.webp",
+    image: "/ranges/rugby/RUGBY CTG.png",
     href: "/sport/rugby",
   },
   {
     name: "Basketball",
-    image: "/sports/basketball-jersey.webp",
+    image: "/ranges/basketball/BASKETBALL CTG.png",
     href: "/sport/basketball",
   },
   {
     name: "Cricket",
-    image: "/sports/cricket-kit.webp",
+    image: "/ranges/cricket/CRICKET CTG.png",
     href: "/sport/cricket",
+  },
+  {
+    name: "Baseball / Softball",
+    image: "/ranges/baseball/BASEBALL CTG.png",
+    href: "/sport/baseball",
   },
   {
     name: "7v7 Football",
     image: "/sports/7v7-football-uniform.webp",
     href: "/sport/7v7-football",
-  },
-  {
-    name: "Baseball / Softball",
-    image: "/sports/7v7-hooded-uniform.webp",
-    href: "/sport/baseball",
   },
   {
     name: "MMA",
