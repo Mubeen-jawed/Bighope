@@ -44,6 +44,13 @@ const sportMeta: Record<string, { title: string; description: string }> = {
   },
 };
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const meta = sportMeta[slug];
+  if (!meta) return {};
+  return { title: meta.title };
+}
+
 export function generateStaticParams() {
   return Object.keys(sportMeta).map((slug) => ({ slug }));
 }

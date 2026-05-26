@@ -50,7 +50,7 @@ export default function DSPBanner() {
           {/* ── Left: Image panel ─────────────────────────── */}
           <div className="relative hidden lg:block">
             <Image
-              src="/images/R1-1200x1603.webp"
+              src="/sports/rugby-kit-front.webp"
               alt="Big Hope Sports custom rugby kit"
               fill
               className="object-cover object-center"

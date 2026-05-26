@@ -10,6 +10,7 @@ import {
   sportSlugCategory,
   rangeSlugCategory,
 } from "@/lib/slug-category-map";
+import { sportPackages } from "@/lib/packages";
 
 const rangeCategories = [
   {
@@ -217,6 +218,9 @@ const searchIndex = [
   { label: "Socks", href: "/range/socks", category: "Accessories" },
   { label: "Hats", href: "/range/hats", category: "Accessories" },
   { label: "Packages", href: "/packages", category: "Pages" },
+  { label: "Soccer Packages", href: "/packages/soccer", category: "Packages" },
+  { label: "7v7 Football Packages", href: "/packages/7v7-football", category: "Packages" },
+  { label: "Baseball Packages", href: "/packages/baseball", category: "Packages" },
   { label: "B2B Services", href: "/b2b", category: "Pages" },
   { label: "About Us", href: "/about", category: "Pages" },
   { label: "How It Works", href: "/how-it-works", category: "Pages" },
@@ -231,30 +235,54 @@ export default function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [rangeDropdown, setRangeDropdown] = useState(false);
+  const [packagesDropdown, setPackagesDropdown] = useState(false);
   const [infoDropdown, setInfoDropdown] = useState(false);
   const [mobileRangeOpen, setMobileRangeOpen] = useState(false);
+  const [mobilePackagesOpen, setMobilePackagesOpen] = useState(false);
   const [mobileInfoOpen, setMobileInfoOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<typeof searchIndex>([]);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const packagesDropdownRef = useRef<HTMLDivElement>(null);
   const infoDropdownRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const rangeCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const packagesCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const infoCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const openRange = () => {
     if (rangeCloseTimer.current) clearTimeout(rangeCloseTimer.current);
+    if (packagesCloseTimer.current) clearTimeout(packagesCloseTimer.current);
+    if (infoCloseTimer.current) clearTimeout(infoCloseTimer.current);
+    setPackagesDropdown(false);
+    setInfoDropdown(false);
     setRangeDropdown(true);
   };
   const closeRange = () => {
     rangeCloseTimer.current = setTimeout(() => setRangeDropdown(false), 150);
   };
 
+  const openPackages = () => {
+    if (packagesCloseTimer.current) clearTimeout(packagesCloseTimer.current);
+    if (rangeCloseTimer.current) clearTimeout(rangeCloseTimer.current);
+    if (infoCloseTimer.current) clearTimeout(infoCloseTimer.current);
+    setRangeDropdown(false);
+    setInfoDropdown(false);
+    setPackagesDropdown(true);
+  };
+  const closePackages = () => {
+    packagesCloseTimer.current = setTimeout(() => setPackagesDropdown(false), 150);
+  };
+
   const openInfo = () => {
     if (infoCloseTimer.current) clearTimeout(infoCloseTimer.current);
+    if (rangeCloseTimer.current) clearTimeout(rangeCloseTimer.current);
+    if (packagesCloseTimer.current) clearTimeout(packagesCloseTimer.current);
+    setRangeDropdown(false);
+    setPackagesDropdown(false);
     setInfoDropdown(true);
   };
   const closeInfo = () => {
@@ -275,6 +303,8 @@ export default function Header() {
   const isActive = (href: string) => pathname === href;
   const isRangeActive = () =>
     pathname?.startsWith("/sport") || pathname?.startsWith("/range");
+  const isPackagesActive = () =>
+    pathname === "/packages" || pathname?.startsWith("/packages/");
   const isInfoActive = () =>
     ["/about", "/how-it-works", "/size-chart", "/fabrics"].includes(
       pathname ?? "",
@@ -319,6 +349,11 @@ export default function Header() {
         !dropdownRef.current.contains(e.target as Node)
       )
         setRangeDropdown(false);
+      if (
+        packagesDropdownRef.current &&
+        !packagesDropdownRef.current.contains(e.target as Node)
+      )
+        setPackagesDropdown(false);
       if (
         infoDropdownRef.current &&
         !infoDropdownRef.current.contains(e.target as Node)
@@ -452,7 +487,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="inline-flex items-center shrink-0">
             <Image
-              src="/images/cropped-SITE.L.1-1.png"
+              src="/logo/bighope-logo.png"
               alt="Big Hope Sports"
               width={250}
               height={60}
@@ -551,19 +586,77 @@ export default function Header() {
               </div>
             </div>
 
-            <Link
-              href="/packages"
-              className={`group relative px-3.5 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
-                isActive("/packages") ? "text-orange-400" : "text-gray-200 hover:text-white"
-              }`}
-            >
-              Packages
-              <span
-                className={`absolute bottom-0 inset-x-3 h-[2px] bg-orange-400 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 ${
-                  isActive("/packages") ? "scale-x-100" : "scale-x-0"
+            {/* Packages dropdown */}
+            <div className="relative" ref={packagesDropdownRef}>
+              <button
+                className={`group relative flex items-center gap-1.5 px-3.5 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
+                  isPackagesActive() ? "text-orange-400" : "text-gray-200 hover:text-white"
                 }`}
-              />
-            </Link>
+                onMouseEnter={openPackages}
+                onMouseLeave={closePackages}
+                onClick={() => setPackagesDropdown(!packagesDropdown)}
+              >
+                Packages
+                <span
+                  className={`absolute bottom-0 inset-x-3 h-[2px] bg-orange-400 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 ${
+                    isPackagesActive() ? "scale-x-100" : "scale-x-0"
+                  }`}
+                />
+                <svg
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${packagesDropdown ? "rotate-180" : ""}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2.5}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+
+              <div
+                className={`absolute top-full left-0 mt-1 bg-white text-gray-800 shadow-2xl shadow-black/20 rounded-xl min-w-[240px] z-50 border border-gray-100 overflow-hidden transition-all duration-150 ease-out ${
+                  packagesDropdown
+                    ? "opacity-100 translate-y-0 pointer-events-auto"
+                    : "opacity-0 -translate-y-1 pointer-events-none"
+                }`}
+                onMouseEnter={openPackages}
+                onMouseLeave={closePackages}
+              >
+                <div className="p-1.5">
+                  <Link
+                    href="/packages"
+                    className={`flex items-center gap-2 px-3 py-2 text-sm rounded-lg transition-all duration-150 ${
+                      pathname === "/packages"
+                        ? "text-orange-500 bg-orange-50 font-medium"
+                        : "text-gray-600 hover:text-orange-500 hover:bg-orange-50"
+                    }`}
+                    onClick={() => setPackagesDropdown(false)}
+                  >
+                    All Packages
+                  </Link>
+                  <div className="my-1 h-px bg-gray-100" />
+                  {sportPackages.map((pkg) => (
+                    <Link
+                      key={pkg.slug}
+                      href={pkg.href}
+                      className={`flex items-center gap-2 px-3 py-2 text-sm rounded-lg transition-all duration-150 ${
+                        pathname === pkg.href
+                          ? "text-orange-500 bg-orange-50 font-medium"
+                          : "text-gray-600 hover:text-orange-500 hover:bg-orange-50"
+                      }`}
+                      onClick={() => setPackagesDropdown(false)}
+                    >
+                      <span className="w-1 h-1 rounded-full bg-gray-300 shrink-0" />
+                      {pkg.sport}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
 
             <Link
               href="/b2b"
@@ -952,18 +1045,64 @@ export default function Header() {
               </div>
             </div>
 
-            {/* Packages */}
-            <Link
-              href="/packages"
-              className={`flex items-center gap-2 px-4 py-3 text-sm font-medium rounded-xl transition-colors ${
-                isActive("/packages")
-                  ? "text-orange-400 bg-white/10"
-                  : "text-gray-300 hover:text-white hover:bg-white/5"
-              }`}
-              onClick={() => setMobileOpen(false)}
-            >
-              Packages
-            </Link>
+            {/* Packages accordion */}
+            <div className="rounded-xl overflow-hidden border border-white/5">
+              <button
+                className={`w-full flex items-center justify-between px-4 py-3 text-sm font-medium transition-colors ${
+                  mobilePackagesOpen
+                    ? "bg-white/10 text-white"
+                    : "text-gray-300 hover:bg-white/5 hover:text-white"
+                }`}
+                onClick={() => setMobilePackagesOpen(!mobilePackagesOpen)}
+              >
+                <span>Packages</span>
+                <svg
+                  className={`w-4 h-4 transition-transform duration-200 ${mobilePackagesOpen ? "rotate-180 text-orange-400" : "text-gray-500"}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div
+                className={`overflow-hidden transition-all duration-200 ${mobilePackagesOpen ? "max-h-[400px]" : "max-h-0"}`}
+              >
+                <div className="bg-[#0c1629] border-t border-white/5 p-1.5">
+                  <Link
+                    href="/packages"
+                    className={`flex items-center gap-2.5 px-4 py-2.5 text-sm rounded-lg transition-colors ${
+                      pathname === "/packages"
+                        ? "text-orange-400 bg-orange-500/10 font-medium"
+                        : "text-gray-400 hover:text-white hover:bg-white/5"
+                    }`}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    All Packages
+                  </Link>
+                  {sportPackages.map((pkg) => (
+                    <Link
+                      key={pkg.slug}
+                      href={pkg.href}
+                      className={`flex items-center gap-2 px-8 py-2 text-sm transition-colors ${
+                        pathname === pkg.href
+                          ? "text-orange-400 bg-orange-500/10"
+                          : "text-gray-400 hover:text-white hover:bg-white/5"
+                      }`}
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      <span className="w-1 h-1 rounded-full bg-current shrink-0" />
+                      {pkg.sport}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
 
             {/* B2B Services */}
             <Link

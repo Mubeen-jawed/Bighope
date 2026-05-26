@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const product = getProductBySlug(slug);
   if (!product) return {};
   return {
-    title: `${product.name} | Big Hope Sports`,
+    title: product.name,
     description: product.description,
   };
 }

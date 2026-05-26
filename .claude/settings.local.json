@@ -34,7 +34,11 @@
       "PowerShell(cd \"C:\\\\Users\\\\jawed\\\\Downloads\\\\BigHope\"; npx tsc --noEmit 2>&1 | Where-Object { $_ -notmatch \"size-chart\" })",
       "PowerShell(Head *)",
       "Bash(node *)",
-      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\jawed\\\\Downloads\\\\BigHope\" -Directory | Where-Object { $_.Name -notin @\\('node_modules', '.next'\\) } | Select-Object Name)"
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\jawed\\\\Downloads\\\\BigHope\" -Directory | Where-Object { $_.Name -notin @\\('node_modules', '.next'\\) } | Select-Object Name)",
+      "Bash(Select-Object FullName)",
+      "PowerShell(Move-Item *)",
+      "PowerShell(Remove-Item *)",
+      "PowerShell(Get-ChildItem \"public\\\\ranges\" -Recurse -File | ForEach-Object { \"$\\($_.Directory.Name\\)\\\\$\\($_.Name\\) \\($\\([math]::Round\\($_.Length/1024\\)\\)KB\\)\" } | Sort-Object)"
     ]
   }
 }

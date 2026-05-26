@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "About Us",
+};
 
 const stats = [
   { number: "10+", label: "Years in Manufacturing" },

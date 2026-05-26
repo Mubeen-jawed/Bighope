@@ -4,42 +4,42 @@ import Link from "next/link";
 const categories = [
   {
     name: "Soccer / Football",
-    image: "/images/gujb5mnmp1joc4vt2adt-1200x1603.webp",
+    image: "/sports/soccer-kit.webp",
     href: "/sport/soccer",
   },
   {
     name: "Rugby",
-    image: "/images/R1-1200x1603.webp",
+    image: "/sports/rugby-kit-front.webp",
     href: "/sport/rugby",
   },
   {
     name: "Basketball",
-    image: "/images/rhuyni2ovnlixnsazh5z-1200x1603.webp",
+    image: "/sports/basketball-jersey.webp",
     href: "/sport/basketball",
   },
   {
     name: "Cricket",
-    image: "/images/lvhjk7p925zplkrnegxn.webp",
+    image: "/sports/cricket-kit.webp",
     href: "/sport/cricket",
   },
   {
     name: "7v7 Football",
-    image: "/images/jmszybpmqfajrxmfre1h-1200x1603.webp",
+    image: "/sports/7v7-football-uniform.webp",
     href: "/sport/7v7-football",
   },
   {
     name: "Baseball / Softball",
-    image: "/images/qfqpanyf0uriwazouxfe-1200x1603.webp",
+    image: "/sports/7v7-hooded-uniform.webp",
     href: "/sport/baseball",
   },
   {
     name: "MMA",
-    image: "/images/h1gcf6edlsna4giq9zp0-1200x1603.webp",
+    image: "/sports/mma-fighter.webp",
     href: "/sport/mma",
   },
   {
     name: "Hoodies & Teamwear",
-    image: "/images/TS-THUM.2.png",
+    image: "/sports/teamwear-hoodies.png",
     href: "/sport/teamwear",
   },
 ];

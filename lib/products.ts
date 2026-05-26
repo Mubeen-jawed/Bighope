@@ -37,7 +37,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Fully customizable jerseys and shorts with player names, numbers, and logos using full-color dye-sublimation printing. Lightweight, stretchable, and quick-drying for peak performance on the field.",
     idealFor: "School teams, soccer clubs, academies & corporate leagues",
-    image: `${B}/2025/11/gujb5mnmp1joc4vt2adt-1200x1603.webp`,
+    image: "/ranges/soccer/custom-soccer-kit.webp",
     images: [
       `${B}/2025/11/gujb5mnmp1joc4vt2adt-1200x1603.webp`,
       `${B}/2025/11/wsujxpkllycgivdbghh9-1200x1603.webp`,
@@ -84,7 +84,7 @@ export const allProducts: Product[] = [
     longDescription:
       "These jerseys empower your team with customizable athletic wear that stays vibrant wash after wash. Lightweight, stretchable, and quick-drying for peak comfort on the field — ideal for school teams, soccer clubs, academies, and corporate leagues.",
     idealFor: "School teams, soccer clubs, academies & corporate leagues",
-    image: `${B}/2025/11/tnslniaumiysvj3fjzvx.webp`,
+    image: "/ranges/soccer/custom-soccer-jerseys.webp",
     images: [
       `${B}/2025/11/tnslniaumiysvj3fjzvx.webp`,
       `${B}/2025/11/h1gcf6edlsna4giq9zp0.webp`,
@@ -144,7 +144,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Designed to complete your team kit with a professional, consistent look. Full-color dye-sublimation printing ensures your team colors and branding look sharp and stay vibrant. Ideal for school teams, soccer clubs, and academies.",
     idealFor: "School teams, soccer clubs, academies & corporate leagues",
-    image: `${B}/2025/11/5-1-1200x1603.webp`,
+    image: "/ranges/soccer/custom-soccer-shorts.webp",
     images: [
       `${B}/2025/11/5-1-1200x1603.webp`,
       `${B}/2025/11/3-1-1200x1603.webp`,
@@ -187,7 +187,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Complete your team's kit with matching custom socks. Dye-sublimation printing keeps colors vibrant wash after wash. Reinforced construction for durability on the pitch — available in youth and adult sizing.",
     idealFor: "School teams, soccer clubs, academies & corporate leagues",
-    image: `${B}/2025/11/f1apodtfbsiqkuvmtubc.webp`,
+    image: "/ranges/soccer/custom-soccer-socks.webp",
     images: [
       `${B}/2025/11/f1apodtfbsiqkuvmtubc.webp`,
       `${B}/2025/11/o57kaujiqo4jyopmwaps.webp`,
@@ -230,7 +230,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Built for goalkeepers who demand standout style and performance. Premium moisture-wicking polyester or micro mesh with full-color sublimation — unlimited colors and graphics for a truly unique look on the field.",
     idealFor: "School, club, and professional league goalkeepers",
-    image: `${B}/2025/11/28.webp`,
+    image: "/ranges/soccer/custom-goalkeeper-jersey.webp",
     images: [
       `${B}/2025/11/28.webp`,
       `${B}/2025/11/e7zy0tbkaxxlcvrq2cr3.webp`,
@@ -275,7 +275,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Built for the demands of contact sport. Full-color dye-sublimation printing with strong stitching, stretchable fabric, and quick-drying properties. Fully customizable with player names, numbers, and logos.",
     idealFor: "School teams, rugby clubs, academies & corporate leagues",
-    image: `${B}/2025/11/R1.webp`,
+    image: "/ranges/rugby/custom-rugby-kit.webp",
     images: [
       `${B}/2025/11/R1.webp`,
       `${B}/2025/11/r4.webp`,
@@ -323,7 +323,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Fully dye sublimated with no limit on colors and logos. Numbers, names, and logos that won't come out in the wash — even better than traditional basketball jerseys. Ideal for school teams, basketball leagues, and organizations.",
     idealFor: "Basketball clubs, leagues, school teams & organizations",
-    image: `${B}/2025/11/22-1-1200x1603.webp`,
+    image: "/ranges/basketball/custom-basketball-jersey.webp",
     images: [
       `${B}/2025/11/22-1-1200x1603.webp`,
       `${B}/2025/11/29-1200x1603.webp`,
@@ -366,7 +366,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Fully dye sublimated with no limit on colors and logos. Designed to complement your team jersey with a sharp, consistent look. Full-color dye-sublimation printing keeps your team looking and performing their best.",
     idealFor: "Basketball clubs, leagues, school teams & organizations",
-    image: `${B}/2025/11/fbsfmtv52mbwwcwqbk5b-1200x1603.webp`,
+    image: "/ranges/basketball/custom-basketball-shorts.webp",
     images: [
       `${B}/2025/11/fbsfmtv52mbwwcwqbk5b-1200x1603.webp`,
       `${B}/2025/11/x9f3bxdqtfiirp1hrh1x-1200x1603.webp`,
@@ -409,7 +409,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Fully dye sublimated with no limit on colors and logos. Numbers, names, and logos that won't come out in the wash — built for school teams, basketball leagues, and organizations.",
     idealFor: "Basketball clubs, leagues, school teams & organizations",
-    image: `${B}/2025/11/stdayofxzw7wfimxuzep.webp`,
+    image: "/ranges/basketball/custom-basketball-uniform.webp",
     images: [
       `${B}/2025/11/stdayofxzw7wfimxuzep.webp`,
       `${B}/2025/11/fggq2npahgbsy3j50i5h.webp`,
@@ -452,7 +452,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Fully dye sublimated with unlimited color and logo options — two complete looks in one jersey. Numbers, names, and logos with wash-resistant application. Enhanced durability compared to traditional basketball jerseys.",
     idealFor: "Basketball clubs, leagues, school teams & organizations",
-    image: `${B}/2025/11/phguon5vp1fig24emkey.webp`,
+    image: "/ranges/basketball/custom-reversible-basketball-jersey.webp",
     images: [
       `${B}/2025/11/phguon5vp1fig24emkey.webp`,
       `${B}/2025/11/ogycmdybeg4o0fk2ljm9.webp`,
@@ -497,7 +497,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Available in long sleeve and short sleeve options. Fully dye sublimated with no limit on colors and logos. Numbers, names, and logos that won't come out in the wash — superior durability for training and game day.",
     idealFor: "Basketball clubs, leagues, school teams & organizations",
-    image: `${B}/2025/11/ndfbzc802mdtvszj4kx3.webp`,
+    image: "/ranges/basketball/custom-shooting-hoodies.webp",
     images: [
       `${B}/2025/11/ndfbzc802mdtvszj4kx3.webp`,
       `${B}/2025/11/ochzxwhwfiprbsgstimu.webp`,
@@ -540,7 +540,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Fully dye sublimated with no limit on colors and logos. Numbers, names, and logos with wash-fast application — superior durability for school teams, basketball leagues, and organizations.",
     idealFor: "Basketball clubs, leagues, school teams & organizations",
-    image: `${B}/2025/11/g4yokmskwb6owztljmaa-1200x1603.webp`,
+    image: "/ranges/basketball/custom-shooting-shirts.webp",
     images: [
       `${B}/2025/11/g4yokmskwb6owztljmaa-1200x1603.webp`,
       `${B}/2025/11/svccp238idjah33tkgmc-1200x1603.webp`,
@@ -584,7 +584,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Made with dry-fit stretch fabric for full mobility. Fully dye sublimated with no limit on colors and logos. Numbers, names, and logos with wash-resistant application — designed for basketball leagues, school teams, and organizations.",
     idealFor: "Basketball clubs, leagues, school teams & organizations",
-    image: `${B}/2025/11/wmpg1mya2qj1sblljzoy-1200x1603.webp`,
+    image: "/ranges/basketball/custom-shooting-sleeves.webp",
     images: [
       `${B}/2025/11/wmpg1mya2qj1sblljzoy-1200x1603.webp`,
       `${B}/2025/11/wzhymohnlxegwxsbctm0-1200x1603.webp`,
@@ -628,7 +628,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Full dye sublimation with unlimited color options — numbers, names, and logos with permanent wash-resistance. Enhanced performance vs. traditional basketball jerseys.",
     idealFor: "Basketball clubs, leagues, school teams & organizations",
-    image: `${B}/2025/11/rllt0u0tmivpk7ewypww-1200x1603.webp`,
+    image: "/ranges/basketball/v-neck-basketball-jersey.webp",
     images: [
       `${B}/2025/11/rllt0u0tmivpk7ewypww-1200x1603.webp`,
       `${B}/2025/11/muxk6xlqpyrcscu21kxz-1200x1603.webp`,
@@ -674,7 +674,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Full-color dye-sublimation printing ensures vibrant, wash-resistant colors — lightweight, stretchable, and quick-drying for peak comfort on the field. Ideal for school teams, cricket clubs, academies, and leagues.",
     idealFor: "School teams, cricket clubs, academies & leagues",
-    image: `${B}/2026/01/lvhjk7p925zplkrnegxn.webp`,
+    image: "/ranges/cricket/custom-cricket-kit.webp",
     images: [
       `${B}/2026/01/lvhjk7p925zplkrnegxn.webp`,
       `${B}/2026/01/qcn8qmtkqy06h2duxc4n.webp`,
@@ -723,7 +723,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Fully sublimated to ensure your design NEVER shrinks, fades, or tarnishes. Available in compression or Dri-Fit fabrics with logos, names, and numbers for youth and adult consumers.",
     idealFor: "7V7 organizations, leagues & teams",
-    image: `${B}/2026/03/jmszybpmqfajrxmfre1h-1200x1603.webp`,
+    image: "/ranges/7v7-football/custom-7v7-uniforms.webp",
     images: [
       `${B}/2026/03/jmszybpmqfajrxmfre1h-1200x1603.webp`,
       `${B}/2026/03/tkj0lom8otjn5t2eppp9-1200x1603.webp`,
@@ -776,7 +776,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Fully sublimated to ensure your design NEVER shrinks, fades, or tarnishes. High-performance compression or Dri-Fit fabric choices with logos, names, and numbers.",
     idealFor: "7V7 organizations, leagues & teams",
-    image: `${B}/2026/03/qfqpanyf0uriwazouxfe-1200x1603.webp`,
+    image: "/ranges/7v7-football/custom-7v7-hooded-uniforms.webp",
     images: [
       `${B}/2026/03/qfqpanyf0uriwazouxfe-1200x1603.webp`,
       `${B}/2026/03/n6jlofdmkew7j80a6yub-1200x1603.webp`,
@@ -821,7 +821,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Fully sublimated to ensure your design NEVER shrinks, fades, or tarnishes. Durable construction for long-lasting vibrancy — intended for 7V7 organizations, leagues, and teams.",
     idealFor: "7V7 organizations, leagues & teams",
-    image: `${B}/2025/11/rhuyni2ovnlixnsazh5z.webp`,
+    image: "/ranges/7v7-football/custom-7v7-sleeveless-hooded-jerseys.webp",
     images: [
       `${B}/2025/11/rhuyni2ovnlixnsazh5z.webp`,
       `${B}/2025/11/u3uurreuuymlcshnanda.webp`,
@@ -864,7 +864,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Fully sublimated to ensure your design NEVER shrinks, fades, or tarnishes. High-performance Dri-Fit or compression fabric — designed for 7V7 organizations, leagues, and teams.",
     idealFor: "7V7 organizations, leagues & teams",
-    image: `${B}/2025/11/bcxp8i0fxb2nam8shnzy-1200x1603.webp`,
+    image: "/ranges/7v7-football/custom-7v7-sleeveless-jerseys.webp",
     images: [
       `${B}/2025/11/bcxp8i0fxb2nam8shnzy-1200x1603.webp`,
       `${B}/2025/11/ffcnldrbex9d4lbfnats-1200x1603.webp`,
@@ -907,7 +907,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Fully sublimated to ensure your design NEVER shrinks, fades, or tarnishes. High-performance Dri-Fit or compression fabrics — fully customizable with logos, names, and numbers.",
     idealFor: "7V7 organizations, leagues & teams",
-    image: `${B}/2025/11/rqauwk9f0cu6znhn5ajf-1200x1603.webp`,
+    image: "/ranges/7v7-football/custom-7v7-football-shorts.webp",
     images: [
       `${B}/2025/11/rqauwk9f0cu6znhn5ajf-1200x1603.webp`,
       `${B}/2025/11/pvp0gtxsoqyqgsqxjypz-1200x1603.webp`,
@@ -952,7 +952,7 @@ export const allProducts: Product[] = [
     longDescription:
       "100% cool-dry polyester mesh/interlock for breathable on-field comfort. Customization via sublimation with unlimited color and graphic possibilities — breathable yet durable fabric designed for maximum flexibility and protection.",
     idealFor: "School teams, baseball clubs, local leagues & academies",
-    image: `${B}/2025/11/onbdej7l8bynpkezcvae.webp`,
+    image: "/ranges/baseball/custom-baseball-uniforms.webp",
     images: [
       `${B}/2025/11/onbdej7l8bynpkezcvae.webp`,
       `${B}/2025/11/g1btirbyb17we6xlwn41.webp`,
@@ -1000,7 +1000,7 @@ export const allProducts: Product[] = [
     longDescription:
       "100% cool-dry polyester mesh/interlock for breathable on-field comfort. High-quality sublimation printing with unlimited colors and graphics — durable fabric designed for maximum flexibility and protection.",
     idealFor: "School teams, baseball clubs, local leagues & academies",
-    image: `${B}/2025/11/mck4ygcduupzzvlgwfsh.webp`,
+    image: "/ranges/baseball/2-button-baseball-jerseys.webp",
     images: [
       `${B}/2025/11/mck4ygcduupzzvlgwfsh.webp`,
       `${B}/2025/11/tpnosrz7umfpi2qvlzbi.webp`,
@@ -1041,7 +1041,7 @@ export const allProducts: Product[] = [
     longDescription:
       "100% cool-dry polyester mesh/interlock for breathable on-field comfort. Unlimited colors and graphics with durable sublimation printing — breathable yet durable for maximum flexibility and protection.",
     idealFor: "School teams, baseball clubs, local leagues & academies",
-    image: `${B}/2025/11/jaxtog9nnwhwgcvcpkib.webp`,
+    image: "/ranges/baseball/baseball-crew-neck-jerseys.webp",
     images: [
       `${B}/2025/11/jaxtog9nnwhwgcvcpkib.webp`,
       `${B}/2025/11/gyeogzuzagn15p9b634g.webp`,
@@ -1083,7 +1083,7 @@ export const allProducts: Product[] = [
     longDescription:
       "100% cool-dry polyester mesh/interlock for breathable on-field comfort. Unlimited color and graphic possibilities with long-lasting print durability — breathable yet durable fabric designed for maximum flexibility and protection.",
     idealFor: "School teams, baseball clubs, local leagues & academies",
-    image: `${B}/2025/11/omdkyiubdt5oumcuwnsx-1200x1603.webp`,
+    image: "/ranges/baseball/baseball-v-neck-jerseys.webp",
     images: [
       `${B}/2025/11/omdkyiubdt5oumcuwnsx-1200x1603.webp`,
       `${B}/2025/11/wacnrxtvh33gvksll47i-1200x1601.webp`,
@@ -1124,7 +1124,7 @@ export const allProducts: Product[] = [
     longDescription:
       "100% cool-dry polyester mesh/interlock for breathable on-field comfort. Sublimation with unlimited color and graphic possibilities — won't crack or fade.",
     idealFor: "School teams, baseball clubs, local leagues & academies",
-    image: `${B}/2025/11/jmpxwmikf5qc5h38hilz.webp`,
+    image: "/ranges/baseball/full-button-baseball-jerseys.webp",
     images: [
       `${B}/2025/11/jmpxwmikf5qc5h38hilz.webp`,
       `${B}/2025/11/zxlrir7zmaojfdwoermz.webp`,
@@ -1167,7 +1167,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Premium satin or microfiber fabric — tear-resistant for training and competition. Personalized fighter names, gym logos, flags, and full-color graphics. Ideal for Muay Thai gyms, fighters, kickboxing, and martial arts teams.",
     idealFor: "Muay Thai gyms, fighters, kickboxing & martial arts teams",
-    image: `${B}/2025/11/yvlkthcwl9odt6qoj93x.webp`,
+    image: "/ranges/mma/custom-mma-fight-shorts.webp",
     images: [
       `${B}/2025/11/yvlkthcwl9odt6qoj93x.webp`,
       `${B}/2025/11/di9tc80acr9tcmn0afc5.webp`,
@@ -1208,7 +1208,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Moisture-wicking polyester/spandex 4-way stretch fabric with anti-pilling, anti-tear, and reinforced stitching for intense training. Ideal for BJJ, MMA, wrestling, no-gi training, and fitness.",
     idealFor: "BJJ, MMA, wrestling, no-gi training & fitness",
-    image: `${B}/2025/11/i4msc1ws66sjqhkoieml-1200x1603.webp`,
+    image: "/ranges/mma/custom-mma-rashguard.webp",
     images: [
       `${B}/2025/11/i4msc1ws66sjqhkoieml-1200x1603.webp`,
       `${B}/2025/11/qatjgilvpwukdaljofhn-1200x1603.webp`,
@@ -1250,7 +1250,7 @@ export const allProducts: Product[] = [
     longDescription:
       "4-way stretch spandex/polyester blend for maximum mobility and comfort. Fully dye sublimated with no limit on colors and logos — reinforced stitching with stretch fabric for rigorous competition.",
     idealFor: "School teams, wrestling clubs, tournaments & organizations",
-    image: `${B}/2025/11/fotrxbxjxdfkh20bcnoc-1200x1603.webp`,
+    image: "/ranges/mma/custom-wrestling-singlets.webp",
     images: [
       `${B}/2025/11/fotrxbxjxdfkh20bcnoc-1200x1603.webp`,
       `${B}/2025/11/zngr03avuss4hotwnmjg-1200x1603.webp`,
@@ -1292,7 +1292,7 @@ export const allProducts: Product[] = [
     longDescription:
       "100% polyester fleece (Speedo fabric) — fully dye sublimated with no limit on colors and logos. High-quality fabric that withstands wear, keeping your designs vibrant for men, women, and youth.",
     idealFor: "Sports teams, training wear, fan gear & promotional branding",
-    image: `${B}/2025/11/i6pbbxnuqnyco20dspzu-1200x1603.webp`,
+    image: "/ranges/teamwear/custom-team-hoodies.webp",
     images: [
       `${B}/2025/11/i6pbbxnuqnyco20dspzu-1200x1603.webp`,
       `${B}/2025/11/q58bxnz3zh9rmyt90jal-1200x1603.webp`,
@@ -1336,7 +1336,7 @@ export const allProducts: Product[] = [
     longDescription:
       "100% polyester fleece (Speedo fabric) — fully dye sublimated with no limit on colors and logos. High-quality fabric that withstands wear, keeping your designs vibrant for sports teams, training wear, fan gear, and promotional branding.",
     idealFor: "Sports teams, training wear, fan gear & promotional branding",
-    image: `${B}/2025/11/s67d3nnpgmwihlqxg0yl.webp`,
+    image: "/ranges/teamwear/custom-zipper-hoodies.webp",
     images: [
       `${B}/2025/11/s67d3nnpgmwihlqxg0yl.webp`,
       `${B}/2025/11/loflerxmnk1brqazqpki.webp`,
@@ -1378,7 +1378,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Fully dye sublimated with unlimited color options and logo placement. High-quality, durable construction maintaining vibrant designs — available in Youth, Women, and Men's sizing.",
     idealFor: "Sports teams, charities, events & schools",
-    image: `${B}/2025/11/elx0jhwf6jw8wo5xtbtk.webp`,
+    image: "/ranges/teamwear/custom-tracksuits.webp",
     images: [
       `${B}/2025/11/elx0jhwf6jw8wo5xtbtk.webp`,
       `${B}/2025/11/saf1oilnlwlqju8iq8te.webp`,
@@ -1421,7 +1421,7 @@ export const allProducts: Product[] = [
     longDescription:
       "100% polyester (Mesh or Spandex options) — fully dye sublimated with unlimited color options. Durable construction maintaining vibrant designs for sports teams, clubs, and corporate wear.",
     idealFor: "Sports teams, clubs & corporate wear",
-    image: `${B}/2025/11/uo7nngnyidgvkc8ljxsq-1200x1603.webp`,
+    image: "/ranges/teamwear/custom-polo-shirts.webp",
     images: [
       `${B}/2025/11/uo7nngnyidgvkc8ljxsq-1200x1603.webp`,
       `${B}/2025/11/osqairvw9ejta8iwxzil-1200x1603.webp`,
@@ -1466,7 +1466,7 @@ export const allProducts: Product[] = [
     longDescription:
       "100% polyester interlock fabric or 100% cool dry micromesh polyester — fully dye sublimated with no limit on colors and logos. Perfect for sports teams, training, fan gear, events, or promotional use.",
     idealFor: "Sports teams, training, fan gear, events & promotional use",
-    image: `${B}/2025/11/sufbcn8kyf81eia10qhl.webp`,
+    image: "/ranges/teamwear/custom-t-shirts.webp",
     images: [
       `${B}/2025/11/sufbcn8kyf81eia10qhl.webp`,
       `${B}/2025/11/phcxmwmpexkjb4llrxsh.webp`,
@@ -1509,7 +1509,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Fully dye sublimated with unlimited color options. High-quality fabric that withstands wear, keeping designs vibrant and long-lasting — ideal for training, match day, and polished teamwear.",
     idealFor: "Sports teams, training wear & match day",
-    image: `${B}/2025/11/saupe0lpduqh9ybdrr8q-1200x1603.webp`,
+    image: "/ranges/teamwear/custom-quarter-zipper-ls.webp",
     images: [
       `${B}/2025/11/saupe0lpduqh9ybdrr8q-1200x1603.webp`,
       `${B}/2025/11/ektnf8sskjl8gikcxexj-1200x1603.webp`,
@@ -1552,7 +1552,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Fully dye sublimated with no limit on colors and logos. High-quality fabric maintains vibrant, long-lasting designs — ideal for sports teams and training wear.",
     idealFor: "Sports teams, training wear & match day",
-    image: `${B}/2025/12/syeboevcchh58qmoatze-1200x1603.webp`,
+    image: "/ranges/teamwear/custom-quarter-zipper-ss.webp",
     images: [
       `${B}/2025/12/syeboevcchh58qmoatze-1200x1603.webp`,
       `${B}/2025/12/wtmhnj6fzmysaaf2s4e1-1200x1603.webp`,
@@ -1595,7 +1595,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Premium performance-grade polyester and nylon fabrics with high-quality stitching and reinforced seams. Customization via embroidery, heat transfer, or sublimation — available in men's, women's, and youth sizing.",
     idealFor: "Sports teams, clubs, schools & brands",
-    image: `${B}/2025/11/omsc8lldid8tuazhl9zv-1200x1603.webp`,
+    image: "/ranges/teamwear/custom-coach-jackets.webp",
     images: [
       `${B}/2025/11/omsc8lldid8tuazhl9zv-1200x1603.webp`,
       `${B}/2025/11/pe0kfocg64nsei6hsvpw-1200x1603.webp`,
@@ -1640,7 +1640,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Heavy-duty polyester/nylon fabric designed for strength, weather resistance, and daily use. Customization via embroidery, heat transfer, or sublimation. Reinforced stitching, tough zippers, and tear-resistant construction.",
     idealFor: "Sports teams, clubs, schools, travel, tournaments & training",
-    image: `${B}/2025/11/grojrhjupl7fa7osf91j-1200x1603.webp`,
+    image: "/ranges/accessories/custom-backpacks.webp",
     images: [
       `${B}/2025/11/grojrhjupl7fa7osf91j-1200x1603.webp`,
       `${B}/2025/11/wl5isi79xbiy4zp9sez3-1200x1603.webp`,
@@ -1683,7 +1683,7 @@ export const allProducts: Product[] = [
     longDescription:
       "Heavy-duty polyester/nylon fabric designed for strength, weather resistance, and daily use. Reinforced stitching, tough zippers, and tear-resistant construction — customization via embroidery, heat transfer, or sublimation.",
     idealFor: "Sports teams, clubs, schools, travel, tournaments & training",
-    image: `${B}/2025/12/hvqllx0q7lnmmsv61wi0-1200x1603.webp`,
+    image: "/ranges/accessories/custom-duffle-bags.webp",
     images: [
       `${B}/2025/12/hvqllx0q7lnmmsv61wi0-1200x1603.webp`,
       `${B}/2025/12/cpqrrj8xelhzr6jlzktw-1200x1603.webp`,
@@ -1726,7 +1726,7 @@ export const allProducts: Product[] = [
     longDescription:
       "High-performance blend of nylon, polyester, and spandex for durability, stretch, and moisture control. Reinforced heel and toe construction — available in youth, women's, and men's sizing.",
     idealFor: "Soccer clubs, school teams, leagues & training",
-    image: `${B}/2025/11/f1apodtfbsiqkuvmtubc-1200x1603.webp`,
+    image: "/ranges/accessories/custom-socks.webp",
     images: [
       `${B}/2025/11/f1apodtfbsiqkuvmtubc-1200x1603.webp`,
       `${B}/2025/11/o57kaujiqo4jyopmwaps-1200x1603.webp`,

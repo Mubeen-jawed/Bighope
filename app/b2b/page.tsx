@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "B2B Partnerships",
+};
 
 const clientTypes = [
   { title: "Fan Merchandise Businesses", desc: "Custom branded gear for fan stores and sports merchandise." },

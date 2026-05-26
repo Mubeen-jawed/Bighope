@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import Link from "next/link";
 import { PaymentLogoCards } from "@/components/PaymentLogos";
+
+export const metadata: Metadata = {
+  title: "How It Works",
+};
 
 const steps = [
   {

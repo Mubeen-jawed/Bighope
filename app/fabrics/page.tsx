@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Fabrics & Materials",
+};
 
 const fabrics = [
   {

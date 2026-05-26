@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import Image from 'next/image';
 
 const CATEGORIES = [
   'Soccer', 'Rugby', 'Basketball', 'Cricket',
@@ -25,13 +26,18 @@ interface QuoteModalProps {
   defaultCategory?: string;
 }
 
+const ROLES = ['Coach', 'Program Director', 'Player', 'Brand Owner', 'Other'];
+const TURNAROUNDS = ['Standard (4–6 weeks)', 'Rush (2–3 weeks)', 'Express (1–2 weeks)', 'Flexible / No Rush'];
+
 const EMPTY_FORM = (defaultCategory: string) => ({
   name: '',
   email: '',
   phone: '',
+  role: '',
   categories: defaultCategory ? [defaultCategory] : [] as string[],
   orderQuantity: '',
   teamName: '',
+  turnaround: '',
   primaryColor: '',
   secondaryColor: '',
   customColors: false,
@@ -48,10 +54,15 @@ export default function QuoteModal({
   const [open, setOpen]           = useState(false);
   const [step, setStep]           = useState(1);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending]     = useState(false);
+  const [apiError, setApiError]   = useState('');
   const [form, setForm]           = useState(EMPTY_FORM(defaultCategory));
   const [errors, setErrors]       = useState<Record<string, string>>({});
   const [mounted, setMounted]     = useState(false);
-  const mouseDownTarget           = useRef<EventTarget | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [imageFile, setImageFile]       = useState<File | null>(null);
+  const fileInputRef                    = useRef<HTMLInputElement>(null);
+  const mouseDownTarget                 = useRef<EventTarget | null>(null);
 
   // Portal needs document to exist (SSR guard)
   useEffect(() => { setMounted(true); }, []);
@@ -64,7 +75,22 @@ export default function QuoteModal({
     }
   }, [open]);
 
-  function handleTextChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  function handleImageChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setImageFile(file);
+    const reader = new FileReader();
+    reader.onload = (ev) => setImagePreview(ev.target?.result as string);
+    reader.readAsDataURL(file);
+  }
+
+  function removeImage() {
+    setImageFile(null);
+    setImagePreview(null);
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  }
+
+  function handleTextChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     const { name, value } = e.target;
     setForm(f => ({ ...f, [name]: value }));
     if (errors[name]) setErrors(p => ({ ...p, [name]: '' }));
@@ -75,6 +101,7 @@ export default function QuoteModal({
     if (!form.name.trim())  errs.name  = 'Name is required';
     if (!form.email.trim()) errs.email = 'Email is required';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = 'Invalid email address';
+    if (!form.role) errs.role = 'Please select a role';
     return errs;
   }
 
@@ -91,11 +118,45 @@ export default function QuoteModal({
     setStep(2);
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const errs = validateStep2();
     if (Object.keys(errs).length) { setErrors(errs); return; }
-    setSubmitted(true);
+
+    setSending(true);
+    setApiError('');
+    try {
+      const body = new FormData();
+      body.append('name', form.name);
+      body.append('email', form.email);
+      body.append('phone', form.phone);
+      body.append('role', form.role);
+      body.append('categories', JSON.stringify(form.categories));
+      body.append('orderQuantity', form.orderQuantity);
+      body.append('teamName', form.teamName);
+      body.append('turnaround', form.turnaround);
+      body.append('primaryColor', form.primaryColor);
+      body.append('secondaryColor', form.secondaryColor);
+      body.append('customColors', String(form.customColors));
+      body.append('playerNames', String(form.playerNames));
+      body.append('playerNumbers', String(form.playerNumbers));
+      body.append('query', form.query);
+      if (imageFile) body.append('image', imageFile);
+
+      const res = await fetch('/api/quote', {
+        method: 'POST',
+        body,
+      });
+      if (!res.ok) {
+        const json = await res.json();
+        throw new Error(json.error || 'Something went wrong.');
+      }
+      setSubmitted(true);
+    } catch (err: unknown) {
+      setApiError(err instanceof Error ? err.message : 'Something went wrong.');
+    } finally {
+      setSending(false);
+    }
   }
 
   function handleClose() {
@@ -104,6 +165,7 @@ export default function QuoteModal({
     setStep(1);
     setErrors({});
     setForm(EMPTY_FORM(defaultCategory));
+    removeImage();
   }
 
   // Shared input class
@@ -206,6 +268,16 @@ export default function QuoteModal({
                           <label className="block text-sm font-semibold text-gray-800 mb-2">Phone</label>
                           <input type="tel" name="phone" value={form.phone} onChange={handleTextChange}
                             placeholder="+1 234 567 8900" autoComplete="tel" className={inputCls()} />
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-semibold text-gray-800 mb-2">Role *</label>
+                          <select name="role" value={form.role} onChange={handleTextChange}
+                            className={inputCls(!!errors.role)}>
+                            <option value="">Select a role...</option>
+                            {ROLES.map(r => <option key={r}>{r}</option>)}
+                          </select>
+                          {errors.role && <p className="text-red-400 text-xs mt-1">{errors.role}</p>}
                         </div>
 
                         <button type="button" onClick={handleNext}
@@ -344,6 +416,67 @@ export default function QuoteModal({
                           </label>
                         </div>
 
+                        {/* Turnaround Time */}
+                        <div>
+                          <label className="block text-sm font-semibold text-gray-800 mb-2">Turnaround Time</label>
+                          <select name="turnaround" value={form.turnaround} onChange={handleTextChange}
+                            className={inputCls()}>
+                            <option value="">Select turnaround...</option>
+                            {TURNAROUNDS.map(t => <option key={t}>{t}</option>)}
+                          </select>
+                        </div>
+
+                        {/* Image Upload */}
+                        <div>
+                          <label className="block text-sm font-semibold text-gray-800 mb-2">
+                            Upload Image <span className="font-normal text-gray-400">(optional)</span>
+                          </label>
+
+                          {imagePreview ? (
+                            <div className="relative inline-block">
+                              <Image
+                                src={imagePreview}
+                                alt="Preview"
+                                width={180}
+                                height={180}
+                                className="border border-gray-200 rounded-lg object-contain max-h-44"
+                                unoptimized
+                              />
+                              <button
+                                type="button"
+                                onClick={removeImage}
+                                className="absolute -top-2 -right-2 w-5 h-5 bg-orange-500 text-white rounded-full flex items-center justify-center text-xs hover:bg-orange-600 transition-colors"
+                              >
+                                &times;
+                              </button>
+                              <p className="text-xs text-gray-400 mt-1.5 truncate max-w-[180px]">{imageFile?.name}</p>
+                            </div>
+                          ) : (
+                            <button
+                              type="button"
+                              onClick={() => fileInputRef.current?.click()}
+                              className="w-full border border-dashed border-gray-200 rounded-2xl py-6 flex flex-col items-center justify-center gap-1.5 hover:border-orange-400 transition-colors cursor-pointer group"
+                            >
+                              <svg className="w-6 h-6 text-gray-300 group-hover:text-orange-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
+                                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                              </svg>
+                              <span className="text-xs text-gray-400 group-hover:text-orange-500 transition-colors">
+                                Click to upload
+                              </span>
+                              <span className="text-[11px] text-gray-300">PNG, JPG, or WEBP (max 5 MB)</span>
+                            </button>
+                          )}
+
+                          <input
+                            ref={fileInputRef}
+                            type="file"
+                            accept="image/png,image/jpeg,image/webp"
+                            onChange={handleImageChange}
+                            className="hidden"
+                          />
+                        </div>
+
                         {/* Message */}
                         <div>
                           <label className="block text-sm font-semibold text-gray-800 mb-2">Message</label>
@@ -352,15 +485,23 @@ export default function QuoteModal({
                             className="w-full rounded-2xl px-4 py-3.5 text-sm text-gray-800 placeholder-gray-400 outline-none border border-gray-200 bg-white resize-none transition-all duration-200 focus:ring-2 focus:ring-orange-100 focus:border-orange-400 hover:border-gray-300" />
                         </div>
 
+                        {apiError && (
+                          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm">
+                            {apiError}
+                          </div>
+                        )}
+
                         {/* Actions */}
                         <div className="flex gap-3">
-                          <button type="button" onClick={() => { setStep(1); setErrors({}); }}
-                            className="px-5 py-3 text-sm font-medium text-gray-500 border border-gray-200 rounded-2xl hover:border-gray-300 hover:text-gray-700 transition-colors">
+                          <button type="button" onClick={() => { setStep(1); setErrors({}); setApiError(''); }}
+                            disabled={sending}
+                            className="px-5 py-3 text-sm font-medium text-gray-500 border border-gray-200 rounded-2xl hover:border-gray-300 hover:text-gray-700 transition-colors disabled:opacity-50">
                             Back
                           </button>
                           <button type="submit"
-                            className="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-2xl transition-colors text-sm">
-                            Submit
+                            disabled={sending}
+                            className="flex-1 bg-orange-500 hover:bg-orange-600 disabled:bg-orange-300 text-white font-semibold py-3 rounded-2xl transition-colors text-sm">
+                            {sending ? 'Sending...' : 'Submit'}
                           </button>
                         </div>
                       </form>

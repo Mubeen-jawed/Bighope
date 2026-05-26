@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="lg:col-span-1 sm:col-span-2">
             <Link href="/" className="inline-block mb-4">
               <Image
-                src="/images/cropped-SITE.L.1-1.png"
+                src="/logo/bighope-logo.png"
                 alt="Big Hope Sports"
                 width={160}
                 height={52}

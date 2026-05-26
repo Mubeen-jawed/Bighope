@@ -1,9 +1,73 @@
+"use client";
+
+import { useState, useRef } from "react";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import ContactSupportFaq from "@/components/ContactSupportFaq";
 import PartnersAccordion from "@/components/PartnersAccordion";
 
 export default function ContactPage() {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle",
+  );
+  const [errorMsg, setErrorMsg] = useState("");
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  function handleImageChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setImageFile(file);
+    const reader = new FileReader();
+    reader.onload = (ev) => setImagePreview(ev.target?.result as string);
+    reader.readAsDataURL(file);
+  }
+
+  function removeImage() {
+    setImageFile(null);
+    setImagePreview(null);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  }
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("sending");
+    setErrorMsg("");
+
+    const raw = new FormData(e.currentTarget);
+    const body = new FormData();
+    body.append("firstName", raw.get("first_name") as string);
+    body.append("lastName", raw.get("last_name") as string);
+    body.append("email", raw.get("email") as string);
+    body.append("phone", raw.get("phone") as string);
+    body.append("role", raw.get("role") as string);
+    body.append("sport", raw.get("sport") as string);
+    body.append("quantity", raw.get("quantity") as string);
+    body.append("turnaround", raw.get("turnaround") as string);
+    body.append("message", raw.get("message") as string);
+    if (imageFile) body.append("image", imageFile);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body,
+      });
+      if (!res.ok) {
+        const json = await res.json();
+        throw new Error(json.error || "Something went wrong.");
+      }
+      setStatus("sent");
+      (e.target as HTMLFormElement).reset();
+      removeImage();
+    } catch (err: unknown) {
+      setErrorMsg(
+        err instanceof Error ? err.message : "Something went wrong.",
+      );
+      setStatus("error");
+    }
+  }
+
   return (
     <>
       <PageHero
@@ -12,11 +76,9 @@ export default function ContactPage() {
         breadcrumb="Home / Contact"
       />
 
-      {/* Two contact boxes */}
-
-      {/* Contact Form + Partners Side by Side */}
+      {/* Contact Form */}
       <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-2xl mx-auto px-4">
           {/* Section Header */}
           <div className="text-center mb-12">
             <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-2">
@@ -25,144 +87,325 @@ export default function ContactPage() {
             <h2 className="text-3xl md:text-4xl font-[family-name:var(--font-oswald)] font-bold text-gray-900 uppercase mb-4">
               Request a Quote
             </h2>
+            <div className="w-16 h-1 bg-orange-500 rounded mx-auto mb-4" />
+            <p className="text-gray-500 max-w-lg mx-auto">
+              Tell us what you need. We&apos;ll map your package and timeline
+              within 24 hours.
+            </p>
+          </div>
+
+          {status === "sent" ? (
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 text-center">
+              <div className="flex justify-center mb-4">
+                <svg
+                  className="w-12 h-12 text-green-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                Message Sent!
+              </h3>
+              <p className="text-gray-500 mb-6">
+                Thank you for reaching out. We&apos;ve sent a confirmation to
+                your email and will reply within one business day.
+              </p>
+              <button
+                type="button"
+                onClick={() => setStatus("idle")}
+                className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-3 rounded-lg transition-all duration-200 hover:-translate-y-0.5"
+              >
+                Send Another Message
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-8">
+              {/* First Name */}
+              <div>
+                <label className="block text-sm font-bold text-gray-900 mb-1">
+                  First Name{" "}
+                  <span className="font-normal text-gray-400">(required)</span>
+                </label>
+                <input
+                  type="text"
+                  name="first_name"
+                  required
+                  className="w-full border-b border-gray-300 bg-transparent px-0 py-3 text-gray-900 text-base focus:outline-none focus:border-orange-500 transition-colors placeholder:text-gray-300"
+                />
+              </div>
+
+              {/* Last Name */}
+              <div>
+                <label className="block text-sm font-bold text-gray-900 mb-1">
+                  Last Name{" "}
+                  <span className="font-normal text-gray-400">(required)</span>
+                </label>
+                <input
+                  type="text"
+                  name="last_name"
+                  required
+                  className="w-full border-b border-gray-300 bg-transparent px-0 py-3 text-gray-900 text-base focus:outline-none focus:border-orange-500 transition-colors placeholder:text-gray-300"
+                />
+              </div>
+
+              {/* Email */}
+              <div>
+                <label className="block text-sm font-bold text-gray-900 mb-1">
+                  Email{" "}
+                  <span className="font-normal text-gray-400">(required)</span>
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  className="w-full border-b border-gray-300 bg-transparent px-0 py-3 text-gray-900 text-base focus:outline-none focus:border-orange-500 transition-colors placeholder:text-gray-300"
+                />
+              </div>
+
+              {/* Phone */}
+              <div>
+                <label className="block text-sm font-bold text-gray-900 mb-1">
+                  Phone
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  className="w-full border-b border-gray-300 bg-transparent px-0 py-3 text-gray-900 text-base focus:outline-none focus:border-orange-500 transition-colors placeholder:text-gray-300"
+                />
+              </div>
+
+              {/* Role */}
+              <div>
+                <label className="block text-sm font-bold text-gray-900 mb-1">
+                  Role{" "}
+                  <span className="font-normal text-gray-400">(required)</span>
+                </label>
+                <select
+                  name="role"
+                  required
+                  defaultValue=""
+                  className="w-full border-b border-gray-300 bg-transparent px-0 py-3 text-gray-900 text-base focus:outline-none focus:border-orange-500 transition-colors appearance-none cursor-pointer"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E")`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "right 0 center",
+                  }}
+                >
+                  <option value="" disabled>
+                    Select an option
+                  </option>
+                  <option>Coach</option>
+                  <option>Program Director</option>
+                  <option>Player</option>
+                  <option>Brand Owner</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              {/* Sport / Product */}
+              <div>
+                <label className="block text-sm font-bold text-gray-900 mb-1">
+                  Sport / Product{" "}
+                  <span className="font-normal text-gray-400">(required)</span>
+                </label>
+                <select
+                  name="sport"
+                  required
+                  defaultValue=""
+                  className="w-full border-b border-gray-300 bg-transparent px-0 py-3 text-gray-900 text-base focus:outline-none focus:border-orange-500 transition-colors appearance-none cursor-pointer"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E")`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "right 0 center",
+                  }}
+                >
+                  <option value="" disabled>
+                    Select an option
+                  </option>
+                  <option>Soccer / Football</option>
+                  <option>Rugby</option>
+                  <option>Basketball</option>
+                  <option>Cricket</option>
+                  <option>7v7 Football</option>
+                  <option>Baseball / Softball</option>
+                  <option>MMA</option>
+                  <option>Teamwear / Hoodies</option>
+                  <option>B2B / Wholesale</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              {/* Quantity */}
+              <div>
+                <label className="block text-sm font-bold text-gray-900 mb-1">
+                  Quantity
+                </label>
+                <input
+                  type="number"
+                  name="quantity"
+                  min="10"
+                  placeholder="Min. 10 pieces"
+                  className="w-full border-b border-gray-300 bg-transparent px-0 py-3 text-gray-900 text-base focus:outline-none focus:border-orange-500 transition-colors placeholder:text-gray-300"
+                />
+              </div>
+
+              {/* Turnaround Time */}
+              <div>
+                <label className="block text-sm font-bold text-gray-900 mb-1">
+                  Turnaround Time
+                </label>
+                <select
+                  name="turnaround"
+                  defaultValue=""
+                  className="w-full border-b border-gray-300 bg-transparent px-0 py-3 text-gray-900 text-base focus:outline-none focus:border-orange-500 transition-colors appearance-none cursor-pointer"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E")`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "right 0 center",
+                  }}
+                >
+                  <option value="" disabled>
+                    Select an option
+                  </option>
+                  <option>Standard (4–6 weeks)</option>
+                  <option>Rush (2–3 weeks)</option>
+                  <option>Express (1–2 weeks)</option>
+                  <option>Flexible / No Rush</option>
+                </select>
+              </div>
+
+              {/* Message */}
+              <div>
+                <label className="block text-sm font-bold text-gray-900 mb-1">
+                  Message{" "}
+                  <span className="font-normal text-gray-400">(required)</span>
+                </label>
+                <textarea
+                  name="message"
+                  required
+                  rows={4}
+                  className="w-full border border-gray-200 rounded-lg bg-transparent px-4 py-3 text-gray-900 text-base focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors resize-none mt-2"
+                />
+              </div>
+
+              {/* Image Upload */}
+              <div>
+                <label className="block text-sm font-bold text-gray-900 mb-1">
+                  Upload Image{" "}
+                  <span className="font-normal text-gray-400">(optional)</span>
+                </label>
+                <p className="text-sm text-gray-400 mb-3">
+                  Attach a design reference, logo, or inspiration image.
+                </p>
+
+                {imagePreview ? (
+                  <div className="relative inline-block">
+                    <Image
+                      src={imagePreview}
+                      alt="Preview"
+                      width={240}
+                      height={240}
+                      className="border border-gray-200 rounded-lg object-contain max-h-60"
+                      unoptimized
+                    />
+                    <button
+                      type="button"
+                      onClick={removeImage}
+                      className="absolute -top-2 -right-2 w-6 h-6 bg-orange-500 text-white rounded-full flex items-center justify-center text-xs hover:bg-orange-600 transition-colors"
+                    >
+                      &times;
+                    </button>
+                    <p className="text-xs text-gray-400 mt-2">
+                      {imageFile?.name}
+                    </p>
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="w-full border border-dashed border-gray-300 rounded-lg py-10 flex flex-col items-center justify-center gap-2 hover:border-orange-500 transition-colors cursor-pointer group"
+                  >
+                    <svg
+                      className="w-8 h-8 text-gray-300 group-hover:text-orange-500 transition-colors"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
+                    </svg>
+                    <span className="text-sm text-gray-400 group-hover:text-orange-500 transition-colors">
+                      Click to upload an image
+                    </span>
+                    <span className="text-xs text-gray-300">
+                      PNG, JPG, or WEBP (max 5 MB)
+                    </span>
+                  </button>
+                )}
+
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  name="image"
+                  accept="image/png,image/jpeg,image/webp"
+                  onChange={handleImageChange}
+                  className="hidden"
+                />
+              </div>
+
+              {/* Estimate note */}
+              <p className="text-sm text-gray-400 -mt-4">
+                An exact timeline isn&apos;t necessary — an estimate is fine.
+              </p>
+
+              {status === "error" && (
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                  {errorMsg}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={status === "sending"}
+                className="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-orange-300 text-white font-bold py-4 rounded-lg transition-all duration-200 hover:-translate-y-0.5 text-base"
+              >
+                {status === "sending" ? "Sending..." : "Send Message"}
+              </button>
+            </form>
+          )}
+        </div>
+      </section>
+
+      {/* Partners */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-2">
+              Global Network
+            </p>
+            <h3 className="text-2xl md:text-3xl font-[family-name:var(--font-oswald)] font-bold text-gray-900 uppercase mb-4">
+              Our Partners
+            </h3>
             <div className="w-16 h-1 bg-orange-500 rounded mx-auto" />
           </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
-            {/* ── Left: Contact Form (3/5) ── */}
-            <div className="lg:col-span-3">
-              <form
-                action="mailto:info@bighopesports.com"
-                method="post"
-                encType="text/plain"
-                className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 space-y-6"
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      First Name *
-                    </label>
-                    <input
-                      type="text"
-                      name="first_name"
-                      required
-                      className="w-full border border-gray-200 rounded-lg px-4 py-3 text-gray-900 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors"
-                      placeholder="John"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Last Name *
-                    </label>
-                    <input
-                      type="text"
-                      name="last_name"
-                      required
-                      className="w-full border border-gray-200 rounded-lg px-4 py-3 text-gray-900 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors"
-                      placeholder="Smith"
-                    />
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      className="w-full border border-gray-200 rounded-lg px-4 py-3 text-gray-900 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors"
-                      placeholder="john@club.com"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Phone
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      className="w-full border border-gray-200 rounded-lg px-4 py-3 text-gray-900 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors"
-                      placeholder="+1 (555) 000-0000"
-                    />
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Sport / Product *
-                    </label>
-                    <select
-                      name="sport"
-                      required
-                      className="w-full border border-gray-200 rounded-lg px-4 py-3 text-gray-900 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors bg-white"
-                    >
-                      <option value="">Select a sport...</option>
-                      <option>Soccer / Football</option>
-                      <option>Rugby</option>
-                      <option>Basketball</option>
-                      <option>Cricket</option>
-                      <option>7v7 Football</option>
-                      <option>Baseball / Softball</option>
-                      <option>MMA</option>
-                      <option>Teamwear / Hoodies</option>
-                      <option>B2B / Wholesale</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Quantity
-                    </label>
-                    <input
-                      type="number"
-                      name="quantity"
-                      min="10"
-                      className="w-full border border-gray-200 rounded-lg px-4 py-3 text-gray-900 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors"
-                      placeholder="Min. 10 pieces"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    name="message"
-                    required
-                    rows={5}
-                    className="w-full border border-gray-200 rounded-lg px-4 py-3 text-gray-900 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors resize-none"
-                    placeholder="Tell us about your project — sport, team size, colours, design ideas..."
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-lg transition-all duration-200 hover:-translate-y-0.5 text-base"
-                >
-                  Send Message
-                </button>
-              </form>
-            </div>
-
-            {/* ── Right: Partners (2/5) ── */}
-            <div className="lg:col-span-2">
-              <div className="mb-5">
-                <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-1">
-                  Global Network
-                </p>
-                <h3 className="text-2xl font-[family-name:var(--font-oswald)] font-bold text-gray-900 uppercase mb-1">
-                  Our Partners
-                </h3>
-              </div>
-              <PartnersAccordion />
-            </div>
-          </div>
+          <PartnersAccordion />
         </div>
       </section>
 
       {/* Help & Support FAQ */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-12">
             <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-2">
@@ -178,13 +421,11 @@ export default function ContactPage() {
             </p>
           </div>
           <ContactSupportFaq />
-
-          {/* Still need help CTA */}
         </div>
       </section>
 
       {/* Address strip */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>

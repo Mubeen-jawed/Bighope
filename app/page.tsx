@@ -1,9 +1,14 @@
+import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import Categories from "@/components/Categories";
 import DSPBanner from "@/components/DSPBanner";
 import Packages from "@/components/Packages";
 import Testimonials from "@/components/Testimonials";
 import TrustGuarantees from "@/components/TrustGuarantees";
+
+export const metadata: Metadata = {
+  title: "Home",
+};
 
 export default function Home() {
   return (

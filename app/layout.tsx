@@ -19,11 +19,17 @@ const oswald = Oswald({
 });
 
 export const metadata: Metadata = {
-  title: "Big Hope Sports, Custom Sports Uniforms & Teamwear",
+  title: {
+    default: "Big Hope Sports | Custom Sports Uniforms & Teamwear",
+    template: "%s | Big Hope Sports",
+  },
   description:
     "Big Hope Sports is a direct manufacturer of premium custom sports uniforms and teamwear. Free artwork, competitive pricing, low minimums, 2–4 week turnaround. Rugby, Soccer, Basketball, Cricket and more. Worldwide shipping.",
   keywords:
     "custom sports uniforms, custom teamwear, rugby kits, soccer uniforms, basketball jerseys, cricket kits, sublimated sportswear",
+  icons: {
+    icon: "/favicon.png",
+  },
   openGraph: {
     title: "Big Hope Sports, Custom Sports Uniforms & Teamwear",
     description:

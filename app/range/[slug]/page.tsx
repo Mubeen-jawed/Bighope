@@ -18,16 +18,14 @@ interface RangeData {
   products: Product[];
 }
 
-const B = "https://bighopesports.com/wp-content/uploads";
-
 const rangeData: Record<string, RangeData> = {
   hoodie: {
     title: "Custom Hoodies",
     category: "Custom Teamwear",
     description: "Fully sublimated custom hoodies in premium 100% polyester fleece. Unlimited colours, team logos, and player names.",
     products: [
-      { slug: "custom-team-hoodies", name: "Custom Team Hoodies", desc: "100% polyester fleece, fully sublimated, unlimited colours and logos", image: `${B}/2025/11/i6pbbxnuqnyco20dspzu-1200x1603.webp` },
-      { slug: "custom-zipper-hoodies", name: "Custom Zipper Hoodies", desc: "Full-zip fleece hoodie, sublimated design, moisture-wicking lining", image: `${B}/2025/11/s67d3nnpgmwihlqxg0yl.webp` },
+      { slug: "custom-team-hoodies", name: "Custom Team Hoodies", desc: "100% polyester fleece, fully sublimated, unlimited colours and logos", image: "/ranges/teamwear/custom-team-hoodies.webp" },
+      { slug: "custom-zipper-hoodies", name: "Custom Zipper Hoodies", desc: "Full-zip fleece hoodie, sublimated design, moisture-wicking lining", image: "/ranges/teamwear/custom-zipper-hoodies.webp" },
     ],
   },
   "t-shirts": {
@@ -35,7 +33,7 @@ const rangeData: Record<string, RangeData> = {
     category: "Custom Teamwear",
     description: "Dye-sublimated team T-shirts in 100% cool-dry micromesh or interlock polyester. Men's, women's and youth sizing.",
     products: [
-      { slug: "custom-t-shirts", name: "Custom T-Shirts", desc: "100% cool-dry micromesh polyester, fully sublimated, breathable and moisture-wicking", image: `${B}/2025/11/sufbcn8kyf81eia10qhl.webp` },
+      { slug: "custom-t-shirts", name: "Custom T-Shirts", desc: "100% cool-dry micromesh polyester, fully sublimated, breathable and moisture-wicking", image: "/ranges/teamwear/custom-t-shirts.webp" },
     ],
   },
   polo: {
@@ -43,7 +41,7 @@ const rangeData: Record<string, RangeData> = {
     category: "Custom Teamwear",
     description: "Moisture-wicking custom polo shirts. Fully dye sublimated, no colour limits. Available in mesh or spandex fabric.",
     products: [
-      { slug: "custom-polo-shirts", name: "Custom Polo Shirts", desc: "100% polyester mesh or spandex, moisture-wicking, fully sublimated", image: `${B}/2025/11/uo7nngnyidgvkc8ljxsq-1200x1603.webp` },
+      { slug: "custom-polo-shirts", name: "Custom Polo Shirts", desc: "100% polyester mesh or spandex, moisture-wicking, fully sublimated", image: "/ranges/teamwear/custom-polo-shirts.webp" },
     ],
   },
   "track-suits": {
@@ -51,7 +49,7 @@ const rangeData: Record<string, RangeData> = {
     category: "Custom Teamwear",
     description: "Premium 100% polyester fleece or Scuba fabric tracksuits, fully sublimated for your team's identity.",
     products: [
-      { slug: "custom-tracksuits", name: "Custom Tracksuits", desc: "100% polyester fleece or Scuba fabric, fully sublimated tracksuit set", image: `${B}/2025/11/elx0jhwf6jw8wo5xtbtk.webp` },
+      { slug: "custom-tracksuits", name: "Custom Tracksuits", desc: "100% polyester fleece or Scuba fabric, fully sublimated tracksuit set", image: "/ranges/teamwear/custom-tracksuits.webp" },
     ],
   },
   "quarter-zipper": {
@@ -59,8 +57,8 @@ const rangeData: Record<string, RangeData> = {
     category: "Custom Teamwear",
     description: "Custom 1/4 zip pullovers available in long sleeve and short sleeve. 100% polyester mesh, fully sublimated.",
     products: [
-      { slug: "custom-quarter-zipper-ls", name: "Custom 1/4 Zipper LS", desc: "Long sleeve 1/4 zip pullover, 100% polyester mesh, fully sublimated", image: `${B}/2025/11/saupe0lpduqh9ybdrr8q-1200x1603.webp` },
-      { slug: "custom-1-4-zipper-ss", name: "Custom 1/4 Zipper SS", desc: "Short sleeve 1/4 zip pullover, 100% polyester mesh, fully sublimated", image: `${B}/2025/12/syeboevcchh58qmoatze-1200x1603.webp` },
+      { slug: "custom-quarter-zipper-ls", name: "Custom 1/4 Zipper LS", desc: "Long sleeve 1/4 zip pullover, 100% polyester mesh, fully sublimated", image: "/ranges/teamwear/custom-quarter-zipper-ls.webp" },
+      { slug: "custom-1-4-zipper-ss", name: "Custom 1/4 Zipper SS", desc: "Short sleeve 1/4 zip pullover, 100% polyester mesh, fully sublimated", image: "/ranges/teamwear/custom-quarter-zipper-ss.webp" },
     ],
   },
   jackets: {
@@ -68,7 +66,7 @@ const rangeData: Record<string, RangeData> = {
     category: "Custom Teamwear",
     description: "Durable, fully sublimated custom jackets for teams and clubs. Ideal for warm-ups, travel, and bench wear.",
     products: [
-      { slug: "custom-jackets", name: "Custom Coach Jackets", desc: "Premium polyester & nylon, embroidery or sublimation, coach, rain & puffer styles", image: `${B}/2025/11/omsc8lldid8tuazhl9zv-1200x1603.webp` },
+      { slug: "custom-jackets", name: "Custom Coach Jackets", desc: "Premium polyester & nylon, embroidery or sublimation, coach, rain & puffer styles", image: "/ranges/teamwear/custom-coach-jackets.webp" },
     ],
   },
   "bags-packs": {
@@ -76,7 +74,7 @@ const rangeData: Record<string, RangeData> = {
     category: "Accessories",
     description: "Heavy-duty polyester/nylon custom backpacks. Personalised with embroidery, heat transfer, or sublimation.",
     products: [
-      { slug: "custom-bags", name: "Custom Bagpacks", desc: "Heavy-duty polyester/nylon, reinforced stitching, custom branding", image: `${B}/2025/11/grojrhjupl7fa7osf91j-1200x1603.webp` },
+      { slug: "custom-bags", name: "Custom Bagpacks", desc: "Heavy-duty polyester/nylon, reinforced stitching, custom branding", image: "/ranges/accessories/custom-backpacks.webp" },
     ],
   },
   "duffle-bags": {
@@ -84,7 +82,7 @@ const rangeData: Record<string, RangeData> = {
     category: "Accessories",
     description: "Team duffle bags in heavy-duty nylon with reinforced stitching. Custom branding via embroidery or sublimation.",
     products: [
-      { slug: "custom-duffle-bags", name: "Custom Duffle Bags", desc: "Heavy-duty nylon with reinforced stitching, custom embroidery or sublimation", image: `${B}/2025/12/hvqllx0q7lnmmsv61wi0-1200x1603.webp` },
+      { slug: "custom-duffle-bags", name: "Custom Duffle Bags", desc: "Heavy-duty nylon with reinforced stitching, custom embroidery or sublimation", image: "/ranges/accessories/custom-duffle-bags.webp" },
     ],
   },
   socks: {
@@ -92,7 +90,7 @@ const rangeData: Record<string, RangeData> = {
     category: "Accessories",
     description: "High-performance nylon/polyester/spandex blend socks with reinforced heel and toe. Full colour sublimation.",
     products: [
-      { slug: "custom-socks", name: "Custom Socks", desc: "Nylon/polyester/spandex blend, reinforced heel and toe, fully sublimated", image: `${B}/2025/11/f1apodtfbsiqkuvmtubc-1200x1603.webp` },
+      { slug: "custom-socks", name: "Custom Socks", desc: "Nylon/polyester/spandex blend, reinforced heel and toe, fully sublimated", image: "/ranges/accessories/custom-socks.webp" },
     ],
   },
   hats: {
@@ -102,6 +100,13 @@ const rangeData: Record<string, RangeData> = {
     products: [],
   },
 };
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const data = rangeData[slug];
+  if (!data) return {};
+  return { title: data.title };
+}
 
 export function generateStaticParams() {
   return Object.keys(rangeData).map((slug) => ({ slug }));
@@ -124,22 +129,16 @@ export default async function RangePage({ params }: { params: Promise<{ slug: st
       <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
 
-          {/* Dark navy header banner — matches MORE BASKETBALL PRODUCTS style */}
-          <div className="flex items-center justify-between bg-[#1e3056] rounded-lg px-6 py-4 mb-8">
-            <h2 className="text-xl sm:text-2xl font-black text-white uppercase tracking-wide">
+          {/* Section header — centered like sport pages */}
+          <div className="text-center mb-8 md:mb-12">
+            <p className="text-orange-500 font-bold text-xs sm:text-sm uppercase tracking-widest mb-2">
+              {range.category}
+            </p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-[family-name:var(--font-oswald)] font-bold text-gray-900 uppercase mb-4">
               {range.title}
             </h2>
-            <div className="flex items-center gap-3">
-              <CatalogViewer label="VIEW CATALOG" variant="section-blue" />
-              <Link
-                href={`/sport/${
-                  range.category === "Accessories" ? "accessories" : "teamwear"
-                }`}
-                className="text-sm font-semibold text-white border border-white/50 hover:border-white hover:bg-white hover:text-[#1e3056] px-4 py-2 rounded transition-all duration-200 whitespace-nowrap"
-              >
-                View All {range.category}
-              </Link>
-            </div>
+            <div className="w-16 h-1 bg-orange-500 rounded mx-auto mb-5 md:mb-6" />
+            <CatalogViewer label="VIEW CATALOG" variant="section-blue" />
           </div>
 
         {range.products.length === 0 ? (
@@ -159,47 +158,38 @@ export default async function RangePage({ params }: { params: Promise<{ slug: st
             </a>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
             {range.products.map((product) => (
               <Link
                 key={product.slug}
                 href={`/product/${product.slug}`}
-                className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 group transition-all duration-300 hover:-translate-y-1 block"
+                className="group flex flex-col bg-white rounded-xl overflow-hidden shadow-md card-hover"
               >
-                {/* Image — object-cover with 3/4 aspect ratio */}
-                <div className="relative overflow-hidden" style={{ aspectRatio: "3/4" }}>
+                <div className="relative w-full bg-white" style={{ aspectRatio: "1 / 1.1" }}>
                   <Image
                     src={product.image}
                     alt={product.name}
                     fill
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-contain object-center p-3 sm:p-5 md:p-6 group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   />
-                  {/* Orange Custom badge */}
-                  <div className="absolute top-3 right-3 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded">
-                    Custom
-                  </div>
                 </div>
 
-                {/* Product info */}
-                <div className="p-4">
-                  <h3 className="font-bold text-gray-900 text-base mb-1 leading-tight">
+                <div className="px-3 pb-3 pt-2 sm:px-4 sm:pb-5">
+                  <h3 className="font-bold text-gray-900 text-[11px] sm:text-sm uppercase tracking-wider leading-snug mb-2 sm:mb-3">
                     {product.name}
                   </h3>
-                  <p className="text-gray-500 text-sm mb-3 leading-snug line-clamp-2">
-                    {product.desc}
-                  </p>
-                  <span className="inline-flex items-center gap-1 text-orange-500 text-sm font-semibold group/link">
-                    Read more
+                  <div className="flex items-center justify-between border-t border-gray-200 pt-2 sm:pt-3">
+                    <span className="text-[9px] sm:text-xs font-bold uppercase tracking-widest text-gray-600 group-hover:text-orange-500 transition-colors duration-200">
+                      View Product
+                    </span>
                     <svg
-                      className="w-4 h-4 group-hover/link:translate-x-1 transition-transform duration-200"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                      className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 group-hover:text-orange-500 group-hover:translate-x-1 transition-all duration-200 flex-shrink-0"
+                      fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
-                  </span>
+                  </div>
                 </div>
               </Link>
             ))}

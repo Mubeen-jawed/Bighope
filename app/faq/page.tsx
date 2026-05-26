@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import FaqAccordion from "@/components/FaqAccordion";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "FAQ",
+};
 
 export default function FaqPage() {
   return (
