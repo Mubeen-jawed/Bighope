@@ -24,7 +24,7 @@ export default function CatalogViewer({
     switch (variant) {
       case "hero-desktop":
       case "hero-mobile":
-        return `${base} border-2 border-white/60 text-white hover:border-white hover:bg-white hover:text-gray-900`;
+        return `${base} border border-white/40 text-white bg-navy-dark/50 rounded-sm hover:bg-navy-dark/70 hover:border-white/60 transition-all duration-200`;
       case "section-dark":
         return `${base} border-2 border-white/50 hover:border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-lg hover:-translate-y-0.5`;
       case "section-blue":
@@ -35,9 +35,9 @@ export default function CatalogViewer({
 
   const btnStyle: React.CSSProperties =
     variant === "hero-desktop"
-      ? { padding: "11px 30px", fontSize: "11px", letterSpacing: "0.18em" }
+      ? { padding: "12px 28px", fontSize: "11px", letterSpacing: "0.18em" }
       : variant === "hero-mobile"
-        ? { padding: "9px 24px", fontSize: "11px", letterSpacing: "0.18em" }
+        ? { padding: "10px 22px", fontSize: "9.5px", letterSpacing: "0.16em" }
         : {};
 
   return (

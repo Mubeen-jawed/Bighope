@@ -55,7 +55,7 @@ export default function ProductTabs({
 
   return (
     <div>
-      <div className="flex border-b border-gray-200 mb-5 gap-1 overflow-x-auto">
+      <div className="flex border-b border-gray-200 mb-5 gap-1 overflow-x-auto scrollbar-hide">
         {tabs.map((tab) => (
           <button
             key={tab.id}

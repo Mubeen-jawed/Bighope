@@ -73,33 +73,42 @@ export default function PackageGallery({ images, sport }: Props) {
   }, []);
 
   /* ── drag to pan (only when zoomed) ── */
-  const handleMouseDown = useCallback((e: React.MouseEvent) => {
-    if (scale <= 1) return;
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDragging(true);
-    dragStart.current = {
-      x: e.clientX - position.x,
-      y: e.clientY - position.y,
-    };
-  }, [scale, position]);
+  const handleMouseDown = useCallback(
+    (e: React.MouseEvent) => {
+      if (scale <= 1) return;
+      e.preventDefault();
+      e.stopPropagation();
+      setIsDragging(true);
+      dragStart.current = {
+        x: e.clientX - position.x,
+        y: e.clientY - position.y,
+      };
+    },
+    [scale, position],
+  );
 
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!isDragging) return;
-    setPosition({
-      x: e.clientX - dragStart.current.x,
-      y: e.clientY - dragStart.current.y,
-    });
-  }, [isDragging]);
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      if (!isDragging) return;
+      setPosition({
+        x: e.clientX - dragStart.current.x,
+        y: e.clientY - dragStart.current.y,
+      });
+    },
+    [isDragging],
+  );
 
   const handleMouseUp = useCallback(() => {
     setIsDragging(false);
   }, []);
 
   /* ── backdrop click closes only when clicking the backdrop itself ── */
-  const handleBackdropClick = useCallback((e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) close();
-  }, [close]);
+  const handleBackdropClick = useCallback(
+    (e: React.MouseEvent) => {
+      if (e.target === e.currentTarget) close();
+    },
+    [close],
+  );
 
   /* ── keyboard ── */
   useEffect(() => {
@@ -123,7 +132,10 @@ export default function PackageGallery({ images, sport }: Props) {
     <>
       {/* ── Thumbnail grid ─────────────────────────────────── */}
       {images.length === 1 ? (
-        <div className="max-w-xl mx-auto cursor-zoom-in" onClick={() => openAt(0)}>
+        <div
+          className="max-w-xl mx-auto cursor-zoom-in"
+          onClick={() => openAt(0)}
+        >
           <div
             className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white group"
             style={{ aspectRatio: "4/5" }}
@@ -145,7 +157,9 @@ export default function PackageGallery({ images, sport }: Props) {
               className="flex flex-col items-center gap-3 cursor-zoom-in"
               onClick={() => openAt(i)}
             >
-              <span className={`${img.tierColor} text-white text-xs font-bold uppercase tracking-widest px-5 py-1.5 rounded-full shadow-md`}>
+              <span
+                className={`${img.tierColor} text-white text-xs font-bold uppercase tracking-widest px-5 py-1.5 rounded-full shadow-md`}
+              >
                 {img.tier} Package
               </span>
               <div
@@ -178,10 +192,23 @@ export default function PackageGallery({ images, sport }: Props) {
           <button
             aria-label="Close"
             className="absolute top-5 right-5 z-20 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full p-2.5 transition-colors shadow"
-            onClick={(e) => { e.stopPropagation(); close(); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              close();
+            }}
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
 
@@ -198,25 +225,51 @@ export default function PackageGallery({ images, sport }: Props) {
               <button
                 aria-label="Previous"
                 className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full p-3 transition-colors shadow"
-                onClick={(e) => { e.stopPropagation(); goPrev(); }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goPrev();
+                }}
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
                 </svg>
               </button>
               <button
                 aria-label="Next"
                 className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full p-3 transition-colors shadow"
-                onClick={(e) => { e.stopPropagation(); goNext(); }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goNext();
+                }}
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
                 </svg>
               </button>
             </>
           )}
 
-          {/* Image — scale + pan transforms applied here */}
+          {/* Image, scale + pan transforms applied here */}
           <div
             style={{
               width: "min(90vw, 560px)",
@@ -225,8 +278,11 @@ export default function PackageGallery({ images, sport }: Props) {
               flexShrink: 0,
               transform: `scale(${scale}) translate(${position.x / scale}px, ${position.y / scale}px)`,
               transformOrigin: "center center",
-              transition: isDragging ? "none" : "transform 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-              cursor: scale > 1 ? (isDragging ? "grabbing" : "grab") : "zoom-in",
+              transition: isDragging
+                ? "none"
+                : "transform 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+              cursor:
+                scale > 1 ? (isDragging ? "grabbing" : "grab") : "zoom-in",
             }}
             onClick={(e) => e.stopPropagation()}
             onDoubleClick={handleDoubleClick}
@@ -249,7 +305,11 @@ export default function PackageGallery({ images, sport }: Props) {
               {images.map((img, i) => (
                 <button
                   key={img.tier}
-                  onClick={(e) => { e.stopPropagation(); setActiveIndex(i); resetView(); }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveIndex(i);
+                    resetView();
+                  }}
                   className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-200 ${
                     i === activeIndex
                       ? `${img.tierColor} text-white scale-110`
@@ -264,7 +324,9 @@ export default function PackageGallery({ images, sport }: Props) {
 
           {/* Hint text */}
           <p className="absolute bottom-5 right-5 z-20 text-gray-400 text-xs pointer-events-none">
-            {scale > 1 ? "Drag to pan · Double-click to zoom · Scroll to adjust" : "Double-click to zoom · Scroll to zoom"}
+            {scale > 1
+              ? "Drag to pan · Double-click to zoom · Scroll to adjust"
+              : "Double-click to zoom · Scroll to zoom"}
           </p>
         </div>
       )}

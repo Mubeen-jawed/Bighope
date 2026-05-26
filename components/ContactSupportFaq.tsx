@@ -13,11 +13,11 @@ const supportFaqs = [
       },
       {
         q: "How long does it take to receive my order?",
-        a: "Standard production takes 3–4 weeks from design approval to delivery. Rush orders can be completed in approximately 15 days. Timeline may vary based on quantity and complexity.",
+        a: "Standard production takes 2–3 weeks from design approval to delivery. Rush orders can be completed in approximately 15 days. Timeline may vary based on quantity and complexity.",
       },
       {
         q: "What is your minimum order quantity?",
-        a: "Our minimum order quantity is 10 pieces per design, colour, and style. For B2B or wholesale orders, different minimums may apply — contact us for details.",
+        a: "Our minimum order quantity is 10 pieces per design, colour, and style. For B2B or wholesale orders, different minimums may apply, contact us for details.",
       },
     ],
   },
@@ -70,15 +70,28 @@ export default function ContactSupportFaq() {
         {supportFaqs.map((cat, idx) => (
           <button
             key={idx}
-            onClick={() => { setOpenCategory(idx); setOpenFaq(null); }}
+            onClick={() => {
+              setOpenCategory(idx);
+              setOpenFaq(null);
+            }}
             className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm transition-all duration-200 ${
               openCategory === idx
                 ? "bg-orange-500 text-white shadow-md shadow-orange-200"
                 : "bg-white text-gray-600 border border-gray-200 hover:border-orange-400 hover:text-orange-500"
             }`}
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={cat.icon} />
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d={cat.icon}
+              />
             </svg>
             {cat.category}
           </button>
@@ -100,10 +113,14 @@ export default function ContactSupportFaq() {
                 onClick={() => setOpenFaq(isOpen ? null : key)}
                 aria-expanded={isOpen}
               >
-                <span className="font-bold text-gray-900 text-base">{faq.q}</span>
+                <span className="font-bold text-gray-900 text-base">
+                  {faq.q}
+                </span>
                 <span
                   className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200 ${
-                    isOpen ? "bg-orange-500 text-white" : "bg-gray-100 text-gray-500"
+                    isOpen
+                      ? "bg-orange-500 text-white"
+                      : "bg-gray-100 text-gray-500"
                   }`}
                 >
                   <svg
@@ -112,7 +129,12 @@ export default function ContactSupportFaq() {
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2.5}
+                      d="M12 4v16m8-8H4"
+                    />
                   </svg>
                 </span>
               </button>

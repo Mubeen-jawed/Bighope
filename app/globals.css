@@ -25,6 +25,15 @@ html {
   background: #2563eb;
 }
 
+/* Hide scrollbar but keep scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Hero slide transitions */
 @keyframes slideIn {
   from {

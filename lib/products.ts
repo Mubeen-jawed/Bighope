@@ -26,7 +26,6 @@ export interface Product {
 const B = "https://bighopesports.com/wp-content/uploads";
 
 export const allProducts: Product[] = [
-
   // ── Soccer ───────────────────────────────────────────────────────────
   {
     slug: "custom-soccer-kit",
@@ -54,21 +53,21 @@ export const allProducts: Product[] = [
     fabric: "100% Cool-Dry Polyester Interlock or Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
       "Full kit: jersey & shorts included",
-      "100% Cool-Dry Polyester — maximum breathability & moisture management",
-      "Full-color dye-sublimation — no color limits, no fading or peeling",
+      "100% Cool-Dry Polyester, maximum breathability & moisture management",
+      "Full-color dye-sublimation, no color limits, no fading or peeling",
       "Lightweight, stretchable & quick-drying for peak performance",
       "UPF 50+ sun protection",
       "Strong stitching throughout for long-term durability",
     ],
     customOptions: [
       "Unlimited colour combinations",
-      "Player names, squad numbers & logos — wash-resistant",
+      "Player names, squad numbers & logos, wash-resistant",
       "Team name & club crest",
       "Sponsor logo placement",
       "Free professional design artwork included",
@@ -82,7 +81,7 @@ export const allProducts: Product[] = [
     description:
       "Our custom soccer jerseys are designed according to your exact requirements and best suited to match your team's brand image. Empower your team with our custom soccer jerseys.",
     longDescription:
-      "These jerseys empower your team with customizable athletic wear that stays vibrant wash after wash. Lightweight, stretchable, and quick-drying for peak comfort on the field — ideal for school teams, soccer clubs, academies, and corporate leagues.",
+      "These jerseys empower your team with customizable athletic wear that stays vibrant wash after wash. Lightweight, stretchable, and quick-drying for peak comfort on the field, ideal for school teams, soccer clubs, academies, and corporate leagues.",
     idealFor: "School teams, soccer clubs, academies & corporate leagues",
     image: "/ranges/soccer/custom-soccer-jerseys.webp",
     images: [
@@ -115,17 +114,17 @@ export const allProducts: Product[] = [
     fabric: "100% Cool-Dry Polyester Interlock or Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
-      "Fully sublimated — unlimited colours & logos",
+      "Fully sublimated, unlimited colours & logos",
       "100% Cool-Dry Polyester for breathability & moisture management",
       "Lightweight, stretchable & quick-drying",
       "UPF 50+ sun protection",
       "Ergonomic athletic fit",
-      "Colour-fast inks — won't crack or fade wash after wash",
+      "Colour-fast inks, won't crack or fade wash after wash",
     ],
     customOptions: [
       "Unlimited colour combinations",
@@ -158,14 +157,14 @@ export const allProducts: Product[] = [
     fabric: "100% Cool-Dry Polyester or Micro Mesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
       "Elastic waistband with adjustable drawstring",
       "Lightweight & breathable mesh fabric",
-      "Full sublimation — matches your kit exactly",
+      "Full sublimation, matches your kit exactly",
       "UPF 50+ protection",
       "Unlimited color and graphic possibilities",
       "Fade-resistant sublimation printing",
@@ -185,7 +184,7 @@ export const allProducts: Product[] = [
     description:
       "Our custom soccer socks are designed according to your exact requirements and best suited to match your team's colors. Empower your team with our custom soccer socks.",
     longDescription:
-      "Complete your team's kit with matching custom socks. Dye-sublimation printing keeps colors vibrant wash after wash. Reinforced construction for durability on the pitch — available in youth and adult sizing.",
+      "Complete your team's kit with matching custom socks. Dye-sublimation printing keeps colors vibrant wash after wash. Reinforced construction for durability on the pitch, available in youth and adult sizing.",
     idealFor: "School teams, soccer clubs, academies & corporate leagues",
     image: "/ranges/soccer/custom-soccer-socks.webp",
     images: [
@@ -201,7 +200,7 @@ export const allProducts: Product[] = [
     fabric: "High-Performance Nylon / Polyester / Spandex Blend",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -228,7 +227,7 @@ export const allProducts: Product[] = [
     description:
       "Custom goalkeeper jerseys are designed according to your exact requirements and best suited to match your team's brand image. Empower your team with our custom goalkeeper jerseys.",
     longDescription:
-      "Built for goalkeepers who demand standout style and performance. Premium moisture-wicking polyester or micro mesh with full-color sublimation — unlimited colors and graphics for a truly unique look on the field.",
+      "Built for goalkeepers who demand standout style and performance. Premium moisture-wicking polyester or micro mesh with full-color sublimation, unlimited colors and graphics for a truly unique look on the field.",
     idealFor: "School, club, and professional league goalkeepers",
     image: "/ranges/soccer/custom-goalkeeper-jersey.webp",
     images: [
@@ -244,17 +243,17 @@ export const allProducts: Product[] = [
     fabric: "Premium Moisture-Wicking Polyester or Micro Mesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
       "Premium moisture-wicking polyester or micro mesh",
-      "Full sublimation — unlimited colors and graphics",
+      "Full sublimation, unlimited colors and graphics",
       "Breathable, durable fabric for flexibility and protection",
       "Distinct goalkeeper styling to stand out on the field",
       "UPF 50+ sun protection",
-      "Colour-fast inks — won't crack or fade",
+      "Colour-fast inks, won't crack or fade",
     ],
     customOptions: [
       "Unlimited colour combinations",
@@ -289,16 +288,16 @@ export const allProducts: Product[] = [
     alt: "Custom Rugby Kit",
     sport: "Rugby",
     sportSlug: "rugby",
-    fabric: "100% Polyester — Scuba Performance Fabric or Mesh",
+    fabric: "100% Polyester, Scuba Performance Fabric or Mesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
-      "100% Polyester — scuba performance fabric or mesh",
-      "Full-color dye-sublimation — no fading or peeling",
+      "100% Polyester, scuba performance fabric or mesh",
+      "Full-color dye-sublimation, no fading or peeling",
       "Strong stitching for contact sport durability",
       "Moisture-wicking, quick-drying performance fabric",
       "Stretchable construction for full range of motion",
@@ -307,7 +306,7 @@ export const allProducts: Product[] = [
     customOptions: [
       "Unlimited colour combinations",
       "Club crest & sponsor logos",
-      "Player names & squad numbers — wash-resistant",
+      "Player names & squad numbers, wash-resistant",
       "Free professional design artwork",
       "Men's, women's & youth sizing",
     ],
@@ -321,7 +320,7 @@ export const allProducts: Product[] = [
     description:
       "Our custom basketball jerseys are designed according to your exact requirements and best suited to match your team's brand image. Empower your team with our custom basketball jerseys.",
     longDescription:
-      "Fully dye sublimated with no limit on colors and logos. Numbers, names, and logos that won't come out in the wash — even better than traditional basketball jerseys. Ideal for school teams, basketball leagues, and organizations.",
+      "Fully dye sublimated with no limit on colors and logos. Numbers, names, and logos that won't come out in the wash, even better than traditional basketball jerseys. Ideal for school teams, basketball leagues, and organizations.",
     idealFor: "Basketball clubs, leagues, school teams & organizations",
     image: "/ranges/basketball/custom-basketball-jersey.webp",
     images: [
@@ -337,12 +336,12 @@ export const allProducts: Product[] = [
     fabric: "100% Cool Dry Polyester Interlock / Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
-      "Fully dye sublimated — no limit on colors and logos",
+      "Fully dye sublimated, no limit on colors and logos",
       "100% Cool Dry Polyester Interlock or Micromesh",
       "Numbers, names & logos that won't wash out",
       "Lightweight for maximum court mobility",
@@ -380,12 +379,12 @@ export const allProducts: Product[] = [
     fabric: "100% Cool Dry Polyester Interlock / Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
-      "Fully dye sublimated — no limit on colors and logos",
+      "Fully dye sublimated, no limit on colors and logos",
       "100% Cool Dry Polyester Interlock or Micromesh",
       "Elasticated waistband with drawstring",
       "Side pockets included",
@@ -407,7 +406,7 @@ export const allProducts: Product[] = [
     description:
       "Our custom basketball uniforms are designed according to your exact requirements and best suited to match your team's brand image. Empower your team with our custom basketball uniforms.",
     longDescription:
-      "Fully dye sublimated with no limit on colors and logos. Numbers, names, and logos that won't come out in the wash — built for school teams, basketball leagues, and organizations.",
+      "Fully dye sublimated with no limit on colors and logos. Numbers, names, and logos that won't come out in the wash, built for school teams, basketball leagues, and organizations.",
     idealFor: "Basketball clubs, leagues, school teams & organizations",
     image: "/ranges/basketball/custom-basketball-uniform.webp",
     images: [
@@ -423,13 +422,13 @@ export const allProducts: Product[] = [
     fabric: "100% Cool Dry Polyester Interlock / Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
       "Full uniform: jersey & shorts included",
-      "Fully dye sublimated — no limit on colors and logos",
+      "Fully dye sublimated, no limit on colors and logos",
       "100% Cool Dry Polyester Interlock or Micromesh",
       "Numbers, names & logos that won't wash out",
       "Moisture-wicking performance fabric",
@@ -450,7 +449,7 @@ export const allProducts: Product[] = [
     description:
       "Our custom reversible basketball jerseys are designed according to your exact requirements and best suited to match your team's brand image. Empower your team with our custom reversible basketball jerseys.",
     longDescription:
-      "Fully dye sublimated with unlimited color and logo options — two complete looks in one jersey. Numbers, names, and logos with wash-resistant application. Enhanced durability compared to traditional basketball jerseys.",
+      "Fully dye sublimated with unlimited color and logo options, two complete looks in one jersey. Numbers, names, and logos with wash-resistant application. Enhanced durability compared to traditional basketball jerseys.",
     idealFor: "Basketball clubs, leagues, school teams & organizations",
     image: "/ranges/basketball/custom-reversible-basketball-jersey.webp",
     images: [
@@ -468,13 +467,13 @@ export const allProducts: Product[] = [
     fabric: "100% Cool Dry Polyester Interlock / Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
-      "Reversible — two complete looks in one jersey",
-      "Fully dye sublimated — no limit on colors and logos",
+      "Reversible, two complete looks in one jersey",
+      "Fully dye sublimated, no limit on colors and logos",
       "100% Cool Dry Polyester Interlock or Micromesh",
       "Numbers, names & logos with wash-resistant application",
       "Moisture-wicking performance fabric",
@@ -495,7 +494,7 @@ export const allProducts: Product[] = [
     description:
       "Custom basketball shooting hoodies designed according to your exact requirements and best suited to match your team's brand image. Empower your team with our custom basketball shooting hoodies.",
     longDescription:
-      "Available in long sleeve and short sleeve options. Fully dye sublimated with no limit on colors and logos. Numbers, names, and logos that won't come out in the wash — superior durability for training and game day.",
+      "Available in long sleeve and short sleeve options. Fully dye sublimated with no limit on colors and logos. Numbers, names, and logos that won't come out in the wash, superior durability for training and game day.",
     idealFor: "Basketball clubs, leagues, school teams & organizations",
     image: "/ranges/basketball/custom-shooting-hoodies.webp",
     images: [
@@ -511,13 +510,13 @@ export const allProducts: Product[] = [
     fabric: "100% Cool Dry Polyester Interlock / Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
       "Available in long sleeve & short sleeve options",
-      "Fully dye sublimated — no limit on colors and logos",
+      "Fully dye sublimated, no limit on colors and logos",
       "100% Cool Dry Polyester Interlock or Micromesh",
       "Numbers, names & logos that won't wash out",
       "Moisture-wicking performance fabric",
@@ -538,7 +537,7 @@ export const allProducts: Product[] = [
     description:
       "Custom basketball shooting shirts designed according to your exact requirements and best suited to match your team's brand image. Empower your team with our custom basketball shooting shirt.",
     longDescription:
-      "Fully dye sublimated with no limit on colors and logos. Numbers, names, and logos with wash-fast application — superior durability for school teams, basketball leagues, and organizations.",
+      "Fully dye sublimated with no limit on colors and logos. Numbers, names, and logos with wash-fast application, superior durability for school teams, basketball leagues, and organizations.",
     idealFor: "Basketball clubs, leagues, school teams & organizations",
     image: "/ranges/basketball/custom-shooting-shirts.webp",
     images: [
@@ -555,12 +554,12 @@ export const allProducts: Product[] = [
     fabric: "100% Cool Dry Polyester Interlock / Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
-      "Fully dye sublimated — no limit on colors and logos",
+      "Fully dye sublimated, no limit on colors and logos",
       "100% Cool Dry Polyester Interlock or Micromesh",
       "Numbers, names & logos with wash-fast application",
       "Lightweight & moisture-wicking",
@@ -580,9 +579,9 @@ export const allProducts: Product[] = [
     productCode: "BHS-SL-001",
     name: "Custom Shooting Sleeves",
     description:
-      "Custom shooting sleeves — lightweight, breathable, and built for performance. Fully customizable with your team's logos, names, and graphics.",
+      "Custom shooting sleeves, lightweight, breathable, and built for performance. Fully customizable with your team's logos, names, and graphics.",
     longDescription:
-      "Made with dry-fit stretch fabric for full mobility. Fully dye sublimated with no limit on colors and logos. Numbers, names, and logos with wash-resistant application — designed for basketball leagues, school teams, and organizations.",
+      "Made with dry-fit stretch fabric for full mobility. Fully dye sublimated with no limit on colors and logos. Numbers, names, and logos with wash-resistant application, designed for basketball leagues, school teams, and organizations.",
     idealFor: "Basketball clubs, leagues, school teams & organizations",
     image: "/ranges/basketball/custom-shooting-sleeves.webp",
     images: [
@@ -599,13 +598,13 @@ export const allProducts: Product[] = [
     fabric: "Dry-Fit Stretch Fabric",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
       "Dry-fit stretch fabric for full mobility",
-      "Fully dye sublimated — no limit on colors and logos",
+      "Fully dye sublimated, no limit on colors and logos",
       "Numbers, names & logos with wash-resistant application",
       "Lightweight & breathable",
       "Compression fit for support during play",
@@ -626,7 +625,7 @@ export const allProducts: Product[] = [
     description:
       "Custom V-neck basketball jerseys designed according to your exact requirements and best suited to match your team's brand image. Empower your team with our custom V-neck basketball jerseys.",
     longDescription:
-      "Full dye sublimation with unlimited color options — numbers, names, and logos with permanent wash-resistance. Enhanced performance vs. traditional basketball jerseys.",
+      "Full dye sublimation with unlimited color options, numbers, names, and logos with permanent wash-resistance. Enhanced performance vs. traditional basketball jerseys.",
     idealFor: "Basketball clubs, leagues, school teams & organizations",
     image: "/ranges/basketball/v-neck-basketball-jersey.webp",
     images: [
@@ -643,13 +642,13 @@ export const allProducts: Product[] = [
     fabric: "100% Cool Dry Polyester Interlock / Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
       "Classic V-neck collar design",
-      "Full dye sublimation — unlimited color options",
+      "Full dye sublimation, unlimited color options",
       "100% Cool Dry Polyester Interlock or Micromesh",
       "Numbers, names & logos with permanent wash-resistance",
       "Moisture-wicking performance fabric",
@@ -672,7 +671,7 @@ export const allProducts: Product[] = [
     description:
       "Our custom cricket kits are designed according to your exact requirements and best suited to match your team's brand image. Empower your team with our custom cricket kits.",
     longDescription:
-      "Full-color dye-sublimation printing ensures vibrant, wash-resistant colors — lightweight, stretchable, and quick-drying for peak comfort on the field. Ideal for school teams, cricket clubs, academies, and leagues.",
+      "Full-color dye-sublimation printing ensures vibrant, wash-resistant colors, lightweight, stretchable, and quick-drying for peak comfort on the field. Ideal for school teams, cricket clubs, academies, and leagues.",
     idealFor: "School teams, cricket clubs, academies & leagues",
     image: "/ranges/cricket/custom-cricket-kit.webp",
     images: [
@@ -692,14 +691,14 @@ export const allProducts: Product[] = [
     fabric: "100% Cool-Dry Polyester Interlock or Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
-      "UPF 50+ sun protection — all-day outdoor play",
-      "100% Cool-Dry Polyester — maximum breathability",
-      "Full-color dye-sublimation — no fading or peeling",
+      "UPF 50+ sun protection, all-day outdoor play",
+      "100% Cool-Dry Polyester, maximum breathability",
+      "Full-color dye-sublimation, no fading or peeling",
       "Lightweight, stretchable & quick-drying",
       "Vibrant wash-resistant colours",
       "Fully customizable with player names, numbers, logos",
@@ -747,12 +746,12 @@ export const allProducts: Product[] = [
     fabric: "High-Performance Dri-Fit or Compression Fabric",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
-      "Fully sublimated — design NEVER shrinks, fades, or tarnishes",
+      "Fully sublimated, design NEVER shrinks, fades, or tarnishes",
       "High-performance Dri-Fit or compression fabric options",
       "Available in a wide range of colors, styles, and sizes",
       "Logos, names & numbers included",
@@ -792,13 +791,13 @@ export const allProducts: Product[] = [
     fabric: "High-Performance Dri-Fit or Compression Fabric",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
-      "Attached performance hood — fully sublimated",
-      "Fully sublimated — design NEVER shrinks, fades, or tarnishes",
+      "Attached performance hood, fully sublimated",
+      "Fully sublimated, design NEVER shrinks, fades, or tarnishes",
       "High-performance Dri-Fit or compression fabric",
       "Moisture-wicking technology",
       "Available in hooded & sleeveless hooded styles",
@@ -819,7 +818,7 @@ export const allProducts: Product[] = [
     description:
       "Custom Flag jersey. Made from the finest materials for extra durability and style, our custom 7v7 jerseys are available in a wide range of colors, styles, and sizes.",
     longDescription:
-      "Fully sublimated to ensure your design NEVER shrinks, fades, or tarnishes. Durable construction for long-lasting vibrancy — intended for 7V7 organizations, leagues, and teams.",
+      "Fully sublimated to ensure your design NEVER shrinks, fades, or tarnishes. Durable construction for long-lasting vibrancy, intended for 7V7 organizations, leagues, and teams.",
     idealFor: "7V7 organizations, leagues & teams",
     image: "/ranges/7v7-football/custom-7v7-sleeveless-hooded-jerseys.webp",
     images: [
@@ -835,13 +834,13 @@ export const allProducts: Product[] = [
     fabric: "High-Performance Dri-Fit or Compression Fabric",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth & Adult",
       printing: "Full-color dye-sublimation",
     },
     features: [
       "Sleeveless hooded design for maximum mobility",
-      "Fully sublimated — design NEVER shrinks, fades, or tarnishes",
+      "Fully sublimated, design NEVER shrinks, fades, or tarnishes",
       "High-performance Dri-Fit or compression fabric",
       "Logos, names & numbers included",
       "Durable construction for long-lasting vibrancy",
@@ -862,7 +861,7 @@ export const allProducts: Product[] = [
     description:
       "Custom Flag jersey. Made from the finest materials for extra durability and style, our custom 7v7 jerseys are available in a wide range of colors, styles, and sizes.",
     longDescription:
-      "Fully sublimated to ensure your design NEVER shrinks, fades, or tarnishes. High-performance Dri-Fit or compression fabric — designed for 7V7 organizations, leagues, and teams.",
+      "Fully sublimated to ensure your design NEVER shrinks, fades, or tarnishes. High-performance Dri-Fit or compression fabric, designed for 7V7 organizations, leagues, and teams.",
     idealFor: "7V7 organizations, leagues & teams",
     image: "/ranges/7v7-football/custom-7v7-sleeveless-jerseys.webp",
     images: [
@@ -878,13 +877,13 @@ export const allProducts: Product[] = [
     fabric: "High-Performance Dri-Fit or Compression Fabric",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
       "Classic sleeveless cut for maximum mobility",
-      "Fully sublimated — design NEVER shrinks, fades, or tarnishes",
+      "Fully sublimated, design NEVER shrinks, fades, or tarnishes",
       "High-performance Dri-Fit or compression fabric",
       "Logos, names & numbers included",
       "Durable construction for long-lasting vibrancy",
@@ -905,7 +904,7 @@ export const allProducts: Product[] = [
     description:
       "Made from the finest materials for extra durability and style, our custom 7v7 shorts are available in a wide range of colors, styles, and sizes.",
     longDescription:
-      "Fully sublimated to ensure your design NEVER shrinks, fades, or tarnishes. High-performance Dri-Fit or compression fabrics — fully customizable with logos, names, and numbers.",
+      "Fully sublimated to ensure your design NEVER shrinks, fades, or tarnishes. High-performance Dri-Fit or compression fabrics, fully customizable with logos, names, and numbers.",
     idealFor: "7V7 organizations, leagues & teams",
     image: "/ranges/7v7-football/custom-7v7-football-shorts.webp",
     images: [
@@ -921,12 +920,12 @@ export const allProducts: Product[] = [
     fabric: "High-Performance Dri-Fit or Compression Fabric",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
-      "Fully sublimated — design NEVER shrinks, fades, or tarnishes",
+      "Fully sublimated, design NEVER shrinks, fades, or tarnishes",
       "High-performance Dri-Fit or compression fabrics",
       "Wide range of colors, styles, and sizes",
       "Logos, names & numbers included",
@@ -950,7 +949,7 @@ export const allProducts: Product[] = [
     description:
       "Custom Baseball Uniforms fully customized with your team's colors, logos, names, and numbers. Made with breathable, premium polyester for comfort, durability, and all-day performance.",
     longDescription:
-      "100% cool-dry polyester mesh/interlock for breathable on-field comfort. Customization via sublimation with unlimited color and graphic possibilities — breathable yet durable fabric designed for maximum flexibility and protection.",
+      "100% cool-dry polyester mesh/interlock for breathable on-field comfort. Customization via sublimation with unlimited color and graphic possibilities, breathable yet durable fabric designed for maximum flexibility and protection.",
     idealFor: "School teams, baseball clubs, local leagues & academies",
     image: "/ranges/baseball/custom-baseball-uniforms.webp",
     images: [
@@ -971,7 +970,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool-Dry Polyester Mesh / Interlock",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -998,7 +997,7 @@ export const allProducts: Product[] = [
     description:
       "Two button baseball jerseys fully customized with your team's colors, logos, names, and numbers. Made with breathable, premium polyester for comfort, durability, and all-day performance.",
     longDescription:
-      "100% cool-dry polyester mesh/interlock for breathable on-field comfort. High-quality sublimation printing with unlimited colors and graphics — durable fabric designed for maximum flexibility and protection.",
+      "100% cool-dry polyester mesh/interlock for breathable on-field comfort. High-quality sublimation printing with unlimited colors and graphics, durable fabric designed for maximum flexibility and protection.",
     idealFor: "School teams, baseball clubs, local leagues & academies",
     image: "/ranges/baseball/2-button-baseball-jerseys.webp",
     images: [
@@ -1013,14 +1012,14 @@ export const allProducts: Product[] = [
     fabric: "100% Cool-Dry Polyester Mesh / Interlock",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
       "Classic 2-button placket design",
       "100% cool-dry polyester mesh/interlock",
-      "High-quality sublimation — unlimited colors & graphics",
+      "High-quality sublimation, unlimited colors & graphics",
       "Breathable, durable fabric for flexibility & protection",
       "Won't crack or fade",
       "Ideal for school teams, clubs, leagues & academies",
@@ -1039,7 +1038,7 @@ export const allProducts: Product[] = [
     description:
       "Crew neck baseball jerseys fully customized with team colors, logos, names, and numbers. Made with breathable, premium polyester for comfort, durability, and all-day performance.",
     longDescription:
-      "100% cool-dry polyester mesh/interlock for breathable on-field comfort. Unlimited colors and graphics with durable sublimation printing — breathable yet durable for maximum flexibility and protection.",
+      "100% cool-dry polyester mesh/interlock for breathable on-field comfort. Unlimited colors and graphics with durable sublimation printing, breathable yet durable for maximum flexibility and protection.",
     idealFor: "School teams, baseball clubs, local leagues & academies",
     image: "/ranges/baseball/baseball-crew-neck-jerseys.webp",
     images: [
@@ -1055,7 +1054,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool-Dry Polyester Mesh / Interlock",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1081,7 +1080,7 @@ export const allProducts: Product[] = [
     description:
       "V-neck baseball jerseys fully customized with team colors, logos, names, and numbers. Made with breathable, premium polyester for comfort, durability, and all-day performance.",
     longDescription:
-      "100% cool-dry polyester mesh/interlock for breathable on-field comfort. Unlimited color and graphic possibilities with long-lasting print durability — breathable yet durable fabric designed for maximum flexibility and protection.",
+      "100% cool-dry polyester mesh/interlock for breathable on-field comfort. Unlimited color and graphic possibilities with long-lasting print durability, breathable yet durable fabric designed for maximum flexibility and protection.",
     idealFor: "School teams, baseball clubs, local leagues & academies",
     image: "/ranges/baseball/baseball-v-neck-jerseys.webp",
     images: [
@@ -1096,7 +1095,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool-Dry Polyester Mesh / Interlock",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1122,7 +1121,7 @@ export const allProducts: Product[] = [
     description:
       "Full button baseball jerseys fully customized with your team's colors, logos, names, and numbers. Made with breathable, premium polyester for comfort, durability, and all-day performance.",
     longDescription:
-      "100% cool-dry polyester mesh/interlock for breathable on-field comfort. Sublimation with unlimited color and graphic possibilities — won't crack or fade.",
+      "100% cool-dry polyester mesh/interlock for breathable on-field comfort. Sublimation with unlimited color and graphic possibilities, won't crack or fade.",
     idealFor: "School teams, baseball clubs, local leagues & academies",
     image: "/ranges/baseball/full-button-baseball-jerseys.webp",
     images: [
@@ -1137,7 +1136,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool-Dry Polyester Mesh / Interlock",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1145,7 +1144,7 @@ export const allProducts: Product[] = [
       "Full button-down placket design",
       "100% cool-dry polyester mesh/interlock",
       "Unlimited color and graphic possibilities via sublimation",
-      "Won't crack or fade — high-quality printing",
+      "Won't crack or fade, high-quality printing",
       "Breathable yet durable for max flexibility & protection",
       "Ideal for school teams, clubs, leagues & academies",
     ],
@@ -1165,7 +1164,7 @@ export const allProducts: Product[] = [
     description:
       "Our Custom MMA fight shorts are lightweight, flexible, and fully sublimated. Personalize colors, names, team logos, and patterns. Perfect balance of comfort, mobility, and fight-ready durability.",
     longDescription:
-      "Premium satin or microfiber fabric — tear-resistant for training and competition. Personalized fighter names, gym logos, flags, and full-color graphics. Ideal for Muay Thai gyms, fighters, kickboxing, and martial arts teams.",
+      "Premium satin or microfiber fabric, tear-resistant for training and competition. Personalized fighter names, gym logos, flags, and full-color graphics. Ideal for Muay Thai gyms, fighters, kickboxing, and martial arts teams.",
     idealFor: "Muay Thai gyms, fighters, kickboxing & martial arts teams",
     image: "/ranges/mma/custom-mma-fight-shorts.webp",
     images: [
@@ -1179,7 +1178,7 @@ export const allProducts: Product[] = [
     fabric: "Premium Satin or Microfiber Fabric",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1187,7 +1186,7 @@ export const allProducts: Product[] = [
       "Lightweight, flexible, and fully sublimated",
       "Premium satin or microfiber fabric",
       "Tear-resistant for training and competition",
-      "Full-color sublimation — unlimited colors and logos",
+      "Full-color sublimation, unlimited colors and logos",
       "Fighter names, gym logos, flags & custom graphics",
       "Perfect balance of comfort, mobility, and durability",
     ],
@@ -1204,7 +1203,7 @@ export const allProducts: Product[] = [
     productCode: "BHS-MRG-001",
     name: "Custom MMA Rashguard",
     description:
-      "Custom rashguards designed for combat sports, training, and team wear. Fully sublimated with no color limits — add your team's logos, names, and graphics. Made with 4-way stretch, moisture-wicking fabric for maximum comfort and protection.",
+      "Custom rashguards designed for combat sports, training, and team wear. Fully sublimated with no color limits, add your team's logos, names, and graphics. Made with 4-way stretch, moisture-wicking fabric for maximum comfort and protection.",
     longDescription:
       "Moisture-wicking polyester/spandex 4-way stretch fabric with anti-pilling, anti-tear, and reinforced stitching for intense training. Ideal for BJJ, MMA, wrestling, no-gi training, and fitness.",
     idealFor: "BJJ, MMA, wrestling, no-gi training & fitness",
@@ -1221,7 +1220,7 @@ export const allProducts: Product[] = [
     fabric: "Moisture-Wicking Polyester/Spandex 4-Way Stretch",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1230,7 +1229,7 @@ export const allProducts: Product[] = [
       "Moisture-wicking polyester/spandex blend",
       "Anti-pilling, anti-tear construction",
       "Reinforced stitching for intense training",
-      "Fully sublimated — no limit on colors",
+      "Fully sublimated, no limit on colors",
       "Logos, names & graphics that won't fade",
     ],
     customOptions: [
@@ -1248,7 +1247,7 @@ export const allProducts: Product[] = [
     description:
       "Custom wrestling singlets designed to match your team colors, style, and competitive spirit. Manufactured for maximum flexibility, strength, and all-day performance.",
     longDescription:
-      "4-way stretch spandex/polyester blend for maximum mobility and comfort. Fully dye sublimated with no limit on colors and logos — reinforced stitching with stretch fabric for rigorous competition.",
+      "4-way stretch spandex/polyester blend for maximum mobility and comfort. Fully dye sublimated with no limit on colors and logos, reinforced stitching with stretch fabric for rigorous competition.",
     idealFor: "School teams, wrestling clubs, tournaments & organizations",
     image: "/ranges/mma/custom-wrestling-singlets.webp",
     images: [
@@ -1262,13 +1261,13 @@ export const allProducts: Product[] = [
     fabric: "4-Way Stretch Spandex / Polyester Blend",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
       "4-way stretch spandex/polyester blend",
-      "Fully dye sublimated — no limit on colors and logos",
+      "Fully dye sublimated, no limit on colors and logos",
       "Numbers, names & logos designed for wash-durability",
       "Reinforced stitching with stretch fabric",
       "Maximum mobility & comfort for competition",
@@ -1288,9 +1287,9 @@ export const allProducts: Product[] = [
     productCode: "BHS-TH-001",
     name: "Custom Team Hoodies",
     description:
-      "Big Hope's hoodies are made from polyester fleece with full dye-sublimation for unlimited colors, logos, and designs. Moisture-wicking, anti-bacterial, and comfy — available in pull-on, full-zip, and jacket styles.",
+      "Big Hope's hoodies are made from polyester fleece with full dye-sublimation for unlimited colors, logos, and designs. Moisture-wicking, anti-bacterial, and comfy, available in pull-on, full-zip, and jacket styles.",
     longDescription:
-      "100% polyester fleece (Speedo fabric) — fully dye sublimated with no limit on colors and logos. High-quality fabric that withstands wear, keeping your designs vibrant for men, women, and youth.",
+      "100% polyester fleece (Speedo fabric), fully dye sublimated with no limit on colors and logos. High-quality fabric that withstands wear, keeping your designs vibrant for men, women, and youth.",
     idealFor: "Sports teams, training wear, fan gear & promotional branding",
     image: "/ranges/teamwear/custom-team-hoodies.webp",
     images: [
@@ -1307,13 +1306,13 @@ export const allProducts: Product[] = [
     fabric: "100% Polyester Fleece (Speedo Fabric)",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
-      "100% polyester fleece — moisture-wicking & anti-bacterial",
-      "Fully dye sublimated — no limit on colors and logos",
+      "100% polyester fleece, moisture-wicking & anti-bacterial",
+      "Fully dye sublimated, no limit on colors and logos",
       "Available in pull-on, full-zip, and jacket styles",
       "High-quality fabric maintains vibrant designs",
       "Comfortable fit for training and casual wear",
@@ -1332,9 +1331,9 @@ export const allProducts: Product[] = [
     productCode: "BHS-ZH-001",
     name: "Custom Zipper Hoodies",
     description:
-      "Big Hope's zipper hoodies use polyester fleece with full dye-sublimation for unlimited colors, logos, and designs. Moisture-wicking, anti-bacterial, and comfy — available in pull-on, full-zip, and jacket styles.",
+      "Big Hope's zipper hoodies use polyester fleece with full dye-sublimation for unlimited colors, logos, and designs. Moisture-wicking, anti-bacterial, and comfy, available in pull-on, full-zip, and jacket styles.",
     longDescription:
-      "100% polyester fleece (Speedo fabric) — fully dye sublimated with no limit on colors and logos. High-quality fabric that withstands wear, keeping your designs vibrant for sports teams, training wear, fan gear, and promotional branding.",
+      "100% polyester fleece (Speedo fabric), fully dye sublimated with no limit on colors and logos. High-quality fabric that withstands wear, keeping your designs vibrant for sports teams, training wear, fan gear, and promotional branding.",
     idealFor: "Sports teams, training wear, fan gear & promotional branding",
     image: "/ranges/teamwear/custom-zipper-hoodies.webp",
     images: [
@@ -1349,14 +1348,14 @@ export const allProducts: Product[] = [
     fabric: "100% Polyester Fleece (Speedo Fabric)",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
       "Full-zip design for easy on/off",
-      "100% polyester fleece — moisture-wicking & anti-bacterial",
-      "Fully dye sublimated — no limit on colors and logos",
+      "100% polyester fleece, moisture-wicking & anti-bacterial",
+      "Fully dye sublimated, no limit on colors and logos",
       "High-quality fabric that withstands wear",
       "Comfortable fit for training and casual wear",
       "Durable construction keeping designs vibrant",
@@ -1374,9 +1373,9 @@ export const allProducts: Product[] = [
     productCode: "BHS-TS-001",
     name: "Custom Tracksuits",
     description:
-      "Premium warmup sets crafted from 100% polyester fleece or Scuba fabric — fully customizable with logos, sizes, and designs. Ideal for sports teams, charities, events, and schools.",
+      "Premium warmup sets crafted from 100% polyester fleece or Scuba fabric, fully customizable with logos, sizes, and designs. Ideal for sports teams, charities, events, and schools.",
     longDescription:
-      "Fully dye sublimated with unlimited color options and logo placement. High-quality, durable construction maintaining vibrant designs — available in Youth, Women, and Men's sizing.",
+      "Fully dye sublimated with unlimited color options and logo placement. High-quality, durable construction maintaining vibrant designs, available in Youth, Women, and Men's sizing.",
     idealFor: "Sports teams, charities, events & schools",
     image: "/ranges/teamwear/custom-tracksuits.webp",
     images: [
@@ -1392,14 +1391,14 @@ export const allProducts: Product[] = [
     fabric: "100% Polyester Fleece, Speedo or Scuba Fabric",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
       "Full tracksuit: jacket & pants included",
       "100% polyester fleece, Speedo or Scuba fabric",
-      "Fully dye sublimated — no limit on colors and logos",
+      "Fully dye sublimated, no limit on colors and logos",
       "High-quality durable construction",
       "Vibrant designs that stay bright wash after wash",
       "Ideal for sports teams, charities & events",
@@ -1419,7 +1418,7 @@ export const allProducts: Product[] = [
     description:
       "Built for comfort and style, Big Hope's Custom Polo Shirts are made from lightweight, moisture-wicking polyester with full dye-sublimation for unlimited design and color options. Perfect for sports teams, clubs, and corporate wear.",
     longDescription:
-      "100% polyester (Mesh or Spandex options) — fully dye sublimated with unlimited color options. Durable construction maintaining vibrant designs for sports teams, clubs, and corporate wear.",
+      "100% polyester (Mesh or Spandex options), fully dye sublimated with unlimited color options. Durable construction maintaining vibrant designs for sports teams, clubs, and corporate wear.",
     idealFor: "Sports teams, clubs & corporate wear",
     image: "/ranges/teamwear/custom-polo-shirts.webp",
     images: [
@@ -1434,16 +1433,16 @@ export const allProducts: Product[] = [
     alt: "Custom Polo Shirts",
     sport: "Teamwear",
     sportSlug: "teamwear",
-    fabric: "100% Polyester — Mesh or Spandex",
+    fabric: "100% Polyester, Mesh or Spandex",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
       "Lightweight moisture-wicking polyester",
-      "Full dye-sublimation — unlimited design and color options",
+      "Full dye-sublimation, unlimited design and color options",
       "Polo collar with button placket",
       "Available in mesh or spandex options",
       "Durable construction maintaining vibrant designs",
@@ -1462,9 +1461,9 @@ export const allProducts: Product[] = [
     productCode: "BHS-TT-001",
     name: "Custom T-Shirts",
     description:
-      "Big Hope's Custom Crew Neck T-Shirts feature lightweight material offering breathability, comfort, and moisture control. Fully customizable with your own colors, designs, and logos — ideal for teams, brands, and events.",
+      "Big Hope's Custom Crew Neck T-Shirts feature lightweight material offering breathability, comfort, and moisture control. Fully customizable with your own colors, designs, and logos, ideal for teams, brands, and events.",
     longDescription:
-      "100% polyester interlock fabric or 100% cool dry micromesh polyester — fully dye sublimated with no limit on colors and logos. Perfect for sports teams, training, fan gear, events, or promotional use.",
+      "100% polyester interlock fabric or 100% cool dry micromesh polyester, fully dye sublimated with no limit on colors and logos. Perfect for sports teams, training, fan gear, events, or promotional use.",
     idealFor: "Sports teams, training, fan gear, events & promotional use",
     image: "/ranges/teamwear/custom-t-shirts.webp",
     images: [
@@ -1480,14 +1479,14 @@ export const allProducts: Product[] = [
     fabric: "100% Polyester Interlock or Cool Dry Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
-      "Lightweight — breathability, comfort & moisture control",
+      "Lightweight, breathability, comfort & moisture control",
       "100% polyester interlock or cool dry micromesh",
-      "Fully dye sublimated — no limit on colors and logos",
+      "Fully dye sublimated, no limit on colors and logos",
       "High-quality fabric maintains vibrant designs",
       "Crew neck design",
       "Ideal for sports teams, training, fan gear & events",
@@ -1505,9 +1504,9 @@ export const allProducts: Product[] = [
     productCode: "BHS-QZL-001",
     name: "Custom 1/4 Zipper LS",
     description:
-      "Big Hope's Custom long sleeve quarter zipper combines warmth, comfort, and mobility. Crafted from polyester double interlock, mesh or fleece — fully customizable with team logos.",
+      "Big Hope's Custom long sleeve quarter zipper combines warmth, comfort, and mobility. Crafted from polyester double interlock, mesh or fleece, fully customizable with team logos.",
     longDescription:
-      "Fully dye sublimated with unlimited color options. High-quality fabric that withstands wear, keeping designs vibrant and long-lasting — ideal for training, match day, and polished teamwear.",
+      "Fully dye sublimated with unlimited color options. High-quality fabric that withstands wear, keeping designs vibrant and long-lasting, ideal for training, match day, and polished teamwear.",
     idealFor: "Sports teams, training wear & match day",
     image: "/ranges/teamwear/custom-quarter-zipper-ls.webp",
     images: [
@@ -1520,17 +1519,17 @@ export const allProducts: Product[] = [
     alt: "Custom 1/4 Zipper Long Sleeve",
     sport: "Teamwear",
     sportSlug: "teamwear",
-    fabric: "100% Polyester — Mesh or Fleece",
+    fabric: "100% Polyester, Mesh or Fleece",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
       "Long sleeve quarter-zip design",
       "100% polyester mesh or fleece",
-      "Fully dye sublimated — unlimited color options",
+      "Fully dye sublimated, unlimited color options",
       "High-quality fabric for vibrant, long-lasting designs",
       "Warmth, comfort & mobility combined",
       "Ideal for training, match day & polished teamwear",
@@ -1548,9 +1547,9 @@ export const allProducts: Product[] = [
     productCode: "BHS-QZS-001",
     name: "Custom 1/4 Zipper SS",
     description:
-      "Big Hope's Custom Short sleeve quarter zipper merges warmth, comfort, and mobility. Constructed from polyester, mesh or customized fabric — fully customizable with team logos.",
+      "Big Hope's Custom Short sleeve quarter zipper merges warmth, comfort, and mobility. Constructed from polyester, mesh or customized fabric, fully customizable with team logos.",
     longDescription:
-      "Fully dye sublimated with no limit on colors and logos. High-quality fabric maintains vibrant, long-lasting designs — ideal for sports teams and training wear.",
+      "Fully dye sublimated with no limit on colors and logos. High-quality fabric maintains vibrant, long-lasting designs, ideal for sports teams and training wear.",
     idealFor: "Sports teams, training wear & match day",
     image: "/ranges/teamwear/custom-quarter-zipper-ss.webp",
     images: [
@@ -1563,17 +1562,17 @@ export const allProducts: Product[] = [
     alt: "Custom 1/4 Zipper Short Sleeve",
     sport: "Teamwear",
     sportSlug: "teamwear",
-    fabric: "100% Polyester — Mesh or Custom Fabric",
+    fabric: "100% Polyester, Mesh or Custom Fabric",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
     features: [
       "Short sleeve quarter-zip design",
       "100% polyester mesh or customized fabric",
-      "Fully dye sublimated — no limit on colors and logos",
+      "Fully dye sublimated, no limit on colors and logos",
       "High-quality fabric maintains vibrant designs",
       "Comfort & mobility combined",
       "Ideal for sports teams and training wear",
@@ -1593,7 +1592,7 @@ export const allProducts: Product[] = [
     description:
       "Premium custom jackets designed for teams, clubs, and brands. Fully personalized with colors, logos, names, and graphics. Available in lightweight water-resistant shells, waterproof rain jackets, and insulated puffer jackets.",
     longDescription:
-      "Premium performance-grade polyester and nylon fabrics with high-quality stitching and reinforced seams. Customization via embroidery, heat transfer, or sublimation — available in men's, women's, and youth sizing.",
+      "Premium performance-grade polyester and nylon fabrics with high-quality stitching and reinforced seams. Customization via embroidery, heat transfer, or sublimation, available in men's, women's, and youth sizing.",
     idealFor: "Sports teams, clubs, schools & brands",
     image: "/ranges/teamwear/custom-coach-jackets.webp",
     images: [
@@ -1609,7 +1608,7 @@ export const allProducts: Product[] = [
     fabric: "Premium Performance-Grade Polyester & Nylon",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Embroidery, heat transfer, or sublimation",
     },
@@ -1654,7 +1653,7 @@ export const allProducts: Product[] = [
     fabric: "Heavy-Duty Polyester / Nylon",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Custom sizing available",
       printing: "Embroidery, heat transfer or sublimation",
     },
@@ -1681,7 +1680,7 @@ export const allProducts: Product[] = [
     description:
       "Durable custom duffle bags built for athletes and clubs. Fully personalized with team logos, names, and numbers.",
     longDescription:
-      "Heavy-duty polyester/nylon fabric designed for strength, weather resistance, and daily use. Reinforced stitching, tough zippers, and tear-resistant construction — customization via embroidery, heat transfer, or sublimation.",
+      "Heavy-duty polyester/nylon fabric designed for strength, weather resistance, and daily use. Reinforced stitching, tough zippers, and tear-resistant construction, customization via embroidery, heat transfer, or sublimation.",
     idealFor: "Sports teams, clubs, schools, travel, tournaments & training",
     image: "/ranges/accessories/custom-duffle-bags.webp",
     images: [
@@ -1697,7 +1696,7 @@ export const allProducts: Product[] = [
     fabric: "Heavy-Duty Polyester / Nylon",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Custom sizing available",
       printing: "Embroidery, heat transfer or sublimation",
     },
@@ -1724,7 +1723,7 @@ export const allProducts: Product[] = [
     description:
       "Our custom socks are designed according to your exact requirements and best suited to match your team's colors. Empower your team with our custom socks.",
     longDescription:
-      "High-performance blend of nylon, polyester, and spandex for durability, stretch, and moisture control. Reinforced heel and toe construction — available in youth, women's, and men's sizing.",
+      "High-performance blend of nylon, polyester, and spandex for durability, stretch, and moisture control. Reinforced heel and toe construction, available in youth, women's, and men's sizing.",
     idealFor: "Soccer clubs, school teams, leagues & training",
     image: "/ranges/accessories/custom-socks.webp",
     images: [
@@ -1740,7 +1739,7 @@ export const allProducts: Product[] = [
     fabric: "High-Performance Nylon / Polyester / Spandex Blend",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 3–4 wks (normal)",
+      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1774,12 +1773,26 @@ export function getRelatedProducts(slug: string): Product[] {
     .slice(0, 3);
 }
 
-export const soccerProducts = allProducts.filter((p) => p.sportSlug === "soccer");
+export const soccerProducts = allProducts.filter(
+  (p) => p.sportSlug === "soccer",
+);
 export const rugbyProducts = allProducts.filter((p) => p.sportSlug === "rugby");
-export const basketballProducts = allProducts.filter((p) => p.sportSlug === "basketball");
-export const cricketProducts = allProducts.filter((p) => p.sportSlug === "cricket");
-export const footballProducts = allProducts.filter((p) => p.sportSlug === "7v7-football");
-export const baseballProducts = allProducts.filter((p) => p.sportSlug === "baseball");
+export const basketballProducts = allProducts.filter(
+  (p) => p.sportSlug === "basketball",
+);
+export const cricketProducts = allProducts.filter(
+  (p) => p.sportSlug === "cricket",
+);
+export const footballProducts = allProducts.filter(
+  (p) => p.sportSlug === "7v7-football",
+);
+export const baseballProducts = allProducts.filter(
+  (p) => p.sportSlug === "baseball",
+);
 export const mmaProducts = allProducts.filter((p) => p.sportSlug === "mma");
-export const teamwearProducts = allProducts.filter((p) => p.sportSlug === "teamwear");
-export const accessoriesProducts = allProducts.filter((p) => p.sportSlug === "accessories");
+export const teamwearProducts = allProducts.filter(
+  (p) => p.sportSlug === "teamwear",
+);
+export const accessoriesProducts = allProducts.filter(
+  (p) => p.sportSlug === "accessories",
+);

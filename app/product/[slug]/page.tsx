@@ -1,16 +1,23 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { allProducts, getProductBySlug, getRelatedProducts } from "@/lib/products";
+import {
+  allProducts,
+  getProductBySlug,
+  getRelatedProducts,
+} from "@/lib/products";
 import ProductGallery from "@/components/ProductGallery";
 import ProductTabs from "@/components/ProductTabs";
-import QuoteModal from "@/components/QuoteModal";
 
 export function generateStaticParams() {
   return allProducts.map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const product = getProductBySlug(slug);
   if (!product) return {};
@@ -20,13 +27,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const product = getProductBySlug(slug);
   if (!product) notFound();
 
   const related = getRelatedProducts(slug);
-  const galleryImages = product.images.map((src) => ({ src, alt: product.alt }));
+  const galleryImages = product.images.map((src) => ({
+    src,
+    alt: product.alt,
+  }));
 
   return (
     <>
@@ -59,16 +73,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </section>
 
       {/* ── Product Main ───────────────────────────────────────────── */}
-      <section className="py-12 bg-white">
+      <section className="py-8 md:py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-start">
+            {/* Left, image gallery */}
+            <ProductGallery images={galleryImages} />
 
-            {/* Left — image gallery */}
-            <ProductGallery images={galleryImages} badge="Fully Sublimated" />
-
-            {/* Right — product details */}
+            {/* Right, product details */}
             <div className="flex flex-col gap-5 lg:sticky lg:top-[170px]">
-
               {/* Sport tag + title + code */}
               <div>
                 <span className="inline-block text-xs font-bold uppercase tracking-widest text-orange-500 mb-2">
@@ -99,7 +111,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                     <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-0.5">
                       {s.label}
                     </p>
-                    <p className="text-xs font-semibold text-gray-800 leading-snug">{s.value}</p>
+                    <p className="text-xs font-semibold text-gray-800 leading-snug">
+                      {s.value}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -116,10 +130,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-3 pt-1">
-                <QuoteModal
-                  defaultCategory={product.sport}
-                  buttonClassName="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-bold text-center py-4 px-6 rounded-xl transition-all duration-200 hover:-translate-y-0.5 shadow-sm text-sm"
-                />
+                <Link
+                  href="/contact"
+                  className="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-bold text-center py-4 px-6 rounded-xl transition-all duration-200 hover:-translate-y-0.5 shadow-sm text-sm"
+                >
+                  Request a Quote
+                </Link>
               </div>
 
               {/* Trust badges */}
@@ -134,7 +150,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                     icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z",
                   },
                   {
-                    label: "3–4 Wk Lead",
+                    label: "2–3 Wk Lead",
                     icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
                   },
                 ].map((b) => (
@@ -168,11 +184,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
       {/* ── Feature strip ──────────────────────────────────────────── */}
       <div className="bg-[#1e3056] text-white py-5">
-        <div className="max-w-7xl mx-auto px-4 flex flex-wrap justify-center gap-8 text-sm font-medium">
+        <div className="max-w-7xl mx-auto px-4 flex flex-wrap justify-center gap-x-6 gap-y-2 sm:gap-8 text-xs sm:text-sm font-medium">
           {[
             "Free Custom Design",
             "No Hidden Fees",
-            "3–4 Week Turnaround",
+            "2–4 Week Turnaround",
             "Worldwide Shipping",
           ].map((feat) => (
             <div key={feat} className="flex items-center gap-2">
@@ -196,9 +212,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </div>
 
       {/* ── How to Order ───────────────────────────────────────────── */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-10 md:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-10">
+          <div className="text-center mb-8 md:mb-10">
             <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-2">
               Simple Process
             </p>
@@ -217,7 +233,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               {
                 step: "02",
                 title: "Free Artwork",
-                desc: "Our designers create your custom artwork — no charge.",
+                desc: "Our designers create your custom artwork, no charge.",
               },
               {
                 step: "03",
@@ -227,7 +243,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               {
                 step: "04",
                 title: "We Deliver",
-                desc: "Production in 3–4 weeks with worldwide shipping.",
+                desc: "Production in 2–4 weeks with worldwide shipping.",
               },
             ].map((s) => (
               <div
@@ -238,7 +254,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   {s.step}
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">{s.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  {s.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -247,54 +265,48 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
       {/* ── Related Products ───────────────────────────────────────── */}
       {related.length > 0 && (
-        <section className="py-16 bg-white">
+        <section className="py-10 md:py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="flex items-center justify-between bg-[#1e3056] rounded-xl px-6 py-4 mb-8">
-              <h2 className="text-xl sm:text-2xl font-black text-white uppercase tracking-wide">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-[#1e3056] rounded-xl px-4 sm:px-6 py-3 sm:py-4 mb-6 sm:mb-8">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-black text-white uppercase tracking-wide">
                 More {product.sport} Products
               </h2>
               <Link
                 href={`/sport/${product.sportSlug}`}
-                className="text-sm font-semibold text-white border border-white/50 hover:border-white hover:bg-white hover:text-[#1e3056] px-4 py-2 rounded-lg transition-all duration-200 whitespace-nowrap"
+                className="text-xs sm:text-sm font-semibold text-white border border-white/50 hover:border-white hover:bg-white hover:text-[#1e3056] px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all duration-200 whitespace-nowrap"
               >
                 View All {product.sport}
               </Link>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
               {related.map((rel) => (
                 <Link
                   key={rel.slug}
                   href={`/product/${rel.slug}`}
-                  className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 group transition-all duration-300 hover:-translate-y-1 block"
+                  className="group flex flex-col bg-white rounded-xl overflow-hidden shadow-md card-hover"
                 >
-                  <div className="relative overflow-hidden" style={{ aspectRatio: "3/4" }}>
+                  <div
+                    className="relative w-full bg-white"
+                    style={{ aspectRatio: "1 / 1.1" }}
+                  >
                     <Image
                       src={rel.image}
                       alt={rel.alt}
                       fill
-                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-contain object-center p-3 sm:p-5 md:p-6 group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     />
-                    <div className="absolute top-3 right-3 bg-orange-500 text-white text-xs font-bold px-2.5 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      Custom
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                      <p className="text-white text-xs font-mono tracking-wider opacity-80">
-                        {rel.productCode}
-                      </p>
-                    </div>
                   </div>
-                  <div className="p-4">
-                    <h3 className="font-bold text-gray-900 text-base mb-1 leading-tight">
+                  <div className="px-3 pb-3 pt-2 sm:px-4 sm:pb-5">
+                    <h3 className="font-bold text-gray-900 text-[11px] sm:text-sm uppercase tracking-wider leading-snug mb-2 sm:mb-3">
                       {rel.name}
                     </h3>
-                    <p className="text-gray-500 text-sm mb-3 leading-snug line-clamp-2">
-                      {rel.description}
-                    </p>
-                    <span className="inline-flex items-center gap-1 text-orange-500 text-sm font-semibold group-hover:gap-2 transition-all duration-200">
-                      View Product
+                    <div className="flex items-center justify-between border-t border-gray-200 pt-2 sm:pt-3">
+                      <span className="text-[9px] sm:text-xs font-bold uppercase tracking-widest text-gray-600 group-hover:text-orange-500 transition-colors duration-200">
+                        View Product
+                      </span>
                       <svg
-                        className="w-4 h-4"
+                        className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 group-hover:text-orange-500 group-hover:translate-x-1 transition-all duration-200 flex-shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -306,7 +318,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                           d="M9 5l7 7-7 7"
                         />
                       </svg>
-                    </span>
+                    </div>
                   </div>
                 </Link>
               ))}
@@ -322,14 +334,16 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             Ready to Kit Out Your Team?
           </h2>
           <p className="text-gray-300 text-sm sm:text-base mb-6 md:mb-8 max-w-lg mx-auto">
-            Send us your design ideas or let our team create something amazing. Free quote, no
-            obligation.
+            Send us your design ideas or let our team create something amazing.
+            Free quote, no obligation.
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
-            <QuoteModal
-              defaultCategory={product.sport}
-              buttonClassName="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 sm:px-8 py-3 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
-            />
+            <Link
+              href="/contact"
+              className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 sm:px-8 py-3 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
+            >
+              Get a Free Quote
+            </Link>
             <Link
               href="/packages"
               className="border-2 border-white/50 hover:border-white text-white font-bold px-6 sm:px-8 py-3 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"

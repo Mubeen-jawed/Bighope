@@ -16,7 +16,7 @@ export default function Home() {
       {/* 1. Hero */}
       <Hero />
 
-      {/* 2. Our Range — sport category cards */}
+      {/* 2. Our Range, sport category cards */}
       <Categories />
 
       {/* 3. Distinct selling points poster */}

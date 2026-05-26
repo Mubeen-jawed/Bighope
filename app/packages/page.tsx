@@ -14,11 +14,43 @@ export default function PackagesPage() {
     <>
       <PageHero
         title="Sport Packages"
-        subtitle="Pre-designed team bundles to get your squad kitted out fast — at unbeatable direct-manufacturer pricing."
+        subtitle="Pre-designed team bundles to get your squad kitted out fast, at unbeatable direct-manufacturer pricing."
         breadcrumb="Home / Packages"
       />
 
       <FeatureBar />
+
+      {/* Custom Package CTA */}
+      <section className="py-14 bg-white">
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <h2 className="text-2xl md:text-3xl font-[family-name:var(--font-oswald)] font-bold text-gray-900 uppercase mb-3">
+            Need Something Custom to Your Team?
+          </h2>
+          <p className="text-gray-500 text-sm sm:text-base mb-6 max-w-xl mx-auto">
+            Our pre-built packages not quite what you need? We&apos;ll create a
+            fully custom package matched to your sport, team size, and budget.
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-3.5 rounded-lg transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base shadow-lg"
+          >
+            Build a Custom Package
+            <svg
+              className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </Link>
+        </div>
+      </section>
 
       {/* Package cards */}
       <section className="py-20 bg-gray-50">
@@ -52,7 +84,10 @@ export default function PackagesPage() {
                 </div>
 
                 {/* Image */}
-                <div className="relative bg-white" style={{ aspectRatio: "4/3" }}>
+                <div
+                  className="relative bg-white"
+                  style={{ aspectRatio: "4/3" }}
+                >
                   <Image
                     src={pkg.cardImage}
                     alt={`${pkg.sport} Package`}
@@ -112,9 +147,7 @@ export default function PackagesPage() {
                   </div>
 
                   {/* CTA */}
-                  <span
-                    className="block text-center font-bold py-3 px-6 rounded-lg transition-all duration-200 bg-[#1e3056] hover:bg-[#162440] text-white"
-                  >
+                  <span className="block text-center font-bold py-3 px-6 rounded-lg transition-all duration-200 bg-[#1e3056] hover:bg-[#162440] text-white">
                     View Package
                   </span>
                 </div>
@@ -125,7 +158,7 @@ export default function PackagesPage() {
       </section>
 
       {/* Other Sports CTA */}
-      <section className="py-20 bg-white">
+      {/* <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-3">
             Rugby · Cricket · Basketball · MMA · And More
@@ -159,7 +192,7 @@ export default function PackagesPage() {
             </svg>
           </Link>
         </div>
-      </section>
+      </section> */}
 
       {/* What's Included strip */}
       <section className="py-16 bg-gray-50">
@@ -270,7 +303,7 @@ export default function PackagesPage() {
             Tell us what you need.
           </p>
           <a
-            href="mailto:info@bighopesports.com"
+            href="/contact"
             className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold px-7 sm:px-10 py-3 sm:py-4 rounded-lg transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base md:text-lg"
           >
             Build a Custom Package

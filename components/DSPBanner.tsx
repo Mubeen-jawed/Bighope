@@ -18,7 +18,7 @@ const usps = [
     icon: "M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01",
   },
   {
-    title: "3–4 Week Delivery",
+    title: "2–4 Week Delivery",
     note: "Worldwide, tracked",
     icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
   },
@@ -46,7 +46,6 @@ export default function DSPBanner() {
     <section className="bg-[#0f1830] overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 min-h-[620px]">
-
           {/* ── Left: Image panel ─────────────────────────── */}
           <div className="relative hidden lg:block">
             <Image
@@ -68,12 +67,15 @@ export default function DSPBanner() {
                   key={s.label}
                   className="flex items-center gap-3 bg-black/50 backdrop-blur-sm border border-white/10 rounded-xl px-4 py-2.5"
                 >
-                  <span className="text-orange-400 font-black text-xl leading-none">{s.value}</span>
-                  <span className="text-white/70 text-xs font-medium">{s.label}</span>
+                  <span className="text-orange-400 font-black text-xl leading-none">
+                    {s.value}
+                  </span>
+                  <span className="text-white/70 text-xs font-medium">
+                    {s.label}
+                  </span>
                 </div>
               ))}
             </div>
-
           </div>
 
           {/* ── Right: Content panel ─────────────────────── */}
@@ -89,11 +91,23 @@ export default function DSPBanner() {
             <div className="grid sm:grid-cols-2 gap-x-6 gap-y-4 mb-10">
               {usps.map((usp) => (
                 <div key={usp.title} className="flex items-center gap-3">
-                  <svg className="w-5 h-5 text-orange-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d={usp.icon} />
+                  <svg
+                    className="w-5 h-5 text-orange-400 shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.8}
+                      d={usp.icon}
+                    />
                   </svg>
                   <div>
-                    <p className="text-white font-semibold text-sm leading-none">{usp.title}</p>
+                    <p className="text-white font-semibold text-sm leading-none">
+                      {usp.title}
+                    </p>
                     <p className="text-gray-500 text-xs mt-1">{usp.note}</p>
                   </div>
                 </div>
@@ -104,7 +118,9 @@ export default function DSPBanner() {
             <div className="flex flex-wrap gap-4 lg:hidden mb-8">
               {stats.map((s) => (
                 <div key={s.label} className="text-center">
-                  <div className="text-orange-400 font-black text-2xl leading-none">{s.value}</div>
+                  <div className="text-orange-400 font-black text-2xl leading-none">
+                    {s.value}
+                  </div>
                   <div className="text-gray-500 text-xs mt-0.5">{s.label}</div>
                 </div>
               ))}

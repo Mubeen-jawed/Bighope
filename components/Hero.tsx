@@ -35,7 +35,7 @@ const slides: Slide[] = [
     topText: "CUSTOM SPORTSWEAR",
     mainText: "BUILT FOR CHAMPIONS",
     description:
-      "Premium fully-sublimated uniforms for every sport — designed by you, crafted by us.",
+      "Premium fully-sublimated uniforms for every sport, designed by you, crafted by us.",
     link: "/range/soccer",
   },
   {
@@ -53,7 +53,7 @@ const slides: Slide[] = [
     topText: "CUSTOM SOCCER",
     mainText: "UNIFORMS",
     description:
-      "Fully sublimated soccer uniforms — unlimited colors and logos. Fast turnaround, worldwide shipping.",
+      "Fully sublimated soccer uniforms, unlimited colors and logos. Fast turnaround, worldwide shipping.",
     link: "/range/soccer",
   },
   {
@@ -62,7 +62,7 @@ const slides: Slide[] = [
     topText: "7v7 FOOTBALL",
     mainText: "UNIFORMS",
     description:
-      "Custom 7v7 football uniforms built for champions — designed by you, manufactured by us.",
+      "Custom 7v7 football uniforms built for champions, designed by you, manufactured by us.",
     link: "/range/7v7",
   },
 ];
@@ -113,16 +113,22 @@ function DesktopText({ slide }: { slide: Slide }) {
       <div className="flex items-end justify-end gap-3 mt-6 flex-wrap">
         <Link
           href={slide.link}
-          className="inline-flex items-center gap-2 font-bold uppercase hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all duration-200"
-          style={{
-            border: "2px solid #3b82f6",
-            color: "#3b82f6",
-            padding: "11px 30px",
-            fontSize: "11px",
-            letterSpacing: "0.18em",
-          }}
+          className="inline-flex items-center gap-2 font-bold uppercase tracking-[0.18em] text-[11px] bg-accent-blue text-white rounded-sm px-7 py-3 hover:bg-blue-500 transition-all duration-200"
         >
           VIEW RANGE
+          <svg
+            className="w-3.5 h-3.5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            strokeWidth={2.5}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+            />
+          </svg>
         </Link>
         <CatalogViewer label="VIEW CATALOG" variant="hero-desktop" />
       </div>
@@ -136,13 +142,19 @@ function MobileText({ slide }: { slide: Slide }) {
     <div className="block md:hidden absolute inset-x-0 bottom-0 z-10 px-5 pb-6">
       <p
         className="font-oswald text-yellow-400 uppercase leading-none"
-        style={{ fontSize: "clamp(0.8rem, 3.8vw, 1.15rem)", letterSpacing: "0.12em" }}
+        style={{
+          fontSize: "clamp(0.8rem, 3.8vw, 1.15rem)",
+          letterSpacing: "0.12em",
+        }}
       >
         {slide.topText}
       </p>
       <h2
         className="font-oswald text-white uppercase leading-none mt-1"
-        style={{ fontSize: "clamp(1.9rem, 8.5vw, 2.75rem)", letterSpacing: "0.03em" }}
+        style={{
+          fontSize: "clamp(1.9rem, 8.5vw, 2.75rem)",
+          letterSpacing: "0.03em",
+        }}
       >
         {slide.mainText}
       </h2>
@@ -155,16 +167,22 @@ function MobileText({ slide }: { slide: Slide }) {
       <div className="flex items-center gap-2.5 mt-4 flex-wrap">
         <Link
           href={slide.link}
-          className="inline-flex items-center gap-1.5 font-bold uppercase hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all duration-200"
-          style={{
-            border: "2px solid #3b82f6",
-            color: "#3b82f6",
-            padding: "7px 18px",
-            fontSize: "9.5px",
-            letterSpacing: "0.16em",
-          }}
+          className="inline-flex items-center gap-1.5 font-bold uppercase tracking-[0.16em] text-[9.5px] bg-accent-blue text-white rounded-sm px-5 py-2.5 hover:bg-blue-500 transition-all duration-200"
         >
           VIEW RANGE
+          <svg
+            className="w-3 h-3"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            strokeWidth={2.5}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+            />
+          </svg>
         </Link>
         <CatalogViewer label="VIEW CATALOG" variant="hero-mobile" />
       </div>
@@ -173,14 +191,21 @@ function MobileText({ slide }: { slide: Slide }) {
 }
 
 /* ── Shared desktop gradient overlay ── */
-const desktopGradient = "linear-gradient(to left, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.42) 42%, transparent 68%)";
+const desktopGradient =
+  "linear-gradient(to left, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.42) 42%, transparent 68%)";
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
   const touchStartX = useRef(0);
 
-  const next = useCallback(() => setCurrent((c) => (c + 1) % slides.length), []);
-  const prev = useCallback(() => setCurrent((c) => (c - 1 + slides.length) % slides.length), []);
+  const next = useCallback(
+    () => setCurrent((c) => (c + 1) % slides.length),
+    [],
+  );
+  const prev = useCallback(
+    () => setCurrent((c) => (c - 1 + slides.length) % slides.length),
+    [],
+  );
 
   useEffect(() => {
     const timer = setInterval(next, 5000);
@@ -210,7 +235,7 @@ export default function Hero() {
             style={{
               opacity: index === current ? 1 : 0,
               zIndex: index === current ? 1 : 0,
-              transition: "opacity 0.8s ease-in-out",
+              transition: "opacity 1.3s ease-in-out",
               pointerEvents: index === current ? "auto" : "none",
             }}
           >
@@ -262,7 +287,10 @@ export default function Hero() {
                 <div className="block md:hidden absolute inset-0">
                   <div
                     className="absolute inset-0 overflow-hidden"
-                    style={{ clipPath: "polygon(0 0, 58% 0, 48% 100%, 0 100%)", zIndex: 0 }}
+                    style={{
+                      clipPath: "polygon(0 0, 58% 0, 48% 100%, 0 100%)",
+                      zIndex: 0,
+                    }}
                   >
                     <Image
                       src={slide.leftImage}
@@ -270,12 +298,18 @@ export default function Hero() {
                       fill
                       priority={index === 0}
                       sizes="60vw"
-                      style={{ objectFit: "cover", objectPosition: "center top" }}
+                      style={{
+                        objectFit: "cover",
+                        objectPosition: "center top",
+                      }}
                     />
                   </div>
                   <div
                     className="absolute inset-0 overflow-hidden"
-                    style={{ clipPath: "polygon(53% 0, 100% 0, 100% 100%, 43% 100%)", zIndex: 1 }}
+                    style={{
+                      clipPath: "polygon(53% 0, 100% 0, 100% 100%, 43% 100%)",
+                      zIndex: 1,
+                    }}
                   >
                     <Image
                       src={slide.rightImage}
@@ -283,7 +317,10 @@ export default function Hero() {
                       fill
                       priority={index === 0}
                       sizes="60vw"
-                      style={{ objectFit: "cover", objectPosition: "center top" }}
+                      style={{
+                        objectFit: "cover",
+                        objectPosition: "center top",
+                      }}
                     />
                   </div>
                   <div
@@ -298,15 +335,20 @@ export default function Hero() {
 
                 {/* Desktop: blended two-image composition */}
                 <div className="hidden md:block absolute inset-0">
-                  {/* Left product — fades out on right edge */}
+                  {/* Left product, fades out on right edge */}
                   <div
                     className="absolute inset-0 overflow-hidden"
                     style={{ width: "55%", zIndex: 0 }}
                   >
-                    <div className="relative w-full h-full" style={{
-                      WebkitMaskImage: "linear-gradient(to right, black 50%, transparent 100%)",
-                      maskImage: "linear-gradient(to right, black 50%, transparent 100%)",
-                    }}>
+                    <div
+                      className="relative w-full h-full"
+                      style={{
+                        WebkitMaskImage:
+                          "linear-gradient(to right, black 50%, transparent 100%)",
+                        maskImage:
+                          "linear-gradient(to right, black 50%, transparent 100%)",
+                      }}
+                    >
                       <Image
                         src={slide.leftImage}
                         alt=""
@@ -317,15 +359,20 @@ export default function Hero() {
                       />
                     </div>
                   </div>
-                  {/* Right product — fades out on left edge */}
+                  {/* Right product, fades out on left edge */}
                   <div
                     className="absolute inset-0 overflow-hidden"
                     style={{ left: "25%", width: "45%", zIndex: 1 }}
                   >
-                    <div className="relative w-full h-full" style={{
-                      WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 40%, black 60%, transparent 100%)",
-                      maskImage: "linear-gradient(to right, transparent 0%, black 40%, black 60%, transparent 100%)",
-                    }}>
+                    <div
+                      className="relative w-full h-full"
+                      style={{
+                        WebkitMaskImage:
+                          "linear-gradient(to right, transparent 0%, black 40%, black 60%, transparent 100%)",
+                        maskImage:
+                          "linear-gradient(to right, transparent 0%, black 40%, black 60%, transparent 100%)",
+                      }}
+                    >
                       <Image
                         src={slide.rightImage}
                         alt=""
@@ -350,14 +397,48 @@ export default function Hero() {
           </div>
         ))}
 
-        {/* ── NEON STRIPS — desktop only ── */}
+        {/* ── NEON STRIPS, desktop only ── */}
         <div
           className="absolute right-0 top-0 bottom-0 z-20 pointer-events-none hidden md:block"
           style={{ width: "64px", overflow: "hidden" }}
         >
-          <div style={{ position: "absolute", right: "44px", top: "-10px", bottom: "-10px", width: "13px", background: "#6dff4e", opacity: 0.88, transform: "skewX(-5deg)", transformOrigin: "top center" }} />
-          <div style={{ position: "absolute", right: "24px", top: "-10px", bottom: "-10px", width: "11px", background: "#ffd700", transform: "skewX(-5deg)", transformOrigin: "top center" }} />
-          <div style={{ position: "absolute", right: "6px",  top: "-10px", bottom: "-10px", width: "9px",  background: "#00e5ff", transform: "skewX(-5deg)", transformOrigin: "top center" }} />
+          <div
+            style={{
+              position: "absolute",
+              right: "44px",
+              top: "-10px",
+              bottom: "-10px",
+              width: "13px",
+              background: "#6dff4e",
+              opacity: 0.88,
+              transform: "skewX(-5deg)",
+              transformOrigin: "top center",
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              right: "24px",
+              top: "-10px",
+              bottom: "-10px",
+              width: "11px",
+              background: "#ffd700",
+              transform: "skewX(-5deg)",
+              transformOrigin: "top center",
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              right: "6px",
+              top: "-10px",
+              bottom: "-10px",
+              width: "9px",
+              background: "#00e5ff",
+              transform: "skewX(-5deg)",
+              transformOrigin: "top center",
+            }}
+          />
         </div>
 
         {/* ── ARROWS ── */}
@@ -367,8 +448,18 @@ export default function Hero() {
           className="absolute left-3 top-1/2 -translate-y-1/2 z-20 text-white/70 hover:text-white transition-colors hidden sm:flex items-center justify-center"
           style={{ background: "none", border: "none", cursor: "pointer" }}
         >
-          <svg className="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          <svg
+            className="w-8 h-8 md:w-10 md:h-10"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
         </button>
         <button
@@ -377,8 +468,18 @@ export default function Hero() {
           className="absolute top-1/2 -translate-y-1/2 z-20 text-white/70 hover:text-white transition-colors hidden sm:flex items-center justify-center right-4 md:right-[72px]"
           style={{ background: "none", border: "none", cursor: "pointer" }}
         >
-          <svg className="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          <svg
+            className="w-8 h-8 md:w-10 md:h-10"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         </button>
       </div>
@@ -394,18 +495,21 @@ export default function Hero() {
               key={i}
               onClick={() => setCurrent(i)}
               aria-label={`Slide ${i + 1}`}
-              style={{
-                width: "26px",
-                height: "2px",
-                borderRadius: "1px",
-                background: i === current ? "#ffffff" : "rgba(255,255,255,0.32)",
-                border: "none",
-                cursor: "pointer",
-                padding: 0,
-                transition: "background 0.3s ease",
-                display: "block",
-              }}
-            />
+              className="relative flex items-center justify-center cursor-pointer border-none bg-transparent"
+              style={{ width: "36px", height: "32px", padding: 0 }}
+            >
+              <span
+                style={{
+                  width: "28px",
+                  height: "3px",
+                  borderRadius: "2px",
+                  background:
+                    i === current ? "#ffffff" : "rgba(255,255,255,0.32)",
+                  transition: "background 0.3s ease",
+                  display: "block",
+                }}
+              />
+            </button>
           ))}
         </div>
       </div>

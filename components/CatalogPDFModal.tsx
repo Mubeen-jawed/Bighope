@@ -155,7 +155,7 @@ export default function CatalogPDFModal({ onClose }: Props) {
           </div>
         </div>
 
-        {/* Loading overlay — covers until first page is painted */}
+        {/* Loading overlay, covers until first page is painted */}
         {!ready && (
           <div
             className="absolute inset-0 flex items-center justify-center"
@@ -163,9 +163,7 @@ export default function CatalogPDFModal({ onClose }: Props) {
           >
             <div className="flex flex-col items-center gap-3">
               <div className="catalogSpinner" />
-              <span className="text-white/70 text-sm">
-                Loading catalog...
-              </span>
+              <span className="text-white/70 text-sm">Loading catalog...</span>
             </div>
           </div>
         )}

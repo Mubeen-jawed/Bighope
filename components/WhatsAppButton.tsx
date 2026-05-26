@@ -19,7 +19,7 @@ export default function WhatsAppButton() {
         group
       "
     >
-      {/* Centered icon wrapper — isolated from the absolutely positioned tooltip */}
+      {/* Centered icon wrapper, isolated from the absolutely positioned tooltip */}
       <div className="w-full h-full flex items-center justify-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +31,7 @@ export default function WhatsAppButton() {
         </svg>
       </div>
 
-      {/* Tooltip label — absolutely positioned, never affects icon centering */}
+      {/* Tooltip label, absolutely positioned, never affects icon centering */}
       <span
         className="
           absolute right-16 top-1/2 -translate-y-1/2

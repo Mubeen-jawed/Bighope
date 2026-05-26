@@ -61,9 +61,7 @@ export default function ContactPage() {
       (e.target as HTMLFormElement).reset();
       removeImage();
     } catch (err: unknown) {
-      setErrorMsg(
-        err instanceof Error ? err.message : "Something went wrong.",
-      );
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
       setStatus("error");
     }
   }
@@ -367,7 +365,7 @@ export default function ContactPage() {
 
               {/* Estimate note */}
               <p className="text-sm text-gray-400 -mt-4">
-                An exact timeline isn&apos;t necessary — an estimate is fine.
+                An exact timeline isn&apos;t necessary, an estimate is fine.
               </p>
 
               {status === "error" && (
@@ -416,7 +414,7 @@ export default function ContactPage() {
             </h2>
             <div className="w-16 h-1 bg-orange-500 rounded mx-auto mb-4" />
             <p className="text-gray-500 max-w-xl mx-auto">
-              Browse common questions by category, or reach out directly — we
+              Browse common questions by category, or reach out directly, we
               reply within one business day.
             </p>
           </div>
@@ -495,7 +493,7 @@ export default function ContactPage() {
               <h3 className="font-bold text-gray-900 mb-1">Follow Us</h3>
               <div className="flex items-center justify-center gap-3 mt-2">
                 <a
-                  href="https://facebook.com/bighopesports/"
+                  href="https://www.facebook.com/bighopesports/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-orange-500 transition-colors"
@@ -509,7 +507,7 @@ export default function ContactPage() {
                   </svg>
                 </a>
                 <a
-                  href="https://instagram.com/bighopesports/"
+                  href="https://www.instagram.com/bighopesports/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-orange-500 transition-colors"
@@ -523,7 +521,7 @@ export default function ContactPage() {
                   </svg>
                 </a>
                 <a
-                  href="https://linkedin.com/company/bighopesports"
+                  href="https://www.linkedin.com/company/bighopesports"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-orange-500 transition-colors"

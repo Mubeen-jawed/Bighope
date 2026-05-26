@@ -5,7 +5,7 @@ import { useState } from "react";
 const faqs = [
   {
     q: "What products do you offer?",
-    a: "We manufacture custom sports uniforms and teamwear for clubs, schools, and wholesale customers — including soccer kits, basketball uniforms, rugby jerseys, cricket whites, tracksuits, hoodies, and more. Every product is fully customisable in size, colour, and design.",
+    a: "We manufacture custom sports uniforms and teamwear for clubs, schools, and wholesale customers, including soccer kits, basketball uniforms, rugby jerseys, cricket whites, tracksuits, hoodies, and more. Every product is fully customisable in size, colour, and design.",
   },
   {
     q: "Do you provide custom designs?",
@@ -13,11 +13,11 @@ const faqs = [
   },
   {
     q: "Can I get samples before bulk production?",
-    a: "Absolutely. Physical samples are available upon request. We also provide photos and videos of samples for remote approval. Standard bulk production takes 3–4 weeks, with rush options available in approximately 15 days.",
+    a: "Absolutely. Physical samples are available upon request. We also provide photos and videos of samples for remote approval. Standard bulk production takes 2–3 weeks, with rush options available in approximately 15 days.",
   },
   {
     q: "What printing methods do you use?",
-    a: "We use sublimation printing, screen printing, heat transfer vinyl, and embroidery — chosen based on your product and design requirements. All sublimation is done fully in-house on our own equipment.",
+    a: "We use sublimation printing, screen printing, heat transfer vinyl, and embroidery, chosen based on your product and design requirements. All sublimation is done fully in-house on our own equipment.",
   },
   {
     q: "Do you ship worldwide?",
@@ -41,7 +41,7 @@ const faqs = [
   },
   {
     q: "Where are you based?",
-    a: "Our production facility is in Sialkot, Pakistan — the world's leading sports equipment manufacturing city. We also have partner support in the USA 🇺🇸, UK 🇬🇧, Germany 🇩🇪, and Croatia 🇭🇷.",
+    a: "Our production facility is in Sialkot, Pakistan, the world's leading sports equipment manufacturing city. We also have partner support in the USA 🇺🇸, Australia 🇦🇺, Spain 🇪🇸, and UK 🇬🇧.",
   },
 ];
 
@@ -63,7 +63,9 @@ export default function FaqAccordion() {
             <span className="font-bold text-gray-900 text-base">{faq.q}</span>
             <span
               className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200 ${
-                open === idx ? "bg-orange-500 text-white" : "bg-gray-100 text-gray-500"
+                open === idx
+                  ? "bg-orange-500 text-white"
+                  : "bg-gray-100 text-gray-500"
               }`}
             >
               <svg
@@ -72,7 +74,12 @@ export default function FaqAccordion() {
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M12 4v16m8-8H4"
+                />
               </svg>
             </span>
           </button>

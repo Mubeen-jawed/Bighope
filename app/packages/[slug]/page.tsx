@@ -3,7 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import FeatureBar from "@/components/FeatureBar";
-import { getPackageBySlug, getAllPackageSlugs, sportPackages } from "@/lib/packages";
+import {
+  getPackageBySlug,
+  getAllPackageSlugs,
+  sportPackages,
+} from "@/lib/packages";
 
 export function generateStaticParams() {
   return getAllPackageSlugs().map((slug) => ({ slug }));
@@ -44,11 +48,11 @@ export default async function PackageDetailPage({
 
       <FeatureBar />
 
-      {/* Package detail — text left, image right */}
+      {/* Package detail, text left, image right */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-            {/* Left — text */}
+            {/* Left, text */}
             <div>
               <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-2">
                 Package Details
@@ -104,10 +108,10 @@ export default async function PackageDetailPage({
               </div>
 
               <a
-                href="mailto:info@bighopesports.com"
+                href="/contact"
                 className="inline-flex items-center gap-2 bg-[#1e3056] hover:bg-[#162440] text-white font-bold px-6 sm:px-8 py-3 rounded-lg transition-all duration-200 hover:-translate-y-0.5 shadow-lg text-sm sm:text-base"
               >
-                Request a Quote — {pkg.sport}
+                Request a Quote, {pkg.sport}
                 <svg
                   className="w-4 h-4 flex-shrink-0"
                   fill="none"
@@ -124,7 +128,7 @@ export default async function PackageDetailPage({
               </a>
             </div>
 
-            {/* Right — image (no background, transparent) */}
+            {/* Right, image (no background, transparent) */}
             <div className="relative flex items-center justify-center">
               <Image
                 src={pkg.cardImage}
@@ -202,7 +206,7 @@ export default async function PackageDetailPage({
             Tell us what you need.
           </p>
           <a
-            href="mailto:info@bighopesports.com"
+            href="/contact"
             className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold px-7 sm:px-10 py-3 sm:py-4 rounded-lg transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base md:text-lg"
           >
             Build a Custom Package

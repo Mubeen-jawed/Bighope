@@ -29,7 +29,7 @@ export default function PromoBanner() {
 
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
           <a
-            href="mailto:info@bighopesports.com"
+            href="/contact"
             className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-7 sm:px-10 py-3 sm:py-4 rounded-lg text-sm sm:text-base md:text-lg transition-all duration-200 shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5 text-center"
           >
             Request a Quote

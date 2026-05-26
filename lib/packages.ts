@@ -27,7 +27,7 @@ export const sportPackages: SportPackage[] = [
     href: "/packages/soccer",
     sportHref: "/sport/soccer",
     description:
-      "Multiple package tiers — from a basic jersey & shorts combo all the way to full team bundles with bags and accessories.",
+      "Multiple package tiers, from a basic jersey & shorts combo all the way to full team bundles with bags and accessories.",
     longDescription:
       "Our soccer packages are built for teams at every level. Whether you need a simple jersey-and-shorts combo for a recreational league or a full premium bundle with socks, bags, and warm-ups for a competitive squad, we have you covered. Every package is fully sublimated with unlimited colors and includes free custom artwork.",
     cardImage: "/packages/soccer-package.png",
@@ -47,7 +47,7 @@ export const sportPackages: SportPackage[] = [
       "Free Custom Artwork",
       "Unlimited Color Options",
     ],
-    minOrder: "Minimum 10 units",
+    minOrder: "Minimum 1 unit",
   },
   {
     slug: "7v7-football",
@@ -58,7 +58,7 @@ export const sportPackages: SportPackage[] = [
     description:
       "Three premium package tiers built specifically for 7v7 teams. Pick the level that fits your squad.",
     longDescription:
-      "Designed specifically for the 7v7 community, our packages come in three tiers — Silver, Gold, and Diamond. Each tier builds on the last, so you can start with the essentials or go all-in with a full kit including hoodies, bags, and compression gear. All packages feature full dye-sublimation and unlimited design revisions.",
+      "Designed specifically for the 7v7 community, our packages come in three tiers, Silver, Gold, and Diamond. Each tier builds on the last, so you can start with the essentials or go all-in with a full kit including hoodies, bags, and compression gear. All packages feature full dye-sublimation and unlimited design revisions.",
     cardImage: "/packages/7v7-silver-tier.webp",
     popular: true,
     images: [
@@ -86,7 +86,7 @@ export const sportPackages: SportPackage[] = [
       "Multiple Tier Options (Silver / Gold / Diamond)",
       "Free Custom Artwork",
     ],
-    minOrder: "Minimum 10 units",
+    minOrder: "Minimum 1 unit",
   },
   {
     slug: "baseball",
@@ -95,9 +95,9 @@ export const sportPackages: SportPackage[] = [
     href: "/packages/baseball",
     sportHref: "/sport/baseball",
     description:
-      "Full-team baseball and softball packages — jerseys, pants, hats, hoodies, and more. Free coaches shirts on all packages.",
+      "Full-team baseball and softball packages, jerseys, pants, hats, hoodies, and more. Free coaches shirts on all packages.",
     longDescription:
-      "Our baseball and softball packages are built for the full roster. Every package includes jerseys, pants, and hats as a foundation — then add hoodies, warm-up jackets, bags, and more depending on your budget. All packages come with free coaches shirts and full dye-sublimation printing.",
+      "Our baseball and softball packages are built for the full roster. Every package includes jerseys, pants, and hats as a foundation, then add hoodies, warm-up jackets, bags, and more depending on your budget. All packages come with free coaches shirts and full dye-sublimation printing.",
     cardImage: "/packages/baseball-package.png",
     popular: false,
     images: [
@@ -115,7 +115,7 @@ export const sportPackages: SportPackage[] = [
       "Sublimated Name & Number",
       "Free Custom Artwork",
     ],
-    minOrder: "Minimum 10 units",
+    minOrder: "Minimum 1 unit",
   },
 ];
 
