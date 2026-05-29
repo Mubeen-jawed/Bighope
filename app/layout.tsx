@@ -5,6 +5,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import SiteChrome from "@/components/SiteChrome";
+import { sanityFetch } from "@/lib/sanity/client";
+import { navRangeQuery, TAGS } from "@/lib/sanity/queries";
+
+type NavGroup = { label: string; slug: string }[];
 
 const inter = Inter({
   subsets: ["latin"],
@@ -39,16 +43,33 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // "Our Range" navbar dropdown is built from Sanity so newly-added sports
+  // and ranges appear in the menu automatically.
+  const nav = await sanityFetch<{
+    uniforms: NavGroup;
+    teamwear: NavGroup;
+    accessories: NavGroup;
+  } | null>({ query: navRangeQuery, tags: [TAGS.sport, TAGS.range] });
+
+  const toItems = (group: NavGroup | undefined, base: string) =>
+    (group ?? []).map((x) => ({ label: x.label, href: `${base}/${x.slug}` }));
+
   return (
     <html lang="en" className={`${inter.variable} ${oswald.variable}`}>
       <body className="font-sans antialiased bg-white text-gray-900">
         <SiteChrome
-          header={<Header />}
+          header={
+            <Header
+              uniforms={toItems(nav?.uniforms, "/sport")}
+              teamwear={toItems(nav?.teamwear, "/range")}
+              accessories={toItems(nav?.accessories, "/range")}
+            />
+          }
           footer={<Footer />}
           whatsapp={<WhatsAppButton />}
         >

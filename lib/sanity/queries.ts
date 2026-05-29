@@ -95,6 +95,16 @@ export const packageBySlugQuery = groq`
   }
 `;
 
+/* ── Navbar "Our Range" dropdown (sports + teamwear + accessories) ── */
+export const navRangeQuery = groq`{
+  "uniforms": *[_type == "sport" && !(slug.current in ["teamwear","accessories"])]
+    | order(order asc){ "label": title, "slug": slug.current },
+  "teamwear": *[_type == "range" && category == "Custom Teamwear"]
+    | order(_createdAt asc){ "label": title, "slug": slug.current },
+  "accessories": *[_type == "range" && category == "Accessories"]
+    | order(_createdAt asc){ "label": title, "slug": slug.current }
+}`;
+
 /* ── Site settings (hero slider + banner image) ────────────────── */
 
 export const siteSettingsQuery = groq`

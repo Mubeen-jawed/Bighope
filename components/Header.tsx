@@ -12,85 +12,41 @@ import {
 } from "@/lib/slug-category-map";
 import { sportPackages } from "@/lib/packages";
 
-const rangeCategories = [
-  {
-    heading: "Custom Uniforms",
-    icon: (
-      <svg
-        className="w-4 h-4"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-        />
-      </svg>
-    ),
-    items: [
-      { label: "Soccer / Football", href: "/sport/soccer" },
-      { label: "Rugby", href: "/sport/rugby" },
-      { label: "Basketball", href: "/sport/basketball" },
-      { label: "Cricket", href: "/sport/cricket" },
-      { label: "7v7 Football", href: "/sport/7v7-football" },
-      { label: "Baseball / Softball", href: "/sport/baseball" },
-      { label: "MMA", href: "/sport/mma" },
-    ],
-  },
-  {
-    heading: "Custom Teamwear",
-    icon: (
-      <svg
-        className="w-4 h-4"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"
-        />
-      </svg>
-    ),
-    items: [
-      { label: "Hoodie", href: "/range/hoodie" },
-      { label: "T-Shirts", href: "/range/t-shirts" },
-      { label: "Polo", href: "/range/polo" },
-      { label: "Track Suits", href: "/range/track-suits" },
-      { label: "1/4 Zipper", href: "/range/quarter-zipper" },
-      { label: "Jackets", href: "/range/jackets" },
-    ],
-  },
-  {
-    heading: "Accessories",
-    icon: (
-      <svg
-        className="w-4 h-4"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-        />
-      </svg>
-    ),
-    items: [
-      { label: "Bags & Packs", href: "/range/bags-packs" },
-      { label: "Duffle Bags", href: "/range/duffle-bags" },
-      { label: "Socks", href: "/range/socks" },
-      { label: "Hats", href: "/range/hats" },
-    ],
-  },
-];
+type NavItem = { label: string; href: string };
+
+// Icons are fixed per group; the items come from Sanity (see RootLayout).
+const uniformsIcon = (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+    />
+  </svg>
+);
+
+const teamwearIcon = (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"
+    />
+  </svg>
+);
+
+const accessoriesIcon = (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+    />
+  </svg>
+);
 
 const infoLinks = [
   {
@@ -238,7 +194,20 @@ const searchIndex = [
   { label: "FAQ", href: "/faq", category: "Pages" },
 ];
 
-export default function Header() {
+export default function Header({
+  uniforms = [],
+  teamwear = [],
+  accessories = [],
+}: {
+  uniforms?: NavItem[];
+  teamwear?: NavItem[];
+  accessories?: NavItem[];
+}) {
+  const rangeCategories = [
+    { heading: "Custom Uniforms", icon: uniformsIcon, items: uniforms },
+    { heading: "Custom Teamwear", icon: teamwearIcon, items: teamwear },
+    { heading: "Accessories", icon: accessoriesIcon, items: accessories },
+  ].filter((cat) => cat.items.length > 0);
   const router = useRouter();
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -1090,7 +1059,7 @@ export default function Header() {
                 </svg>
               </button>
               <div
-                className={`overflow-hidden transition-all duration-200 ${mobileRangeOpen ? "max-h-[600px]" : "max-h-0"}`}
+                className={`overflow-hidden transition-all duration-200 ${mobileRangeOpen ? "max-h-[1000px]" : "max-h-0"}`}
               >
                 <div className="bg-[#0c1629] border-t border-white/5">
                   {rangeCategories.map((cat, idx) => (

@@ -1,4 +1,4 @@
-/** Read-only diagnostic: shows what's actually stored in Sanity right now. */
+/** Read-only diagnostic: shows ranges + their categories and slugs. */
 import { config as loadEnv } from "dotenv";
 import { createClient } from "@sanity/client";
 
@@ -8,46 +8,30 @@ const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
   apiVersion: "2024-10-01",
-  token: process.env.SANITY_API_WRITE_TOKEN, // lets us also see drafts
+  token: process.env.SANITY_API_WRITE_TOKEN,
   useCdn: false,
-  perspective: "raw", // return both published docs and drafts
+  perspective: "raw",
 });
 
 async function run() {
-  const docs = await client.fetch(
-    `*[_type in ["product","range","sport","package"]]{
-      "id": _id,
-      _type,
-      "title": coalesce(title, name),
-      "sport": sport->slug.current,
-      "hasSlug": defined(slug.current),
-      "hasMainImage": defined(mainImage)
-    } | order(_type asc)`,
+  const ranges = await client.fetch(
+    `*[_type=="range"]{ "id": _id, title, category, "slug": slug.current } | order(category asc)`,
+  );
+  console.log("\n● All RANGE docs (Teamwear / Accessory groups):");
+  ranges.forEach((r: any) =>
+    console.log(
+      `  [${r.id.startsWith("drafts.") ? "DRAFT" : "PUB  "}] cat=${JSON.stringify(r.category)}  slug=${r.slug}  "${r.title}"`,
+    ),
   );
 
-  const isDraft = (id: string) => id.startsWith("drafts.");
-  const isUserCreated = (id: string) =>
-    !/^(product-|sport-|range-|package-|drafts\.(product-|sport-|range-|package-))/.test(
-      id,
-    ) && id !== "siteSettings";
-
-  console.log("\n=== USER-CREATED docs (not from migration) ===");
-  docs
-    .filter((d: any) => isUserCreated(d.id))
-    .forEach((d: any) =>
-      console.log(
-        `  [${isDraft(d.id) ? "DRAFT    " : "PUBLISHED"}] ${d._type.padEnd(8)} "${d.title}"  sport=${d.sport ?? "—"} slug=${d.hasSlug} mainImage=${d.hasMainImage}  (${d.id})`,
-      ),
-    );
-
-  console.log("\n=== Any DRAFT docs (unpublished) ===");
-  const drafts = docs.filter((d: any) => isDraft(d.id));
-  if (!drafts.length) console.log("  (none)");
-  drafts.forEach((d: any) =>
-    console.log(`  ${d._type} "${d.title}" sport=${d.sport ?? "—"} (${d.id})`),
+  const sports = await client.fetch(
+    `*[_type=="sport"]{ "slug": slug.current, title, showOnHomepage } | order(title asc)`,
   );
-
-  console.log(`\nTotal product/range/sport/package docs: ${docs.length}\n`);
+  console.log("\n● All SPORT docs:");
+  sports.forEach((s: any) =>
+    console.log(`  slug=${s.slug}  home=${s.showOnHomepage}  "${s.title}"`),
+  );
+  console.log();
 }
 
 run().catch((e) => {
