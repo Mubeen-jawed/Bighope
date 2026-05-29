@@ -27,49 +27,6 @@ type FullWidthSlide = {
 
 type Slide = SplitSlide | FullWidthSlide;
 
-const slides: Slide[] = [
-  {
-    fullWidth: true,
-    pcImage: "/hero/FOOTBALL.DESK.SLIDER.png",
-    mbImage: "/hero/FOOTBALL.mbl.SLIDER.png",
-    topText: "CUSTOM SOCCER",
-    mainText: "UNIFORMS",
-    description:
-      "Fully sublimated soccer uniforms, unlimited colors and logos. Fast turnaround, worldwide shipping.",
-    link: "/range/soccer",
-  },
-  {
-    fullWidth: true,
-    pcImage: "/hero/cricket.DESK.SLIDER.png",
-    mbImage: "/hero/cricket.mb.SLIDER.png",
-    topText: "CUSTOM CRICKET",
-    mainText: "KITS",
-    description:
-      "Premium quality cricket kits, 100% customized for your team. Free design service included with every order.",
-    link: "/range/cricket",
-  },
-  {
-    fullWidth: true,
-    pcImage: "/hero/baseBALL.DESK.SLIDER.png",
-    mbImage: "/hero/baseBALL.mb.SLIDER.png",
-    topText: "CUSTOM BASEBALL",
-    mainText: "UNIFORMS",
-    description:
-      "Custom baseball uniforms built for champions, designed by you, manufactured by us.",
-    link: "/range/baseball",
-  },
-  {
-    fullWidth: true,
-    pcImage: "/hero/RUGBY.DSK.SL.png",
-    mbImage: "/hero/RUGBY.mb.SL.png",
-    topText: "CUSTOM RUGBY",
-    mainText: "KITS",
-    description:
-      "Premium quality rugby kits, 100% customized for your team. Free design service included with every order.",
-    link: "/range/rugby",
-  },
-];
-
 /* ── Shared desktop text block (used by both slide types) ── */
 function DesktopText({ slide }: { slide: Slide }) {
   return (
@@ -197,23 +154,25 @@ function MobileText({ slide }: { slide: Slide }) {
 const desktopGradient =
   "linear-gradient(to left, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.42) 42%, transparent 68%)";
 
-export default function Hero() {
+export default function Hero({ slides }: { slides: Slide[] }) {
   const [current, setCurrent] = useState(0);
   const touchStartX = useRef(0);
+  const count = slides.length;
 
   const next = useCallback(
-    () => setCurrent((c) => (c + 1) % slides.length),
-    [],
+    () => setCurrent((c) => (count ? (c + 1) % count : 0)),
+    [count],
   );
   const prev = useCallback(
-    () => setCurrent((c) => (c - 1 + slides.length) % slides.length),
-    [],
+    () => setCurrent((c) => (count ? (c - 1 + count) % count : 0)),
+    [count],
   );
 
   useEffect(() => {
-    const timer = setInterval(next, 5000);
+    if (count <= 1) return;
+    const timer = setInterval(next, 6000);
     return () => clearInterval(timer);
-  }, [next]);
+  }, [next, count]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -222,6 +181,8 @@ export default function Hero() {
     const diff = touchStartX.current - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 48) diff > 0 ? next() : prev();
   };
+
+  if (count === 0) return null;
 
   return (
     <div
@@ -485,6 +446,7 @@ export default function Hero() {
             />
           </svg>
         </button>
+
       </div>
 
       {/* ── BOTTOM DASH STRIP ── */}

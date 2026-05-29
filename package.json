@@ -6,14 +6,21 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate": "tsx scripts/migrate-to-sanity.ts"
   },
   "dependencies": {
+    "@sanity/client": "^7.22.1",
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^5.28.0",
     "next": "^16.2.6",
+    "next-sanity": "^13.0.7",
     "nodemailer": "^8.0.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-pdf": "^10.4.1"
+    "react-pdf": "^10.4.1",
+    "sanity": "^5.28.0",
+    "styled-components": "^6.4.2"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -21,11 +28,13 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10",
+    "dotenv": "^17.4.2",
     "eslint": "^9",
     "eslint-config-next": "^16.2.6",
     "postcss": "^8",
     "simple-icons": "^16.21.0",
     "tailwindcss": "^3.4.1",
+    "tsx": "^4.22.3",
     "typescript": "^5"
   }
 }

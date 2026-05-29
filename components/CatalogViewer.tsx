@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import dynamic from "next/dynamic";
 
 const CatalogPDFModal = dynamic(() => import("./CatalogPDFModal"), {
@@ -66,7 +67,11 @@ export default function CatalogViewer({
         {label}
       </button>
 
-      {open && <CatalogPDFModal onClose={() => setOpen(false)} />}
+      {open &&
+        createPortal(
+          <CatalogPDFModal onClose={() => setOpen(false)} />,
+          document.body,
+        )}
     </>
   );
 }

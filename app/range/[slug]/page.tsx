@@ -3,168 +3,20 @@ import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import CatalogViewer from "@/components/CatalogViewer";
+import { sanityFetch } from "@/lib/sanity/client";
+import { rangeBySlugQuery, rangeSlugsQuery, TAGS } from "@/lib/sanity/queries";
+import { imageUrl } from "@/lib/sanity/image";
+import type { RangePage as RangePageData } from "@/lib/sanity/types";
 
-interface Product {
-  slug: string;
-  name: string;
-  desc: string;
-  image: string;
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const ranges = await sanityFetch<{ slug: string }[]>({
+    query: rangeSlugsQuery,
+    tags: [TAGS.range],
+  });
+  return ranges.map((r) => ({ slug: r.slug }));
 }
-
-interface RangeData {
-  title: string;
-  category: string;
-  description: string;
-  products: Product[];
-}
-
-const rangeData: Record<string, RangeData> = {
-  hoodie: {
-    title: "Custom Hoodies",
-    category: "Custom Teamwear",
-    description:
-      "Fully sublimated custom hoodies in premium 100% polyester fleece. Unlimited colours, team logos, and player names.",
-    products: [
-      {
-        slug: "custom-team-hoodies",
-        name: "Custom Team Hoodies",
-        desc: "100% polyester fleece, fully sublimated, unlimited colours and logos",
-        image: "/ranges/teamwear/custom-team-hoodies.webp",
-      },
-      {
-        slug: "custom-zipper-hoodies",
-        name: "Custom Zipper Hoodies",
-        desc: "Full-zip fleece hoodie, sublimated design, moisture-wicking lining",
-        image: "/ranges/teamwear/custom-zipper-hoodies.webp",
-      },
-    ],
-  },
-  "t-shirts": {
-    title: "Custom T-Shirts",
-    category: "Custom Teamwear",
-    description:
-      "Dye-sublimated team T-shirts in 100% cool-dry micromesh or interlock polyester. Men's, women's and youth sizing.",
-    products: [
-      {
-        slug: "custom-t-shirts",
-        name: "Custom T-Shirts",
-        desc: "100% cool-dry micromesh polyester, fully sublimated, breathable and moisture-wicking",
-        image: "/ranges/teamwear/custom-t-shirts.webp",
-      },
-    ],
-  },
-  polo: {
-    title: "Custom Polo Shirts",
-    category: "Custom Teamwear",
-    description:
-      "Moisture-wicking custom polo shirts. Fully dye sublimated, no colour limits. Available in mesh or spandex fabric.",
-    products: [
-      {
-        slug: "custom-polo-shirts",
-        name: "Custom Polo Shirts",
-        desc: "100% polyester mesh or spandex, moisture-wicking, fully sublimated",
-        image: "/ranges/teamwear/custom-polo-shirts.webp",
-      },
-    ],
-  },
-  "track-suits": {
-    title: "Custom Track Suits",
-    category: "Custom Teamwear",
-    description:
-      "Premium 100% polyester fleece or Scuba fabric tracksuits, fully sublimated for your team's identity.",
-    products: [
-      {
-        slug: "custom-tracksuits",
-        name: "Custom Tracksuits",
-        desc: "100% polyester fleece or Scuba fabric, fully sublimated tracksuit set",
-        image: "/ranges/teamwear/custom-tracksuits.webp",
-      },
-    ],
-  },
-  "quarter-zipper": {
-    title: "Custom 1/4 Zipper",
-    category: "Custom Teamwear",
-    description:
-      "Custom 1/4 zip pullovers available in long sleeve and short sleeve. 100% polyester mesh, fully sublimated.",
-    products: [
-      {
-        slug: "custom-quarter-zipper-ls",
-        name: "Custom 1/4 Zipper LS",
-        desc: "Long sleeve 1/4 zip pullover, 100% polyester mesh, fully sublimated",
-        image: "/ranges/teamwear/custom-quarter-zipper-ls.webp",
-      },
-      {
-        slug: "custom-1-4-zipper-ss",
-        name: "Custom 1/4 Zipper SS",
-        desc: "Short sleeve 1/4 zip pullover, 100% polyester mesh, fully sublimated",
-        image: "/ranges/teamwear/custom-quarter-zipper-ss.webp",
-      },
-    ],
-  },
-  jackets: {
-    title: "Custom Jackets",
-    category: "Custom Teamwear",
-    description:
-      "Durable, fully sublimated custom jackets for teams and clubs. Ideal for warm-ups, travel, and bench wear.",
-    products: [
-      {
-        slug: "custom-jackets",
-        name: "Custom Coach Jackets",
-        desc: "Premium polyester & nylon, embroidery or sublimation, coach, rain & puffer styles",
-        image: "/ranges/teamwear/custom-coach-jackets.webp",
-      },
-    ],
-  },
-  "bags-packs": {
-    title: "Custom Bags & Packs",
-    category: "Accessories",
-    description:
-      "Heavy-duty polyester/nylon custom backpacks. Personalised with embroidery, heat transfer, or sublimation.",
-    products: [
-      {
-        slug: "custom-bags",
-        name: "Custom Bagpacks",
-        desc: "Heavy-duty polyester/nylon, reinforced stitching, custom branding",
-        image: "/ranges/accessories/custom-backpacks.webp",
-      },
-    ],
-  },
-  "duffle-bags": {
-    title: "Custom Duffle Bags",
-    category: "Accessories",
-    description:
-      "Team duffle bags in heavy-duty nylon with reinforced stitching. Custom branding via embroidery or sublimation.",
-    products: [
-      {
-        slug: "custom-duffle-bags",
-        name: "Custom Duffle Bags",
-        desc: "Heavy-duty nylon with reinforced stitching, custom embroidery or sublimation",
-        image: "/ranges/accessories/custom-duffle-bags.webp",
-      },
-    ],
-  },
-  socks: {
-    title: "Custom Socks",
-    category: "Accessories",
-    description:
-      "High-performance nylon/polyester/spandex blend socks with reinforced heel and toe. Full colour sublimation.",
-    products: [
-      {
-        slug: "custom-socks",
-        name: "Custom Socks",
-        desc: "Nylon/polyester/spandex blend, reinforced heel and toe, fully sublimated",
-        image: "/ranges/accessories/custom-socks.webp",
-      },
-    ],
-  },
-  hats: {
-    title: "Custom Hats",
-    category: "Accessories",
-    description:
-      "Custom sublimated and embroidered sports caps for your team. Coming soon - contact us to enquire.",
-    products: [],
-  },
-};
 
 export async function generateMetadata({
   params,
@@ -172,13 +24,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const data = rangeData[slug];
-  if (!data) return {};
-  return { title: data.title };
-}
-
-export function generateStaticParams() {
-  return Object.keys(rangeData).map((slug) => ({ slug }));
+  const range = await sanityFetch<RangePageData | null>({
+    query: rangeBySlugQuery,
+    params: { slug },
+    tags: [TAGS.range],
+  });
+  if (!range) return {};
+  return { title: range.title };
 }
 
 export default async function RangePage({
@@ -187,8 +39,14 @@ export default async function RangePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const range = rangeData[slug];
+  const range = await sanityFetch<RangePageData | null>({
+    query: rangeBySlugQuery,
+    params: { slug },
+    tags: [TAGS.range, TAGS.product],
+  });
   if (!range) notFound();
+
+  const products = range.products || [];
 
   return (
     <>
@@ -213,7 +71,7 @@ export default async function RangePage({
             <CatalogViewer label="VIEW CATALOG" variant="section-blue" />
           </div>
 
-          {range.products.length === 0 ? (
+          {products.length === 0 ? (
             /* Coming Soon state */
             <div className="text-center py-14 md:py-24 border border-gray-200 rounded-2xl bg-gray-50 px-4">
               <h3 className="text-lg md:text-xl font-bold text-gray-700 uppercase tracking-widest mb-3">
@@ -232,7 +90,7 @@ export default async function RangePage({
             </div>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
-              {range.products.map((product) => (
+              {products.map((product) => (
                 <Link
                   key={product.slug}
                   href={`/product/${product.slug}`}
@@ -243,7 +101,7 @@ export default async function RangePage({
                     style={{ aspectRatio: "1 / 1.1" }}
                   >
                     <Image
-                      src={product.image}
+                      src={imageUrl(product.mainImage, 500)}
                       alt={product.name}
                       fill
                       className="object-contain object-center p-3 sm:p-5 md:p-6 group-hover:scale-105 transition-transform duration-500"

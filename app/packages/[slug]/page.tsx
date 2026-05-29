@@ -3,14 +3,24 @@ import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import FeatureBar from "@/components/FeatureBar";
+import { sanityFetch } from "@/lib/sanity/client";
 import {
-  getPackageBySlug,
-  getAllPackageSlugs,
-  sportPackages,
-} from "@/lib/packages";
+  packageBySlugQuery,
+  packageSlugsQuery,
+  packagesQuery,
+  TAGS,
+} from "@/lib/sanity/queries";
+import { imageUrl } from "@/lib/sanity/image";
+import type { SportPackage } from "@/lib/sanity/types";
 
-export function generateStaticParams() {
-  return getAllPackageSlugs().map((slug) => ({ slug }));
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const packages = await sanityFetch<{ slug: string }[]>({
+    query: packageSlugsQuery,
+    tags: [TAGS.package],
+  });
+  return packages.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -19,7 +29,11 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const pkg = getPackageBySlug(slug);
+  const pkg = await sanityFetch<SportPackage | null>({
+    query: packageBySlugQuery,
+    params: { slug },
+    tags: [TAGS.package],
+  });
   if (!pkg) return {};
   return {
     title: `${pkg.sport} Packages`,
@@ -33,10 +47,18 @@ export default async function PackageDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const pkg = getPackageBySlug(slug);
+  const pkg = await sanityFetch<SportPackage | null>({
+    query: packageBySlugQuery,
+    params: { slug },
+    tags: [TAGS.package],
+  });
   if (!pkg) notFound();
 
-  const otherPackages = sportPackages.filter((p) => p.slug !== slug);
+  const allPackages = await sanityFetch<SportPackage[]>({
+    query: packagesQuery,
+    tags: [TAGS.package],
+  });
+  const otherPackages = allPackages.filter((p) => p.slug !== slug);
 
   return (
     <>
@@ -67,7 +89,7 @@ export default async function PackageDetailPage({
               </p>
 
               <div className="space-y-3 mb-8">
-                {pkg.includes.map((item) => (
+                {(pkg.includes || []).map((item) => (
                   <div
                     key={item}
                     className="flex items-center gap-3 text-gray-700"
@@ -131,7 +153,7 @@ export default async function PackageDetailPage({
             {/* Right, image (no background, transparent) */}
             <div className="relative flex items-center justify-center">
               <Image
-                src={pkg.cardImage}
+                src={imageUrl(pkg.cardImage, 700)}
                 alt={`${pkg.sport} Package`}
                 width={600}
                 height={600}
@@ -161,7 +183,7 @@ export default async function PackageDetailPage({
               {otherPackages.map((other) => (
                 <Link
                   key={other.slug}
-                  href={other.href}
+                  href={`/packages/${other.slug}`}
                   className="group bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="p-6">

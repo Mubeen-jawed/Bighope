@@ -2,55 +2,22 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
-import { allProducts } from "@/lib/products";
 import CatalogViewer from "@/components/CatalogViewer";
+import { sanityFetch } from "@/lib/sanity/client";
+import { sportBySlugQuery, sportSlugsQuery, TAGS } from "@/lib/sanity/queries";
+import { imageUrl } from "@/lib/sanity/image";
+import type { SportPage as SportPageData } from "@/lib/sanity/types";
 
-const sportMeta: Record<string, { title: string; description: string }> = {
-  soccer: {
-    title: "Soccer / Football Uniforms",
-    description:
-      "Fully sublimated, 100% Cool-Dry Polyester. UPF 50+ protection. Free design included.",
-  },
-  rugby: {
-    title: "Rugby Uniforms",
-    description:
-      "Durable 100% polyester scuba performance fabric with reinforced stitching for contact sport.",
-  },
-  basketball: {
-    title: "Basketball Uniforms",
-    description:
-      "Cool-dry micromesh jerseys, shorts, and shooting gear for peak court performance.",
-  },
-  cricket: {
-    title: "Cricket Uniforms",
-    description:
-      "UPF 50+ sun protection in premium Cool-Dry Polyester for all formats.",
-  },
-  "7v7-football": {
-    title: "7v7 Football Uniforms",
-    description:
-      "Lightweight, fully sublimated uniforms built for flag and 7v7 football.",
-  },
-  baseball: {
-    title: "Baseball Uniforms",
-    description:
-      "100% cool-dry polyester mesh/interlock jerseys for all levels of play.",
-  },
-  mma: {
-    title: "MMA & Fight Gear",
-    description:
-      "Custom MMA shorts, rashguards, and wrestling singlets, sublimated for any gym or promotion.",
-  },
-  teamwear: {
-    title: "Custom Teamwear",
-    description:
-      "Hoodies, tracksuits, polo shirts, T-shirts, and jackets, fully sublimated for your team.",
-  },
-  accessories: {
-    title: "Custom Accessories",
-    description: "Durable custom bags and socks built for athletes and clubs.",
-  },
-};
+// Allow sports added in Sanity after build to be generated on first request.
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const sports = await sanityFetch<{ slug: string }[]>({
+    query: sportSlugsQuery,
+    tags: [TAGS.sport],
+  });
+  return sports.map((s) => ({ slug: s.slug }));
+}
 
 export async function generateMetadata({
   params,
@@ -58,13 +25,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const meta = sportMeta[slug];
-  if (!meta) return {};
-  return { title: meta.title };
-}
-
-export function generateStaticParams() {
-  return Object.keys(sportMeta).map((slug) => ({ slug }));
+  const sport = await sanityFetch<SportPageData | null>({
+    query: sportBySlugQuery,
+    params: { slug },
+    tags: [TAGS.sport],
+  });
+  if (!sport) return {};
+  return { title: sport.title, description: sport.description };
 }
 
 export default async function SportPage({
@@ -73,17 +40,21 @@ export default async function SportPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const meta = sportMeta[slug];
-  if (!meta) notFound();
+  const sport = await sanityFetch<SportPageData | null>({
+    query: sportBySlugQuery,
+    params: { slug },
+    tags: [TAGS.sport, TAGS.product],
+  });
+  if (!sport) notFound();
 
-  const products = allProducts.filter((p) => p.sportSlug === slug);
+  const products = sport.products || [];
 
   return (
     <>
       <PageHero
-        title={meta.title}
-        subtitle={meta.description}
-        breadcrumb={`Home / Our Range / ${meta.title}`}
+        title={sport.title}
+        subtitle={sport.description}
+        breadcrumb={`Home / Our Range / ${sport.title}`}
       />
 
       {/* ── Products ── */}
@@ -94,7 +65,7 @@ export default async function SportPage({
               Products
             </p>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-[family-name:var(--font-oswald)] font-bold text-gray-900 uppercase mb-4">
-              Our {meta.title} Range
+              Our {sport.title} Range
             </h2>
             <div className="w-16 h-1 bg-orange-500 rounded mx-auto mb-5 md:mb-6" />
             <CatalogViewer label="VIEW FULL CATALOG" variant="section-blue" />
@@ -131,8 +102,8 @@ export default async function SportPage({
                     style={{ aspectRatio: "1 / 1.1" }}
                   >
                     <Image
-                      src={product.image}
-                      alt={product.alt}
+                      src={imageUrl(product.mainImage, 500)}
+                      alt={product.alt || product.name}
                       fill
                       className="object-contain object-center p-3 sm:p-5 md:p-6 group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"

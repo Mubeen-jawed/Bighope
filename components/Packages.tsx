@@ -1,8 +1,16 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
-import { sportPackages } from "@/lib/packages";
+import { sanityFetch } from "@/lib/sanity/client";
+import { packagesQuery, TAGS } from "@/lib/sanity/queries";
+import { imageUrl } from "@/lib/sanity/image";
+import type { SportPackage } from "@/lib/sanity/types";
 
-export default function Packages() {
+export default async function Packages() {
+  const sportPackages = await sanityFetch<SportPackage[]>({
+    query: packagesQuery,
+    tags: [TAGS.package],
+  });
+
   return (
     <section id="packages" className="bg-gray-50 py-16">
       <div className="max-w-7xl mx-auto px-4">
@@ -22,7 +30,7 @@ export default function Packages() {
           {sportPackages.map((pkg) => (
             <Link
               key={pkg.slug}
-              href={pkg.href}
+              href={`/packages/${pkg.slug}`}
               className="relative bg-white rounded-2xl overflow-hidden shadow-md card-hover border-2 border-transparent"
             >
               {/* Sport badge */}
@@ -33,7 +41,7 @@ export default function Packages() {
               {/* Image */}
               <div className="relative bg-white" style={{ aspectRatio: "4/3" }}>
                 <Image
-                  src={pkg.cardImage}
+                  src={imageUrl(pkg.cardImage, 600)}
                   alt={`${pkg.sport} Package`}
                   fill
                   className="object-contain object-center"
@@ -49,7 +57,7 @@ export default function Packages() {
 
                 {/* Includes list */}
                 <div className="space-y-2 mb-5">
-                  {pkg.includes.slice(0, 4).map((item) => (
+                  {(pkg.includes || []).slice(0, 4).map((item) => (
                     <div
                       key={item}
                       className="flex items-center gap-2.5 text-gray-700 text-sm"

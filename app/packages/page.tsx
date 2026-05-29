@@ -3,13 +3,21 @@ import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import FeatureBar from "@/components/FeatureBar";
-import { sportPackages } from "@/lib/packages";
+import { sanityFetch } from "@/lib/sanity/client";
+import { packagesQuery, TAGS } from "@/lib/sanity/queries";
+import { imageUrl } from "@/lib/sanity/image";
+import type { SportPackage } from "@/lib/sanity/types";
 
 export const metadata: Metadata = {
   title: "Team Packages",
 };
 
-export default function PackagesPage() {
+export default async function PackagesPage() {
+  const sportPackages = await sanityFetch<SportPackage[]>({
+    query: packagesQuery,
+    tags: [TAGS.package],
+  });
+
   return (
     <>
       <PageHero
@@ -75,7 +83,7 @@ export default function PackagesPage() {
             {sportPackages.map((pkg) => (
               <Link
                 key={pkg.slug}
-                href={pkg.href}
+                href={`/packages/${pkg.slug}`}
                 className="relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-2 border-transparent"
               >
                 {/* Sport badge */}
@@ -89,7 +97,7 @@ export default function PackagesPage() {
                   style={{ aspectRatio: "4/3" }}
                 >
                   <Image
-                    src={pkg.cardImage}
+                    src={imageUrl(pkg.cardImage, 600)}
                     alt={`${pkg.sport} Package`}
                     fill
                     className="object-contain object-center"
@@ -105,7 +113,7 @@ export default function PackagesPage() {
 
                   {/* Includes list */}
                   <div className="space-y-2 mb-5">
-                    {pkg.includes.slice(0, 4).map((item) => (
+                    {(pkg.includes || []).slice(0, 4).map((item) => (
                       <div
                         key={item}
                         className="flex items-center gap-2.5 text-gray-700 text-sm"

@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import SiteChrome from "@/components/SiteChrome";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -46,10 +47,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${oswald.variable}`}>
       <body className="font-sans antialiased bg-white text-gray-900">
-        <Header />
-        <main className="pt-[64px] sm:pt-[102px]">{children}</main>
-        <Footer />
-        <WhatsAppButton />
+        <SiteChrome
+          header={<Header />}
+          footer={<Footer />}
+          whatsapp={<WhatsAppButton />}
+        >
+          {children}
+        </SiteChrome>
       </body>
     </html>
   );

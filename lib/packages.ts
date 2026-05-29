@@ -21,15 +21,15 @@ export interface SportPackage {
 
 export const sportPackages: SportPackage[] = [
   {
-    slug: "soccer",
-    sport: "Soccer / Football",
-    shortName: "Soccer",
-    href: "/packages/soccer",
-    sportHref: "/sport/soccer",
+    slug: "cricket",
+    sport: "Cricket",
+    shortName: "Cricket",
+    href: "/packages/cricket",
+    sportHref: "/sport/cricket",
     description:
-      "Multiple package tiers, from a basic jersey & shorts combo all the way to full team bundles with bags and accessories.",
+      "Multiple package tiers, from a basic jersey & trousers combo all the way to full team bundles with bags and accessories.",
     longDescription:
-      "Our soccer packages are built for teams at every level. Whether you need a simple jersey-and-shorts combo for a recreational league or a full premium bundle with socks, bags, and warm-ups for a competitive squad, we have you covered. Every package is fully sublimated with unlimited colors and includes free custom artwork.",
+      "Our cricket packages are built for teams at every level. Whether you need a simple jersey-and-trousers combo for a weekend league or a full premium bundle with caps, bags, and warm-ups for a competitive squad, we have you covered. Every package is fully sublimated with unlimited colors and includes free custom artwork.",
     cardImage: "/packages/soccer-package.png",
     popular: false,
     images: [
@@ -40,9 +40,9 @@ export const sportPackages: SportPackage[] = [
       },
     ],
     includes: [
-      "Custom Soccer Jersey",
-      "Custom Soccer Shorts",
-      "Custom Soccer Socks",
+      "Custom Cricket Jersey",
+      "Custom Cricket Trousers",
+      "Custom Cricket Cap",
       "Sublimated Name & Number",
       "Free Custom Artwork",
       "Unlimited Color Options",
@@ -89,15 +89,15 @@ export const sportPackages: SportPackage[] = [
     minOrder: "Minimum 1 unit",
   },
   {
-    slug: "baseball",
-    sport: "Baseball & Softball",
-    shortName: "Baseball",
-    href: "/packages/baseball",
-    sportHref: "/sport/baseball",
+    slug: "cricket-kit",
+    sport: "Cricket",
+    shortName: "Cricket Kit",
+    href: "/packages/cricket-kit",
+    sportHref: "/sport/cricket",
     description:
-      "Full-team baseball and softball packages, jerseys, pants, hats, hoodies, and more. Free coaches shirts on all packages.",
+      "Full-team cricket packages, jerseys, trousers, caps, hoodies, and more. Free coaches shirts on all packages.",
     longDescription:
-      "Our baseball and softball packages are built for the full roster. Every package includes jerseys, pants, and hats as a foundation, then add hoodies, warm-up jackets, bags, and more depending on your budget. All packages come with free coaches shirts and full dye-sublimation printing.",
+      "Our cricket kit packages are built for the full roster. Every package includes jerseys, trousers, and caps as a foundation, then add hoodies, warm-up jackets, bags, and more depending on your budget. All packages come with free coaches shirts and full dye-sublimation printing.",
     cardImage: "/packages/baseball-package.png",
     popular: false,
     images: [
@@ -108,9 +108,9 @@ export const sportPackages: SportPackage[] = [
       },
     ],
     includes: [
-      "Custom Baseball Jersey",
-      "Custom Baseball Pants",
-      "Custom Baseball Cap",
+      "Custom Cricket Jersey",
+      "Custom Cricket Trousers",
+      "Custom Cricket Cap",
       "Free Coaches Shirts",
       "Sublimated Name & Number",
       "Free Custom Artwork",

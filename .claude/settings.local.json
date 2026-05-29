@@ -40,7 +40,22 @@
       "PowerShell(Remove-Item *)",
       "PowerShell(Get-ChildItem \"public\\\\ranges\" -Recurse -File | ForEach-Object { \"$\\($_.Directory.Name\\)\\\\$\\($_.Name\\) \\($\\([math]::Round\\($_.Length/1024\\)\\)KB\\)\" } | Sort-Object)",
       "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\jawed\\\\Downloads\\\\BigHope\\\\src\" -Recurse -Filter \"*.tsx\" -ErrorAction SilentlyContinue)",
-      "Bash(Select-Object -First 20)"
+      "Bash(Select-Object -First 20)",
+      "Bash(curl -s -o /dev/null -w 'page: %{http_code}\\\\n' -A 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0 Safari/537.36' --max-time 25 https://bighopesports.com/product/custom-goalkeeper-jersey/)",
+      "Bash(curl -s -o /dev/null -w 'local: %{http_code}\\\\n' -A 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0 Safari/537.36' --max-time 25 https://bighopesports.com/ranges/soccer/custom-goalkeeper-jersey.webp)",
+      "Bash(curl -s -o /dev/null -w 'wp1: %{http_code}\\\\n' -A 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0 Safari/537.36' --max-time 25 https://bighopesports.com/wp-content/uploads/2025/11/e7zy0tbkaxxlcvrq2cr3.webp)",
+      "Bash(curl -s -o /dev/null -w 'wp2: %{http_code}\\\\n' -A 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0 Safari/537.36' --max-time 25 https://bighopesports.com/wp-content/uploads/2025/11/28.webp)",
+      "Bash(curl -s --max-time 25 -A 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0 Safari/537.36' https://archive.org/wayback/available?url=bighopesports.com/wp-content/uploads/2025/11/28.webp)",
+      "Bash(curl -s --max-time 25 -A 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0 Safari/537.36' https://archive.org/wayback/available?url=bighopesports.com/wp-content/uploads/2025/11/tnslniaumiysvj3fjzvx.webp)",
+      "Bash(grep -oc '${B}/' /c/Users/jawed/Downloads/BigHope/lib/products.ts)",
+      "Bash(grep -o '\\\\${B}/' /c/Users/jawed/Downloads/BigHope/lib/products.ts)",
+      "Bash(grep -o '\\\\${B}/[^`]*' /c/Users/jawed/Downloads/BigHope/lib/products.ts)",
+      "Bash(grep -o '\\\\${B}/[0-9]\\\\{4\\\\}/[0-9]\\\\{2\\\\}' lib/products.ts)",
+      "Bash(grep -o '\\\\${B}/[^`]*' lib/products.ts)",
+      "Bash(grep -n \"\\\\${B}\" lib/products.ts)",
+      "Bash(grep -c '\\\\${B}' lib/products.ts)",
+      "Bash(grep -rn \"wp-content\\\\|bighopesports.com/wp\\\\|\\\\${B}\" lib/ app/ components/)",
+      "Bash(grep -rhoE \"https?://[a-zA-Z0-9.-]+\\\\.[a-z]+/[^\\\\\" \\\\`'\\)]*\\\\.\\(webp|png|jpg|jpeg|gif|svg\\)\" lib/ app/ components/)"
     ]
   }
 }

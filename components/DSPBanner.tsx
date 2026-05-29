@@ -41,31 +41,47 @@ const stats = [
   { value: "100%", label: "Customized" },
 ];
 
-export default function DSPBanner() {
+export default function DSPBanner({
+  imageSrc = "/sports/rugby-kit-front.webp",
+}: {
+  imageSrc?: string;
+}) {
   return (
-    <section className="bg-[#0f1830] overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-orange-50" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(249,115,22,0.08),transparent_55%)]" />
+      <div className="relative max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 min-h-[620px]">
           {/* ── Left: Image panel ─────────────────────────── */}
           <div className="relative hidden lg:block">
             <Image
-              src="/sports/rugby-kit-front.webp"
+              src={imageSrc}
               alt="Big Hope Sports custom rugby kit"
               fill
               className="object-cover object-center"
               sizes="50vw"
             />
-            {/* right-side fade into dark content area */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#0f1830]" />
-            {/* bottom fade */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0f1830]/60 to-transparent" />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to right, transparent 35%, rgba(255,255,255,0.85) 80%, #ffffff 100%)",
+              }}
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to top, #ffffff 0%, transparent 35%)",
+              }}
+            />
 
             {/* Floating stat chips */}
-            <div className="absolute bottom-10 left-8 flex flex-col gap-3">
+            {/* <div className="absolute bottom-10 left-8 flex flex-col gap-3">
               {stats.map((s) => (
                 <div
                   key={s.label}
-                  className="flex items-center gap-3 bg-black/50 backdrop-blur-sm border border-white/10 rounded-xl px-4 py-2.5"
+                  className="flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/5 rounded-xl px-4 py-2.5"
                 >
                   <span className="text-orange-400 font-black text-xl leading-none">
                     {s.value}
@@ -75,70 +91,75 @@ export default function DSPBanner() {
                   </span>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* ── Right: Content panel ─────────────────────── */}
-          <div className="px-5 py-10 sm:px-8 sm:py-14 lg:px-12 flex flex-col justify-center">
-            <p className="text-orange-500 text-xs font-black uppercase tracking-[0.2em] mb-3">
-              Why Big Hope
-            </p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-[family-name:var(--font-oswald)] font-bold text-white uppercase leading-tight mb-8">
-              Built Different.
-            </h2>
+          <div className="relative px-5 py-10 sm:px-8 sm:py-14 lg:px-12 flex flex-col justify-center">
+            <div className="absolute inset-0 pointer-events-none hidden lg:block" />
+            <div className="relative">
+              <p className="text-orange-500 text-xs font-black uppercase tracking-[0.2em] mb-3">
+                Why Big Hope
+              </p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-[family-name:var(--font-oswald)] font-bold text-gray-900 uppercase leading-tight mb-8">
+                Built Different.
+              </h2>
 
-            {/* USP grid */}
-            <div className="grid sm:grid-cols-2 gap-x-6 gap-y-4 mb-10">
-              {usps.map((usp) => (
-                <div key={usp.title} className="flex items-center gap-3">
-                  <svg
-                    className="w-5 h-5 text-orange-400 shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.8}
-                      d={usp.icon}
-                    />
-                  </svg>
-                  <div>
-                    <p className="text-white font-semibold text-sm leading-none">
-                      {usp.title}
-                    </p>
-                    <p className="text-gray-500 text-xs mt-1">{usp.note}</p>
+              {/* USP grid */}
+              <div className="grid sm:grid-cols-2 gap-x-6 gap-y-4 mb-10">
+                {usps.map((usp) => (
+                  <div key={usp.title} className="flex items-center gap-3">
+                    <svg
+                      className="w-5 h-5 text-orange-500 shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.8}
+                        d={usp.icon}
+                      />
+                    </svg>
+                    <div>
+                      <p className="text-gray-900 font-semibold text-sm leading-none">
+                        {usp.title}
+                      </p>
+                      <p className="text-gray-500 text-xs mt-1">{usp.note}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
 
-            {/* Mobile stats strip */}
-            <div className="flex flex-wrap gap-4 lg:hidden mb-8">
-              {stats.map((s) => (
-                <div key={s.label} className="text-center">
-                  <div className="text-orange-400 font-black text-2xl leading-none">
-                    {s.value}
+              {/* Mobile stats strip */}
+              <div className="flex flex-wrap gap-4 lg:hidden mb-8">
+                {stats.map((s) => (
+                  <div key={s.label} className="text-center">
+                    <div className="text-orange-500 font-black text-2xl leading-none">
+                      {s.value}
+                    </div>
+                    <div className="text-gray-500 text-xs mt-0.5">
+                      {s.label}
+                    </div>
                   </div>
-                  <div className="text-gray-500 text-xs mt-0.5">{s.label}</div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
 
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-              <Link
-                href="/contact"
-                className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all duration-200 hover:-translate-y-0.5 text-center"
-              >
-                Get a Free Quote
-              </Link>
-              <Link
-                href="/how-it-works"
-                className="border border-white/20 hover:border-white/50 text-white/80 hover:text-white font-bold px-6 py-3 rounded-xl text-sm transition-all duration-200 text-center"
-              >
-                How It Works
-              </Link>
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+                <Link
+                  href="/contact"
+                  className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all duration-200 hover:-translate-y-0.5 text-center"
+                >
+                  Get a Free Quote
+                </Link>
+                <Link
+                  href="/how-it-works"
+                  className="border border-gray-300 hover:border-gray-400 text-gray-700 hover:text-gray-900 font-bold px-6 py-3 rounded-xl text-sm transition-all duration-200 text-center"
+                >
+                  How It Works
+                </Link>
+              </div>
             </div>
           </div>
         </div>

@@ -1,16 +1,26 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  allProducts,
-  getProductBySlug,
-  getRelatedProducts,
-} from "@/lib/products";
 import ProductGallery from "@/components/ProductGallery";
 import ProductTabs from "@/components/ProductTabs";
+import { sanityFetch } from "@/lib/sanity/client";
+import {
+  productBySlugQuery,
+  productSlugsQuery,
+  relatedProductsQuery,
+  TAGS,
+} from "@/lib/sanity/queries";
+import { imageUrl } from "@/lib/sanity/image";
+import type { ProductCard, ProductDetail } from "@/lib/sanity/types";
 
-export function generateStaticParams() {
-  return allProducts.map((p) => ({ slug: p.slug }));
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const products = await sanityFetch<{ slug: string }[]>({
+    query: productSlugsQuery,
+    tags: [TAGS.product],
+  });
+  return products.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -19,12 +29,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await sanityFetch<ProductDetail | null>({
+    query: productBySlugQuery,
+    params: { slug },
+    tags: [TAGS.product],
+  });
   if (!product) return {};
-  return {
-    title: product.name,
-    description: product.description,
-  };
+  return { title: product.name, description: product.description };
 }
 
 export default async function ProductPage({
@@ -33,14 +44,33 @@ export default async function ProductPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await sanityFetch<ProductDetail | null>({
+    query: productBySlugQuery,
+    params: { slug },
+    tags: [TAGS.product],
+  });
   if (!product) notFound();
 
-  const related = getRelatedProducts(slug);
-  const galleryImages = product.images.map((src) => ({
-    src,
-    alt: product.alt,
-  }));
+  const related = product.sportId
+    ? await sanityFetch<ProductCard[]>({
+        query: relatedProductsQuery,
+        params: { sportId: product.sportId, slug },
+        tags: [TAGS.product],
+      })
+    : [];
+
+  const galleryImages = [product.mainImage, ...(product.gallery || [])]
+    .map((img) => ({ src: imageUrl(img), alt: product.alt || product.name }))
+    .filter((g) => g.src);
+
+  const specs = {
+    minOrder: product.specs?.minOrder || "",
+    turnaround: product.specs?.turnaround || "",
+    sizes: product.specs?.sizes || "",
+    printing: product.specs?.printing || "",
+  };
+
+  const sportName = product.sportTitle || "";
 
   return (
     <>
@@ -64,7 +94,7 @@ export default async function ProductPage({
               href={`/sport/${product.sportSlug}`}
               className="hover:text-orange-400 transition-colors capitalize"
             >
-              {product.sport}
+              {sportName}
             </Link>
             <span>/</span>
             <span className="text-orange-400 font-medium">{product.name}</span>
@@ -84,7 +114,7 @@ export default async function ProductPage({
               {/* Sport tag + title + code */}
               <div>
                 <span className="inline-block text-xs font-bold uppercase tracking-widest text-orange-500 mb-2">
-                  {product.sport} Uniforms
+                  {sportName} Uniforms
                 </span>
                 <h1 className="text-3xl md:text-4xl font-[family-name:var(--font-oswald)] font-bold text-gray-900 uppercase leading-tight mb-1">
                   {product.name}
@@ -100,9 +130,9 @@ export default async function ProductPage({
               <div className="grid grid-cols-2 gap-2.5">
                 {[
                   { label: "Material", value: product.fabric },
-                  { label: "Min. Order", value: product.specs.minOrder },
-                  { label: "Turnaround", value: product.specs.turnaround },
-                  { label: "Sizes", value: product.specs.sizes },
+                  { label: "Min. Order", value: specs.minOrder },
+                  { label: "Turnaround", value: specs.turnaround },
+                  { label: "Sizes", value: specs.sizes },
                 ].map((s) => (
                   <div
                     key={s.label}
@@ -120,12 +150,12 @@ export default async function ProductPage({
 
               {/* Tabs */}
               <ProductTabs
-                description={product.description}
-                longDescription={product.longDescription}
-                idealFor={product.idealFor}
-                features={product.features}
-                customOptions={product.customOptions}
-                specs={product.specs}
+                description={product.description || ""}
+                longDescription={product.longDescription || ""}
+                idealFor={product.idealFor || ""}
+                features={product.features || []}
+                customOptions={product.customOptions || []}
+                specs={specs}
               />
 
               {/* CTAs */}
@@ -269,13 +299,13 @@ export default async function ProductPage({
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-[#1e3056] rounded-xl px-4 sm:px-6 py-3 sm:py-4 mb-6 sm:mb-8">
               <h2 className="text-lg sm:text-xl md:text-2xl font-black text-white uppercase tracking-wide">
-                More {product.sport} Products
+                More {sportName} Products
               </h2>
               <Link
                 href={`/sport/${product.sportSlug}`}
                 className="text-xs sm:text-sm font-semibold text-white border border-white/50 hover:border-white hover:bg-white hover:text-[#1e3056] px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all duration-200 whitespace-nowrap"
               >
-                View All {product.sport}
+                View All {sportName}
               </Link>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
@@ -290,8 +320,8 @@ export default async function ProductPage({
                     style={{ aspectRatio: "1 / 1.1" }}
                   >
                     <Image
-                      src={rel.image}
-                      alt={rel.alt}
+                      src={imageUrl(rel.mainImage, 500)}
+                      alt={rel.alt || rel.name}
                       fill
                       className="object-contain object-center p-3 sm:p-5 md:p-6 group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"

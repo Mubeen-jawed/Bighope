@@ -218,15 +218,15 @@ const searchIndex = [
   { label: "Socks", href: "/range/socks", category: "Accessories" },
   { label: "Hats", href: "/range/hats", category: "Accessories" },
   { label: "Packages", href: "/packages", category: "Pages" },
-  { label: "Soccer Packages", href: "/packages/soccer", category: "Packages" },
+  { label: "Cricket Packages", href: "/packages/cricket", category: "Packages" },
   {
     label: "7v7 Football Packages",
     href: "/packages/7v7-football",
     category: "Packages",
   },
   {
-    label: "Baseball Packages",
-    href: "/packages/baseball",
+    label: "Cricket Kit Packages",
+    href: "/packages/cricket-kit",
     category: "Packages",
   },
   { label: "B2B Services", href: "/b2b", category: "Pages" },

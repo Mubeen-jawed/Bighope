@@ -164,7 +164,6 @@ export default function Footer() {
                 { label: "How to Order", href: "/how-it-works" },
                 { label: "Our Process", href: "/how-it-works" },
                 { label: "Become Our Agent", href: "/b2b" },
-                { label: "News", href: "#" },
               ].map((item) => (
                 <li key={item.label}>
                   <Link
@@ -235,11 +234,84 @@ export default function Footer() {
               Quick Links
             </h4>
             <ul className="space-y-2.5 text-gray-400 text-sm">
+              <li>
+                <details className="group">
+                  <summary className="hover:text-white cursor-pointer transition-all duration-200 flex items-center gap-1 list-none [&::-webkit-details-marker]:hidden">
+                    <svg
+                      className="w-3 h-3 text-orange-500 shrink-0 transition-transform duration-200 group-open:rotate-90"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2.5}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                    Our Range
+                  </summary>
+                  <div className="mt-2 ml-4 space-y-3">
+                    {[
+                      {
+                        heading: "Custom Uniforms",
+                        items: [
+                          { label: "Soccer / Football", href: "/sport/soccer" },
+                          { label: "Rugby", href: "/sport/rugby" },
+                          { label: "Basketball", href: "/sport/basketball" },
+                          { label: "Cricket", href: "/sport/cricket" },
+                          { label: "7v7 Football", href: "/sport/7v7-football" },
+                          { label: "Baseball / Softball", href: "/sport/baseball" },
+                          { label: "MMA", href: "/sport/mma" },
+                        ],
+                      },
+                      {
+                        heading: "Custom Teamwear",
+                        items: [
+                          { label: "Hoodie", href: "/range/hoodie" },
+                          { label: "T-Shirts", href: "/range/t-shirts" },
+                          { label: "Polo", href: "/range/polo" },
+                          { label: "Track Suits", href: "/range/track-suits" },
+                          { label: "1/4 Zipper", href: "/range/quarter-zipper" },
+                          { label: "Jackets", href: "/range/jackets" },
+                        ],
+                      },
+                      {
+                        heading: "Accessories",
+                        items: [
+                          { label: "Bags & Packs", href: "/range/bags-packs" },
+                          { label: "Duffle Bags", href: "/range/duffle-bags" },
+                          { label: "Socks", href: "/range/socks" },
+                          { label: "Hats", href: "/range/hats" },
+                        ],
+                      },
+                    ].map((cat) => (
+                      <div key={cat.heading}>
+                        <p className="text-xs font-bold uppercase tracking-widest text-orange-500 mb-1">
+                          {cat.heading}
+                        </p>
+                        <ul className="space-y-1">
+                          {cat.items.map((item) => (
+                            <li key={item.label}>
+                              <Link
+                                href={item.href}
+                                className="hover:text-white hover:pl-1 transition-all duration-200 flex items-center gap-1"
+                              >
+                                <span className="w-1 h-1 rounded-full bg-gray-600 shrink-0" />
+                                {item.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </details>
+              </li>
               {[
-                { label: "Our Range", href: "/sport/soccer" },
                 { label: "Packages", href: "/packages" },
                 { label: "B2B Services", href: "/b2b" },
-                { label: "Gallery", href: "#" },
                 { label: "Custom Order", href: "/contact" },
               ].map((item) => (
                 <li key={item.label}>
