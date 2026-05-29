@@ -30,8 +30,13 @@ export const structure: StructureResolver = (S) =>
               S.listItem()
                 .title("Custom Uniforms (Sports)")
                 .child(
-                  S.documentTypeList("sport")
+                  S.documentList()
                     .title("Custom Uniforms")
+                    .schemaType("sport")
+                    .filter(
+                      '_type == "sport" && !(slug.current in $exclude)',
+                    )
+                    .params({ exclude: ["teamwear", "accessories"] })
                     .child((sportId) =>
                       S.list()
                         .title("Range")
@@ -91,9 +96,8 @@ export const structure: StructureResolver = (S) =>
 
       S.divider(),
 
-      // ── Flat access to everything ──
+      // ── Every product, in one place ──
       S.documentTypeListItem("product").title("All Products"),
-      S.documentTypeListItem("range").title("All Teamwear / Accessory groups"),
 
       S.divider(),
 
