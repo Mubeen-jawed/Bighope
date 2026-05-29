@@ -102,7 +102,9 @@ export const navRangeQuery = groq`{
   "teamwear": *[_type == "range" && category == "Custom Teamwear"]
     | order(_createdAt asc){ "label": title, "slug": slug.current },
   "accessories": *[_type == "range" && category == "Accessories"]
-    | order(_createdAt asc){ "label": title, "slug": slug.current }
+    | order(_createdAt asc){ "label": title, "slug": slug.current },
+  "packages": *[_type == "package"]
+    | order(_createdAt asc){ "label": sport, "slug": slug.current }
 }`;
 
 /* ── Site settings (hero slider + banner image) ────────────────── */

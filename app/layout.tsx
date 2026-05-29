@@ -54,7 +54,11 @@ export default async function RootLayout({
     uniforms: NavGroup;
     teamwear: NavGroup;
     accessories: NavGroup;
-  } | null>({ query: navRangeQuery, tags: [TAGS.sport, TAGS.range] });
+    packages: NavGroup;
+  } | null>({
+    query: navRangeQuery,
+    tags: [TAGS.sport, TAGS.range, TAGS.package],
+  });
 
   const toItems = (group: NavGroup | undefined, base: string) =>
     (group ?? []).map((x) => ({ label: x.label, href: `${base}/${x.slug}` }));
@@ -68,6 +72,7 @@ export default async function RootLayout({
               uniforms={toItems(nav?.uniforms, "/sport")}
               teamwear={toItems(nav?.teamwear, "/range")}
               accessories={toItems(nav?.accessories, "/range")}
+              packages={toItems(nav?.packages, "/packages")}
             />
           }
           footer={<Footer />}

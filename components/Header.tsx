@@ -10,7 +10,6 @@ import {
   sportSlugCategory,
   rangeSlugCategory,
 } from "@/lib/slug-category-map";
-import { sportPackages } from "@/lib/packages";
 
 type NavItem = { label: string; href: string };
 
@@ -198,10 +197,12 @@ export default function Header({
   uniforms = [],
   teamwear = [],
   accessories = [],
+  packages = [],
 }: {
   uniforms?: NavItem[];
   teamwear?: NavItem[];
   accessories?: NavItem[];
+  packages?: NavItem[];
 }) {
   const rangeCategories = [
     { heading: "Custom Uniforms", icon: uniformsIcon, items: uniforms },
@@ -658,9 +659,9 @@ export default function Header({
                     All Packages
                   </Link>
                   <div className="my-1 h-px bg-gray-100" />
-                  {sportPackages.map((pkg) => (
+                  {packages.map((pkg) => (
                     <Link
-                      key={pkg.slug}
+                      key={pkg.href}
                       href={pkg.href}
                       className={`flex items-center gap-2 px-3 py-2 text-sm rounded-lg transition-all duration-150 ${
                         pathname === pkg.href
@@ -670,7 +671,7 @@ export default function Header({
                       onClick={() => setPackagesDropdown(false)}
                     >
                       <span className="w-1 h-1 rounded-full bg-gray-300 shrink-0" />
-                      {pkg.sport}
+                      {pkg.label}
                     </Link>
                   ))}
                 </div>
@@ -1135,9 +1136,9 @@ export default function Header({
                   >
                     All Packages
                   </Link>
-                  {sportPackages.map((pkg) => (
+                  {packages.map((pkg) => (
                     <Link
-                      key={pkg.slug}
+                      key={pkg.href}
                       href={pkg.href}
                       className={`flex items-center gap-2 px-8 py-2 text-sm transition-colors ${
                         pathname === pkg.href
@@ -1147,7 +1148,7 @@ export default function Header({
                       onClick={() => setMobileOpen(false)}
                     >
                       <span className="w-1 h-1 rounded-full bg-current shrink-0" />
-                      {pkg.sport}
+                      {pkg.label}
                     </Link>
                   ))}
                 </div>
