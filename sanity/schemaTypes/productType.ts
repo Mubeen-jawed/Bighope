@@ -32,11 +32,12 @@ export const productType = defineType({
     }),
     defineField({
       name: "sport",
-      title: "Sport / Range",
+      title: "Range",
       type: "reference",
       to: [{ type: "sport" }],
       group: "content",
-      description: "Which sport page this product appears on.",
+      description:
+        "Which range/section this product belongs to (e.g. MMA, Soccer). Required.",
       validation: (rule) => rule.required(),
     }),
     defineField({

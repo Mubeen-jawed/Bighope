@@ -256,7 +256,9 @@ export default function Header() {
   const packagesDropdownRef = useRef<HTMLDivElement>(null);
   const infoDropdownRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
+  const mobileSearchRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const mobileSearchInputRef = useRef<HTMLInputElement>(null);
   const rangeCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const packagesCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const infoCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -370,8 +372,10 @@ export default function Header() {
         !infoDropdownRef.current.contains(e.target as Node)
       )
         setInfoDropdown(false);
-      if (searchRef.current && !searchRef.current.contains(e.target as Node))
-        closeSearch();
+      const target = e.target as Node;
+      const insideDesktopSearch = searchRef.current?.contains(target);
+      const insideMobileSearch = mobileSearchRef.current?.contains(target);
+      if (!insideDesktopSearch && !insideMobileSearch) closeSearch();
     };
     window.addEventListener("scroll", handleScroll);
     document.addEventListener("mousedown", handleClickOutside);
@@ -382,7 +386,12 @@ export default function Header() {
   }, [closeSearch]);
 
   useEffect(() => {
-    if (searchOpen) searchInputRef.current?.focus();
+    if (searchOpen) {
+      // Both inputs stay mounted; focusing a hidden one is a no-op, so the
+      // visible one (desktop or mobile) ends up focused.
+      searchInputRef.current?.focus();
+      mobileSearchInputRef.current?.focus();
+    }
   }, [searchOpen]);
 
   // Close mobile menu on route change
@@ -962,7 +971,7 @@ export default function Header() {
       >
         <div
           className="bg-[#16254a] border-t border-white/10 px-4 py-2.5"
-          ref={searchRef}
+          ref={mobileSearchRef}
         >
           <div className="flex items-center bg-white/10 rounded-xl px-3 py-2 gap-2 max-w-lg mx-auto">
             <svg
@@ -979,7 +988,7 @@ export default function Header() {
               />
             </svg>
             <input
-              ref={searchInputRef}
+              ref={mobileSearchInputRef}
               type="text"
               value={searchQuery}
               placeholder="Search products..."

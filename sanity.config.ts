@@ -17,6 +17,21 @@ export default defineConfig({
   basePath: "/studio",
   projectId,
   dataset,
-  schema,
+  schema: {
+    types: schema.types,
+    // Lets "Create new" inside a range's product list pre-fill the Range.
+    templates: (prev) => [
+      ...prev,
+      {
+        id: "product-by-sport",
+        title: "Product (in this range)",
+        schemaType: "product",
+        parameters: [{ name: "sportId", type: "string" }],
+        value: (params: { sportId: string }) => ({
+          sport: { _type: "reference", _ref: params.sportId },
+        }),
+      },
+    ],
+  },
   plugins: [structureTool({ structure }), visionTool({ defaultApiVersion: apiVersion })],
 });

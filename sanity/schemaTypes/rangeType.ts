@@ -7,7 +7,7 @@ import { defineField, defineType } from "sanity";
  */
 export const rangeType = defineType({
   name: "range",
-  title: "Range (sub-collection)",
+  title: "Teamwear / Accessory group",
   type: "document",
   fields: [
     defineField({

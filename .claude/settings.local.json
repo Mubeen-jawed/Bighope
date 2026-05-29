@@ -55,7 +55,8 @@
       "Bash(grep -n \"\\\\${B}\" lib/products.ts)",
       "Bash(grep -c '\\\\${B}' lib/products.ts)",
       "Bash(grep -rn \"wp-content\\\\|bighopesports.com/wp\\\\|\\\\${B}\" lib/ app/ components/)",
-      "Bash(grep -rhoE \"https?://[a-zA-Z0-9.-]+\\\\.[a-z]+/[^\\\\\" \\\\`'\\)]*\\\\.\\(webp|png|jpg|jpeg|gif|svg\\)\" lib/ app/ components/)"
+      "Bash(grep -rhoE \"https?://[a-zA-Z0-9.-]+\\\\.[a-z]+/[^\\\\\" \\\\`'\\)]*\\\\.\\(webp|png|jpg|jpeg|gif|svg\\)\" lib/ app/ components/)",
+      "PowerShell(taskkill *)"
     ]
   }
 }

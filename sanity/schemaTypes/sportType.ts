@@ -7,7 +7,7 @@ import { defineField, defineType } from "sanity";
  */
 export const sportType = defineType({
   name: "sport",
-  title: "Sport / Range",
+  title: "Range (main section)",
   type: "document",
   fields: [
     defineField({

@@ -61,20 +61,6 @@ export default function DSPBanner({
               className="object-cover object-center"
               sizes="50vw"
             />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(to right, transparent 35%, rgba(255,255,255,0.85) 80%, #ffffff 100%)",
-              }}
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(to top, #ffffff 0%, transparent 35%)",
-              }}
-            />
 
             {/* Floating stat chips */}
             {/* <div className="absolute bottom-10 left-8 flex flex-col gap-3">
