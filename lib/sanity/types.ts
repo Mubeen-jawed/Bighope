@@ -17,6 +17,8 @@ export interface ProductCard {
   description?: string;
   mainImage: SanityImage;
   alt?: string;
+  fabric?: string;
+  productCode?: string;
 }
 
 export interface SportPage {

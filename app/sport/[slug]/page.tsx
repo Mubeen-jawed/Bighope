@@ -1,11 +1,10 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import CatalogViewer from "@/components/CatalogViewer";
+import ProductFilterGrid from "@/components/ProductFilterGrid";
 import { sanityFetch } from "@/lib/sanity/client";
 import { sportBySlugQuery, sportSlugsQuery, TAGS } from "@/lib/sanity/queries";
-import { imageUrl } from "@/lib/sanity/image";
 import type { SportPage as SportPageData } from "@/lib/sanity/types";
 
 // Allow sports added in Sanity after build to be generated on first request.
@@ -89,54 +88,7 @@ export default async function SportPage({
               </a>
             </div>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
-              {products.map((product) => (
-                <Link
-                  key={product.slug}
-                  href={`/product/${product.slug}`}
-                  className="group flex flex-col bg-white rounded-xl overflow-hidden shadow-md card-hover"
-                >
-                  {/* Image, object-contain on white background */}
-                  <div
-                    className="relative w-full bg-white"
-                    style={{ aspectRatio: "1 / 1.1" }}
-                  >
-                    <Image
-                      src={imageUrl(product.mainImage, 500)}
-                      alt={product.alt || product.name}
-                      fill
-                      className="object-contain object-center p-3 sm:p-5 md:p-6 group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    />
-                  </div>
-
-                  {/* Card footer */}
-                  <div className="px-3 pb-3 pt-2 sm:px-4 sm:pb-5">
-                    <h3 className="font-bold text-gray-900 text-[11px] sm:text-sm uppercase tracking-wider leading-snug mb-2 sm:mb-3">
-                      {product.name}
-                    </h3>
-                    <div className="flex items-center justify-between border-t border-gray-200 pt-2 sm:pt-3">
-                      <span className="text-[9px] sm:text-xs font-bold uppercase tracking-widest text-gray-600 group-hover:text-orange-500 transition-colors duration-200">
-                        View Product
-                      </span>
-                      <svg
-                        className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 group-hover:text-orange-500 group-hover:translate-x-1 transition-all duration-200 flex-shrink-0"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+            <ProductFilterGrid products={products} />
           )}
         </div>
       </section>

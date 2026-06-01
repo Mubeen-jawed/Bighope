@@ -28,7 +28,7 @@ export const sportBySlugQuery = groq`
   *[_type == "sport" && slug.current == $slug][0]{
     _id, title, "slug": slug.current, description, quoteCategory,
     "products": *[_type == "product" && references(^._id)] | order(name asc){
-      _id, name, "slug": slug.current, description, mainImage, alt
+      _id, name, "slug": slug.current, description, mainImage, alt, fabric, productCode
     }
   }
 `;
