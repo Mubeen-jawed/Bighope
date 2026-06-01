@@ -61,7 +61,7 @@ export default function ProductFilterGrid({
   return (
     <div>
       {/* ── Filter toolbar ── */}
-      <div className="sticky top-16 md:top-20 z-20 -mx-4 px-4 py-3 mb-6 md:mb-8 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/75 border-y border-gray-100">
+      <div className="mb-6 md:mb-8 p-3 sm:p-4 rounded-xl bg-gray-50 border border-gray-100">
         <div className="flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-4">
           {/* Search */}
           <div className="relative flex-1 min-w-0">
