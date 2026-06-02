@@ -126,17 +126,9 @@ html {
   }
 }
 
-/* Skip rendering work for below-fold sections until they approach viewport. */
-.content-visibility-auto {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 900px;
-}
-
 /* Button transitions */
 button,
 a {
-  transition-property: color, background-color, border-color, opacity, transform,
-    box-shadow;
-  transition-duration: 0.2s;
-  transition-timing-function: ease;
+  transition: all 0.2s ease;
 }
+

@@ -12,7 +12,7 @@ export default async function Packages() {
   });
 
   return (
-    <section id="packages" className="content-visibility-auto bg-gray-50 py-16">
+    <section id="packages" className="bg-gray-50 py-16">
       <div className="max-w-7xl mx-auto px-4">
         {/* Heading */}
         <div className="text-center mb-10">

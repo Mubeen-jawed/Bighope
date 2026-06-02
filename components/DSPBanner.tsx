@@ -47,7 +47,7 @@ export default function DSPBanner({
   imageSrc?: string;
 }) {
   return (
-    <section className="content-visibility-auto relative overflow-hidden">
+    <section className="relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-orange-50" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(249,115,22,0.08),transparent_55%)]" />
       <div className="relative max-w-7xl mx-auto">

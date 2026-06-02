@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function B2BBanner() {
   return (
-    <section className="content-visibility-auto bg-[#0f1629]">
+    <section className="bg-[#0f1629]">
       <div className="max-w-3xl mx-auto px-6 py-20 sm:py-28 text-center">
         {/* Eyebrow */}
 

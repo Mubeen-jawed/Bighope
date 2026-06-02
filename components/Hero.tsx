@@ -154,28 +154,6 @@ function MobileText({ slide }: { slide: Slide }) {
 const desktopGradient =
   "linear-gradient(to left, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.42) 42%, transparent 68%)";
 
-function FullWidthImage({
-  slide,
-  priority,
-}: {
-  slide: FullWidthSlide;
-  priority: boolean;
-}) {
-  return (
-    <picture className="block h-full w-full">
-      <source media="(min-width: 768px)" srcSet={slide.pcImage} />
-      <img
-        src={slide.mbImage}
-        alt={slide.mainText}
-        className="h-full w-full object-cover object-top"
-        decoding={priority ? "sync" : "async"}
-        fetchPriority={priority ? "high" : "auto"}
-        loading={priority ? "eager" : "lazy"}
-      />
-    </picture>
-  );
-}
-
 export default function Hero({ slides }: { slides: Slide[] }) {
   const [current, setCurrent] = useState(0);
   const touchStartX = useRef(0);
@@ -205,57 +183,66 @@ export default function Hero({ slides }: { slides: Slide[] }) {
   };
 
   if (count === 0) return null;
-  const activeSlide = slides[current];
 
   return (
-    <>
-      {current === 0 && activeSlide.fullWidth && (
-        <>
-          <link
-            rel="preload"
-            as="image"
-            href={activeSlide.mbImage}
-            media="(max-width: 767px)"
-          />
-          <link
-            rel="preload"
-            as="image"
-            href={activeSlide.pcImage}
-            media="(min-width: 768px)"
-          />
-        </>
-      )}
-      <div
+    <div
       className="relative w-full flex flex-col h-[calc(100vh-64px)] sm:h-[calc(100vh-102px)]"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
       {/* ── IMAGE AREA ── */}
       <div className="relative w-full overflow-hidden flex-1">
-        <div key={current} className="absolute inset-0 hero-slide-active">
-          {activeSlide.fullWidth ? (
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className="absolute inset-0"
+            style={{
+              opacity: index === current ? 1 : 0,
+              zIndex: index === current ? 1 : 0,
+              transition: "opacity 1.3s ease-in-out",
+              pointerEvents: index === current ? "auto" : "none",
+            }}
+          >
+            {slide.fullWidth ? (
               /* ═══ FULL-WIDTH SLIDE ═══ */
               <>
-                <div className="absolute inset-0">
-                  <FullWidthImage
-                    slide={activeSlide}
-                    priority={current === 0}
+                {/* Mobile */}
+                <div className="block md:hidden absolute inset-0">
+                  <Image
+                    src={slide.mbImage}
+                    alt={slide.mainText}
+                    fill
+                    priority={index === 0}
+                    sizes="100vw"
+                    style={{ objectFit: "cover", objectPosition: "center top" }}
                   />
                   <div
-                    className="absolute inset-0 pointer-events-none md:hidden"
+                    className="absolute inset-0 pointer-events-none"
                     style={{
                       background:
                         "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.55) 38%, transparent 68%)",
                     }}
                   />
+                </div>
+
+                {/* Desktop */}
+                <div className="hidden md:block absolute inset-0">
+                  <Image
+                    src={slide.pcImage}
+                    alt={slide.mainText}
+                    fill
+                    priority={index === 0}
+                    sizes="100vw"
+                    style={{ objectFit: "cover", objectPosition: "center top" }}
+                  />
                   <div
-                    className="absolute inset-0 pointer-events-none hidden md:block"
+                    className="absolute inset-0 pointer-events-none"
                     style={{ background: desktopGradient, zIndex: 2 }}
                   />
                 </div>
 
-                <MobileText slide={activeSlide} />
-                <DesktopText slide={activeSlide} />
+                <MobileText slide={slide} />
+                <DesktopText slide={slide} />
               </>
             ) : (
               /* ═══ SPLIT-PANEL SLIDE ═══ */
@@ -270,10 +257,10 @@ export default function Hero({ slides }: { slides: Slide[] }) {
                     }}
                   >
                     <Image
-                      src={activeSlide.leftImage}
+                      src={slide.leftImage}
                       alt=""
                       fill
-                      priority={current === 0}
+                      priority={index === 0}
                       sizes="60vw"
                       style={{
                         objectFit: "cover",
@@ -289,10 +276,10 @@ export default function Hero({ slides }: { slides: Slide[] }) {
                     }}
                   >
                     <Image
-                      src={activeSlide.rightImage}
+                      src={slide.rightImage}
                       alt=""
                       fill
-                      priority={current === 0}
+                      priority={index === 0}
                       sizes="60vw"
                       style={{
                         objectFit: "cover",
@@ -327,10 +314,10 @@ export default function Hero({ slides }: { slides: Slide[] }) {
                       }}
                     >
                       <Image
-                        src={activeSlide.leftImage}
+                        src={slide.leftImage}
                         alt=""
                         fill
-                        priority={current === 0}
+                        priority={index === 0}
                         sizes="55vw"
                         style={{ objectFit: "cover", objectPosition: "center" }}
                       />
@@ -351,10 +338,10 @@ export default function Hero({ slides }: { slides: Slide[] }) {
                       }}
                     >
                       <Image
-                        src={activeSlide.rightImage}
+                        src={slide.rightImage}
                         alt=""
                         fill
-                        priority={current === 0}
+                        priority={index === 0}
                         sizes="45vw"
                         style={{ objectFit: "cover", objectPosition: "center" }}
                       />
@@ -367,11 +354,12 @@ export default function Hero({ slides }: { slides: Slide[] }) {
                   />
                 </div>
 
-                <MobileText slide={activeSlide} />
-                <DesktopText slide={activeSlide} />
+                <MobileText slide={slide} />
+                <DesktopText slide={slide} />
               </>
             )}
-        </div>
+          </div>
+        ))}
 
         {/* ── NEON STRIPS, desktop only ── */}
         <div
@@ -490,7 +478,6 @@ export default function Hero({ slides }: { slides: Slide[] }) {
           ))}
         </div>
       </div>
-      </div>
-    </>
+    </div>
   );
 }
