@@ -57,63 +57,121 @@ export default async function RangePage({
       />
 
       {/* ── Products ── */}
-      <section className="py-12 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          {/* Section header, centered like sport pages */}
-          <div className="text-center mb-8 md:mb-12">
-            <p className="text-orange-500 font-bold text-xs sm:text-sm uppercase tracking-widest mb-2">
-              {range.category}
-            </p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-[family-name:var(--font-oswald)] font-bold text-gray-900 uppercase mb-4">
+      <section className="relative py-14 md:py-20 overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-50">
+        {/* texture + accents */}
+        <div className="pointer-events-none absolute inset-0">
+          <div
+            className="absolute inset-0 opacity-50"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle, rgba(15,24,48,0.06) 1px, transparent 1px)",
+              backgroundSize: "22px 22px",
+              maskImage:
+                "radial-gradient(ellipse at center, black 35%, transparent 85%)",
+              WebkitMaskImage:
+                "radial-gradient(ellipse at center, black 35%, transparent 85%)",
+            }}
+          />
+          <div className="absolute -top-32 right-0 w-96 h-96 rounded-full bg-orange-500/10 blur-3xl" />
+          <div className="absolute -bottom-32 -left-10 w-80 h-80 rounded-full bg-blue-500/5 blur-3xl" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4">
+          {/* Section header */}
+          <div className="text-center mb-10 md:mb-14">
+            {range.category && (
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/10 ring-1 ring-orange-500/20 mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+                <span className="text-orange-600 text-[11px] font-black uppercase tracking-[0.2em]">
+                  {range.category}
+                </span>
+              </span>
+            )}
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-[family-name:var(--font-oswald)] font-bold text-gray-900 uppercase mb-4 tracking-tight">
               {range.title}
             </h2>
-            <div className="w-16 h-1 bg-orange-500 rounded mx-auto mb-5 md:mb-6" />
+            <div className="w-16 h-1.5 rounded-full bg-gradient-to-r from-orange-400 to-orange-600 mx-auto mb-6" />
             <CatalogViewer label="VIEW CATALOG" variant="section-blue" />
           </div>
 
           {products.length === 0 ? (
             /* Coming Soon state */
-            <div className="text-center py-14 md:py-24 border border-gray-200 rounded-2xl bg-gray-50 px-4">
-              <h3 className="text-lg md:text-xl font-bold text-gray-700 uppercase tracking-widest mb-3">
-                Coming Soon
-              </h3>
-              <p className="text-gray-400 mb-7 md:mb-8 max-w-sm mx-auto text-sm">
-                Products in this category are on their way. Contact us to
-                enquire about custom orders.
-              </p>
-              <a
-                href="/contact"
-                className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-lg transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
-              >
-                Enquire Now
-              </a>
+            <div className="relative overflow-hidden text-center py-16 md:py-24 rounded-3xl border border-dashed border-orange-300/70 bg-white/70 backdrop-blur-sm px-6">
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-orange-50 to-transparent" />
+              <div className="relative">
+                <div className="mx-auto mb-5 flex items-center justify-center w-16 h-16 rounded-2xl bg-orange-500/10 ring-1 ring-orange-500/20">
+                  <svg
+                    className="w-8 h-8 text-orange-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-lg md:text-2xl font-[family-name:var(--font-oswald)] font-bold text-gray-800 uppercase tracking-widest mb-3">
+                  Coming Soon
+                </h3>
+                <p className="text-gray-500 mb-7 md:mb-8 max-w-sm mx-auto text-sm">
+                  Products in this category are on their way. Contact us to
+                  enquire about custom orders.
+                </p>
+                <a
+                  href="/contact"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-7 py-3 rounded-xl shadow-lg shadow-orange-500/25 transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
+                >
+                  Enquire Now
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2.5}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </a>
+              </div>
             </div>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
-              {products.map((product) => (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-5">
+              {products.map((product, i) => (
                 <Link
                   key={product.slug}
                   href={`/product/${product.slug}`}
-                  className="group flex flex-col bg-white rounded-xl overflow-hidden shadow-md card-hover"
+                  className="group relative flex flex-col bg-white rounded-2xl overflow-hidden shadow-md ring-1 ring-black/5 card-hover hover:ring-2 hover:ring-orange-400/60"
                 >
                   <div
-                    className="relative w-full bg-white"
+                    className="relative w-full bg-gradient-to-br from-gray-50 to-gray-100"
                     style={{ aspectRatio: "1 / 1.1" }}
                   >
                     <Image
                       src={imageUrl(product.mainImage, 500)}
                       alt={product.name}
                       fill
-                      className="object-contain object-center p-3 sm:p-5 md:p-6 group-hover:scale-105 transition-transform duration-500"
+                      className="object-contain object-center p-3 sm:p-5 md:p-6 group-hover:scale-110 transition-transform duration-500"
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     />
+                    {/* Corner index */}
+                    <span className="absolute top-2.5 left-2.5 flex items-center justify-center w-7 h-7 rounded-full bg-gray-900/5 text-gray-400 text-[10px] font-bold font-[family-name:var(--font-oswald)] group-hover:bg-orange-500 group-hover:text-white transition-colors duration-200">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                   </div>
 
                   <div className="px-3 pb-3 pt-2 sm:px-4 sm:pb-5">
-                    <h3 className="font-bold text-gray-900 text-[11px] sm:text-sm uppercase tracking-wider leading-snug mb-2 sm:mb-3">
+                    <h3 className="font-bold text-gray-900 text-[11px] sm:text-sm uppercase tracking-wider leading-snug mb-2 sm:mb-3 group-hover:text-orange-600 transition-colors">
                       {product.name}
                     </h3>
-                    <div className="flex items-center justify-between border-t border-gray-200 pt-2 sm:pt-3">
+                    <div className="flex items-center justify-between border-t border-gray-100 pt-2 sm:pt-3">
                       <span className="text-[9px] sm:text-xs font-bold uppercase tracking-widest text-gray-600 group-hover:text-orange-500 transition-colors duration-200">
                         View Product
                       </span>
@@ -140,25 +198,50 @@ export default async function RangePage({
       </section>
 
       {/* ── CTA ── */}
-      <section className="bg-[#0f1830] py-10 md:py-16">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-[family-name:var(--font-oswald)] font-bold text-white uppercase mb-3 md:mb-4">
+      <section className="relative overflow-hidden bg-[#0f1830] py-12 md:py-20">
+        {/* texture */}
+        <div className="pointer-events-none absolute inset-0">
+          <div
+            className="absolute inset-0 opacity-20"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 20% 20%, rgba(249,115,22,0.5) 0, transparent 45%), radial-gradient(circle at 80% 80%, rgba(37,99,235,0.4) 0, transparent 45%)",
+            }}
+          />
+          <div
+            className="absolute inset-0 opacity-[0.06]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,0.7) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.7) 1px, transparent 1px)",
+              backgroundSize: "40px 40px",
+            }}
+          />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 text-center">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 ring-1 ring-white/15 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
+            <span className="text-orange-300 text-[11px] font-black uppercase tracking-[0.2em]">
+              Custom Teamwear
+            </span>
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-[family-name:var(--font-oswald)] font-bold text-white uppercase mb-3 md:mb-4">
             Ready to Kit Out Your Team?
           </h2>
-          <p className="text-gray-300 text-sm sm:text-base mb-6 md:mb-8 max-w-lg mx-auto">
+          <p className="text-gray-300 text-sm sm:text-base mb-7 md:mb-9 max-w-lg mx-auto">
             Send us your design ideas or let our team create something amazing.
             Free quote, no obligation.
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
             <a
               href="/contact"
-              className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 sm:px-8 py-3 rounded-lg transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
+              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-7 sm:px-8 py-3 rounded-xl shadow-lg shadow-orange-500/25 transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
             >
               Get a Free Quote
             </a>
             <Link
               href="/packages"
-              className="border-2 border-white/50 hover:border-white text-white font-bold px-6 sm:px-8 py-3 rounded-lg transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
+              className="border-2 border-white/40 hover:border-white hover:bg-white/5 text-white font-bold px-7 sm:px-8 py-3 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
             >
               View Packages
             </Link>

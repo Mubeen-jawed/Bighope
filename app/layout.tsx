@@ -23,7 +23,10 @@ const oswald = Oswald({
   display: "swap",
 });
 
+const previewImage = "/logo/logo-banner.png";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bighopesports.com"),
   title: {
     default: "Big Hope Sports | Custom Sports Uniforms & Teamwear",
     template: "%s | Big Hope Sports",
@@ -40,6 +43,23 @@ export const metadata: Metadata = {
     description:
       "Premium custom sports uniforms and teamwear. Free artwork, worldwide shipping, 2–4 week turnaround.",
     type: "website",
+    url: "/",
+    siteName: "Big Hope Sports",
+    images: [
+      {
+        url: previewImage,
+        width: 2848,
+        height: 1504,
+        alt: "Big Hope Sports logo banner",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Big Hope Sports, Custom Sports Uniforms & Teamwear",
+    description:
+      "Premium custom sports uniforms and teamwear. Free artwork, worldwide shipping, 2-4 week turnaround.",
+    images: [previewImage],
   },
 };
 
