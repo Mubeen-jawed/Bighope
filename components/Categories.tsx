@@ -14,7 +14,7 @@ export default async function Categories() {
   return (
     <section
       id="categories"
-      className="relative py-20 overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-50"
+      className="content-visibility-auto relative py-20 overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-50"
     >
       {/* Decorative texture + soft accents */}
       <div className="pointer-events-none absolute inset-0">

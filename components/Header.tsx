@@ -357,8 +357,7 @@ export default function Header({
 
   useEffect(() => {
     if (searchOpen) {
-      // Both inputs stay mounted; focusing a hidden one is a no-op, so the
-      // visible one (desktop or mobile) ends up focused.
+      // Focus whichever search input is mounted for the current viewport.
       searchInputRef.current?.focus();
       mobileSearchInputRef.current?.focus();
     }
@@ -509,7 +508,6 @@ export default function Header({
                 scrolled ? "h-10 sm:h-12" : "h-10 sm:h-11 lg:h-13"
               }`}
               style={{ width: "auto" }}
-              priority
             />
           </Link>
 
@@ -565,43 +563,41 @@ export default function Header({
               </button>
 
               {/* Mega-menu dropdown */}
-              <div
-                className={`absolute top-full left-0 z-50 mt-1 bg-white text-gray-800 shadow-2xl shadow-black/20 rounded-xl border border-gray-100 overflow-hidden transition-all duration-150 ease-out ${
-                  rangeDropdown
-                    ? "opacity-100 translate-y-0 pointer-events-auto"
-                    : "opacity-0 -translate-y-1 pointer-events-none"
-                }`}
-                style={{ minWidth: "680px" }}
-                onMouseEnter={openRange}
-                onMouseLeave={closeRange}
-              >
-                <div className="grid grid-cols-3 divide-x divide-gray-100 p-2">
-                  {rangeCategories.map((cat) => (
-                    <div key={cat.heading} className="py-4 px-5">
-                      <div className="flex items-center gap-2 text-orange-500 mb-3 pb-2.5 border-b border-gray-100">
-                        {cat.icon}
-                        <p className="text-xs font-black uppercase tracking-widest text-gray-900">
-                          {cat.heading}
-                        </p>
+              {rangeDropdown && (
+                <div
+                  className="absolute top-full left-0 z-50 mt-1 bg-white text-gray-800 shadow-2xl shadow-black/20 rounded-xl border border-gray-100 overflow-hidden transition-all duration-150 ease-out opacity-100 translate-y-0 pointer-events-auto"
+                  style={{ minWidth: "680px" }}
+                  onMouseEnter={openRange}
+                  onMouseLeave={closeRange}
+                >
+                  <div className="grid grid-cols-3 divide-x divide-gray-100 p-2">
+                    {rangeCategories.map((cat) => (
+                      <div key={cat.heading} className="py-4 px-5">
+                        <div className="flex items-center gap-2 text-orange-500 mb-3 pb-2.5 border-b border-gray-100">
+                          {cat.icon}
+                          <p className="text-xs font-black uppercase tracking-widest text-gray-900">
+                            {cat.heading}
+                          </p>
+                        </div>
+                        <ul className="space-y-0.5">
+                          {cat.items.map((item) => (
+                            <li key={item.label}>
+                              <Link
+                                href={item.href}
+                                className="flex items-center gap-2 py-1.5 px-2 text-sm text-gray-600 hover:text-orange-500 hover:bg-orange-50 rounded-lg transition-all duration-150 group/item"
+                                onClick={() => setRangeDropdown(false)}
+                              >
+                                <span className="w-1 h-1 rounded-full bg-gray-300 group-hover/item:bg-orange-400 transition-colors shrink-0" />
+                                {item.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                      <ul className="space-y-0.5">
-                        {cat.items.map((item) => (
-                          <li key={item.label}>
-                            <Link
-                              href={item.href}
-                              className="flex items-center gap-2 py-1.5 px-2 text-sm text-gray-600 hover:text-orange-500 hover:bg-orange-50 rounded-lg transition-all duration-150 group/item"
-                              onClick={() => setRangeDropdown(false)}
-                            >
-                              <span className="w-1 h-1 rounded-full bg-gray-300 group-hover/item:bg-orange-400 transition-colors shrink-0" />
-                              {item.label}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
             {/* Packages dropdown */}
@@ -637,45 +633,43 @@ export default function Header({
                 </svg>
               </button>
 
-              <div
-                className={`absolute top-full left-0 mt-1 bg-white text-gray-800 shadow-2xl shadow-black/20 rounded-xl min-w-[240px] z-50 border border-gray-100 overflow-hidden transition-all duration-150 ease-out ${
-                  packagesDropdown
-                    ? "opacity-100 translate-y-0 pointer-events-auto"
-                    : "opacity-0 -translate-y-1 pointer-events-none"
-                }`}
-                onMouseEnter={openPackages}
-                onMouseLeave={closePackages}
-              >
-                <div className="p-1.5">
-                  <Link
-                    href="/packages"
-                    className={`flex items-center gap-2 px-3 py-2 text-sm rounded-lg transition-all duration-150 ${
-                      pathname === "/packages"
-                        ? "text-orange-500 bg-orange-50 font-medium"
-                        : "text-gray-600 hover:text-orange-500 hover:bg-orange-50"
-                    }`}
-                    onClick={() => setPackagesDropdown(false)}
-                  >
-                    All Packages
-                  </Link>
-                  <div className="my-1 h-px bg-gray-100" />
-                  {packages.map((pkg) => (
+              {packagesDropdown && (
+                <div
+                  className="absolute top-full left-0 mt-1 bg-white text-gray-800 shadow-2xl shadow-black/20 rounded-xl min-w-[240px] z-50 border border-gray-100 overflow-hidden transition-all duration-150 ease-out opacity-100 translate-y-0 pointer-events-auto"
+                  onMouseEnter={openPackages}
+                  onMouseLeave={closePackages}
+                >
+                  <div className="p-1.5">
                     <Link
-                      key={pkg.href}
-                      href={pkg.href}
+                      href="/packages"
                       className={`flex items-center gap-2 px-3 py-2 text-sm rounded-lg transition-all duration-150 ${
-                        pathname === pkg.href
+                        pathname === "/packages"
                           ? "text-orange-500 bg-orange-50 font-medium"
                           : "text-gray-600 hover:text-orange-500 hover:bg-orange-50"
                       }`}
                       onClick={() => setPackagesDropdown(false)}
                     >
-                      <span className="w-1 h-1 rounded-full bg-gray-300 shrink-0" />
-                      {pkg.label}
+                      All Packages
                     </Link>
-                  ))}
+                    <div className="my-1 h-px bg-gray-100" />
+                    {packages.map((pkg) => (
+                      <Link
+                        key={pkg.href}
+                        href={pkg.href}
+                        className={`flex items-center gap-2 px-3 py-2 text-sm rounded-lg transition-all duration-150 ${
+                          pathname === pkg.href
+                            ? "text-orange-500 bg-orange-50 font-medium"
+                            : "text-gray-600 hover:text-orange-500 hover:bg-orange-50"
+                        }`}
+                        onClick={() => setPackagesDropdown(false)}
+                      >
+                        <span className="w-1 h-1 rounded-full bg-gray-300 shrink-0" />
+                        {pkg.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
             <Link
@@ -727,32 +721,30 @@ export default function Header({
                 </svg>
               </button>
 
-              <div
-                className={`absolute top-full left-0 mt-1 bg-white text-gray-800 shadow-2xl shadow-black/20 rounded-xl min-w-[210px] z-50 border border-gray-100 overflow-hidden transition-all duration-150 ease-out ${
-                  infoDropdown
-                    ? "opacity-100 translate-y-0 pointer-events-auto"
-                    : "opacity-0 -translate-y-1 pointer-events-none"
-                }`}
-                onMouseEnter={openInfo}
-                onMouseLeave={closeInfo}
-              >
-                <div className="p-1.5">
-                  {infoLinks.map((item) => (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      className={`block px-3 py-2 text-sm rounded-lg transition-all duration-150 ${
-                        isActive(item.href)
-                          ? "text-orange-500 bg-orange-50 font-medium"
-                          : "text-gray-600 hover:text-orange-500 hover:bg-orange-50"
-                      }`}
-                      onClick={() => setInfoDropdown(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
+              {infoDropdown && (
+                <div
+                  className="absolute top-full left-0 mt-1 bg-white text-gray-800 shadow-2xl shadow-black/20 rounded-xl min-w-[210px] z-50 border border-gray-100 overflow-hidden transition-all duration-150 ease-out opacity-100 translate-y-0 pointer-events-auto"
+                  onMouseEnter={openInfo}
+                  onMouseLeave={closeInfo}
+                >
+                  <div className="p-1.5">
+                    {infoLinks.map((item) => (
+                      <Link
+                        key={item.label}
+                        href={item.href}
+                        className={`block px-3 py-2 text-sm rounded-lg transition-all duration-150 ${
+                          isActive(item.href)
+                            ? "text-orange-500 bg-orange-50 font-medium"
+                            : "text-gray-600 hover:text-orange-500 hover:bg-orange-50"
+                        }`}
+                        onClick={() => setInfoDropdown(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
             <Link
@@ -932,13 +924,8 @@ export default function Header({
       </div>
 
       {/* ── Mobile inline search (tap search icon in header) ── */}
-      <div
-        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          searchOpen && !mobileOpen
-            ? "max-h-24 opacity-100"
-            : "max-h-0 opacity-0"
-        }`}
-      >
+      {searchOpen && !mobileOpen && (
+      <div className="lg:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-24 opacity-100">
         <div
           className="bg-[#16254a] border-t border-white/10 px-4 py-2.5"
           ref={mobileSearchRef}
@@ -1012,13 +999,11 @@ export default function Header({
           )}
         </div>
       </div>
+      )}
 
       {/* ── Mobile menu ── */}
-      <div
-        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          mobileOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
+      {mobileOpen && (
+      <div className="lg:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-screen opacity-100">
         <div className="bg-[#0f1c3a] border-t border-white/10 text-white max-h-[80vh] overflow-y-auto">
           <div className="px-4 pt-3 pb-3 flex flex-col gap-0.5">
             {/* Home */}
@@ -1282,6 +1267,7 @@ export default function Header({
           </div>
         </div>
       </div>
+      )}
     </header>
   );
 }
