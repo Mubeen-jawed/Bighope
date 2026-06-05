@@ -41,6 +41,13 @@ export async function generateMetadata({
   };
 }
 
+/** Local detail-page infographics, keyed by sport name. */
+const detailImages: Record<string, string> = {
+  Cricket: "/packages/cricket-inside-package.png",
+  "Soccer/Football": "/packages/football-inside-package.png",
+  "7v7 Football": "/packages/7v7-silver-tier.webp",
+};
+
 export default async function PackageDetailPage({
   params,
 }: {
@@ -85,7 +92,7 @@ export default async function PackageDetailPage({
               <div className="w-16 h-1 bg-orange-500 rounded mb-6" />
 
               <p className="text-gray-500 text-base leading-relaxed mb-8">
-                {pkg.longDescription}
+                {pkg.description}
               </p>
 
               <div className="space-y-3 mb-8">
@@ -95,7 +102,7 @@ export default async function PackageDetailPage({
                     className="flex items-center gap-3 text-gray-700"
                   >
                     <svg
-                      className="w-5 h-5 text-green-500 shrink-0"
+                      className="w-5 h-5 text-orange-500 shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -114,7 +121,7 @@ export default async function PackageDetailPage({
 
               <div className="flex items-center gap-2 text-gray-500 text-sm bg-gray-50 rounded-lg px-4 py-2.5 w-fit mb-8">
                 <svg
-                  className="w-4 h-4 text-blue-500"
+                  className="w-4 h-4 text-orange-500"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -131,7 +138,7 @@ export default async function PackageDetailPage({
 
               <a
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-[#1e3056] hover:bg-[#162440] text-white font-bold px-6 sm:px-8 py-3 rounded-lg transition-all duration-200 hover:-translate-y-0.5 shadow-lg text-sm sm:text-base"
+                className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 sm:px-8 py-3 rounded-lg transition-all duration-200 hover:-translate-y-0.5 shadow-lg text-sm sm:text-base"
               >
                 Request a Quote, {pkg.sport}
                 <svg
@@ -153,7 +160,7 @@ export default async function PackageDetailPage({
             {/* Right, image (no background, transparent) */}
             <div className="relative flex items-center justify-center">
               <Image
-                src={imageUrl(pkg.cardImage, 700)}
+                src={detailImages[pkg.sport] ?? imageUrl(pkg.cardImage, 700)}
                 alt={`${pkg.sport} Package`}
                 width={600}
                 height={600}

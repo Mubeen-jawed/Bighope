@@ -97,7 +97,13 @@ export default async function PackagesPage() {
                   style={{ aspectRatio: "4/3" }}
                 >
                   <Image
-                    src={imageUrl(pkg.cardImage, 600)}
+                    src={
+                      pkg.sport === "Soccer/Football"
+                        ? "/packages/football-package.png"
+                        : pkg.sport === "7v7 Football"
+                          ? "/packages/7v7-package.png"
+                          : imageUrl(pkg.cardImage, 600)
+                    }
                     alt={`${pkg.sport} Package`}
                     fill
                     className="object-contain object-center"
