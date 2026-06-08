@@ -7,6 +7,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import SiteChrome from "@/components/SiteChrome";
 import { sanityFetch } from "@/lib/sanity/client";
 import { navRangeQuery, TAGS } from "@/lib/sanity/queries";
+import { Analytics } from "@vercel/analytics/next";
 
 type NavGroup = { label: string; slug: string }[];
 
@@ -100,6 +101,7 @@ export default async function RootLayout({
         >
           {children}
         </SiteChrome>
+        <Analytics />
       </body>
     </html>
   );
