@@ -9,18 +9,6 @@ export const metadata: Metadata = {
 
 const fabrics = [
   {
-    name: "Bamboo",
-    category: "Treinda",
-    image: "/fabrics/bamboo.png",
-    properties: [
-      "100% Polyester",
-      "Brushed",
-      "Warp Knitted",
-      "From 170g to 200+g",
-      "Shrink Resistant",
-    ],
-  },
-  {
     name: "Cotton",
     category: "Treinda",
     image: "/fabrics/cotton.png",

@@ -87,7 +87,8 @@ export default function PackagesSlider({
           className="relative z-10 md:w-[56%] md:min-h-[560px] md:[clip-path:polygon(0_0,100%_0,89%_100%,0_100%)]"
           style={{ background: "#efefef" }}
         >
-          <div className="max-w-xl px-5 sm:px-10 md:pl-[max(2.5rem,calc((100vw-80rem)/2+1rem))] py-12 md:py-20 flex flex-col h-full justify-center">
+          <div className="px-5 sm:px-10 md:pl-[max(2.5rem,calc((100vw-80rem)/2+1rem))] md:pr-12 py-12 md:py-20 flex flex-col h-full justify-center">
+            <div className="w-full max-w-xl">
             {/* Section heading */}
             <h2
               className="font-[family-name:var(--font-oswald)] font-bold uppercase leading-none text-gray-900 tracking-tight mb-8 md:mb-10"
@@ -192,6 +193,7 @@ export default function PackagesSlider({
                 ))}
               </div>
             )}
+            </div>
           </div>
         </div>
       </div>
