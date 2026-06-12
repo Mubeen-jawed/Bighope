@@ -14,11 +14,11 @@ export const client = createClient({
 
 /**
  * Thin wrapper around client.fetch that caches results in the Next.js data
- * cache. Content refreshes either:
- *   1. immediately, when a Sanity webhook hits /api/revalidate on publish
- *      (revalidatePath("/", "layout")), or
- *   2. at most every 60s via the ISR window below (safety net).
- * Tags are attached for future fine-grained revalidation if ever needed.
+ * cache. Content is cached indefinitely and refreshed ON DEMAND only, when a
+ * Sanity webhook hits /api/revalidate on publish and revalidates the matching
+ * tag(s). There is intentionally no time-based ISR window: a 60s window made
+ * every trafficked page regenerate (and write to the ISR cache) every minute,
+ * which exhausted Vercel's ISR Writes quota.
  */
 export async function sanityFetch<T>({
   query,
@@ -31,7 +31,7 @@ export async function sanityFetch<T>({
 }): Promise<T> {
   return client.fetch<T>(query, params, {
     next: {
-      revalidate: 60,
+      revalidate: false,
       tags,
     },
   });

@@ -1,6 +1,8 @@
-import { revalidatePath } from "next/cache";
+import { revalidateTag } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
 import { parseBody } from "next-sanity/webhook";
+
+import { TAGS } from "@/lib/sanity/queries";
 
 /**
  * Called by a Sanity webhook whenever content is published/changed, so the
@@ -12,11 +14,20 @@ import { parseBody } from "next-sanity/webhook";
  *   Secret:     same value as SANITY_REVALIDATE_SECRET
  *   Projection: {"_type": _type}
  *
- * This is a small content site, so we revalidate the whole app (every route
- * under the root layout) on any change. As a safety net, pages also use a
- * 60s ISR window (see sanityFetch), so content stays fresh even if the
- * webhook is ever missed.
+ * On-demand only: pages are cached indefinitely (see sanityFetch) and we
+ * invalidate just the tags affected by the changed document type. The map
+ * accounts for cross-references (e.g. a product is embedded in sport and
+ * range pages), so we revalidate those too — but nothing more. This avoids
+ * regenerating (and re-writing to the ISR cache) pages that didn't change.
  */
+const DEPENDENT_TAGS: Record<string, string[]> = {
+  [TAGS.product]: [TAGS.product, TAGS.sport, TAGS.range],
+  [TAGS.sport]: [TAGS.sport, TAGS.product],
+  [TAGS.range]: [TAGS.range],
+  [TAGS.package]: [TAGS.package],
+  [TAGS.siteSettings]: [TAGS.siteSettings],
+};
+
 export async function POST(req: NextRequest) {
   try {
     const { isValidSignature, body } = await parseBody<{ _type?: string }>(
@@ -28,12 +39,15 @@ export async function POST(req: NextRequest) {
       return new NextResponse("Invalid signature", { status: 401 });
     }
 
-    revalidatePath("/", "layout");
+    const type = body?._type;
+    // Fall back to all tags if the type is unknown, so content never goes stale.
+    const tags = (type && DEPENDENT_TAGS[type]) ?? Object.values(TAGS);
+    for (const tag of tags) revalidateTag(tag);
 
     return NextResponse.json({
       revalidated: true,
-      type: body?._type ?? null,
-      now: Date.now(),
+      type: type ?? null,
+      tags,
     });
   } catch (err) {
     console.error("Revalidation error:", err);
