@@ -42,7 +42,10 @@ export async function POST(req: NextRequest) {
     const type = body?._type;
     // Fall back to all tags if the type is unknown, so content never goes stale.
     const tags = (type && DEPENDENT_TAGS[type]) ?? Object.values(TAGS);
-    for (const tag of tags) revalidateTag(tag);
+    // Next.js 16 requires a cache-life profile as the second argument. We
+    // cache content indefinitely and only purge here on a Sanity webhook, so
+    // "max" (the longest-lived profile) matches our on-demand-only strategy.
+    for (const tag of tags) revalidateTag(tag, "max");
 
     return NextResponse.json({
       revalidated: true,
