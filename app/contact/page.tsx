@@ -54,8 +54,17 @@ export default function ContactPage() {
         body,
       });
       if (!res.ok) {
-        const json = await res.json();
-        throw new Error(json.error || "Something went wrong.");
+        // The server normally returns JSON, but a platform timeout (504) or
+        // crash returns an HTML error page — don't blindly parse it as JSON.
+        let msg = "Something went wrong. Please try again.";
+        try {
+          const json = await res.json();
+          if (json?.error) msg = json.error;
+        } catch {
+          if (res.status === 504 || res.status === 503)
+            msg = "The request timed out. Please try again in a moment.";
+        }
+        throw new Error(msg);
       }
       setStatus("sent");
       (e.target as HTMLFormElement).reset();

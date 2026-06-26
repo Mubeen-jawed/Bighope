@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
 import { sendMail } from "@/lib/email";
 
+// nodemailer needs the Node.js runtime (it won't run on Edge), and the two
+// Gmail SMTP sends can exceed Vercel's default 10s function timeout on a cold
+// start — give them room.
+export const runtime = "nodejs";
+export const maxDuration = 60;
+
 export async function POST(req: Request) {
   try {
     const fd = await req.formData();
@@ -59,8 +65,8 @@ export async function POST(req: Request) {
       imageNote = `<tr><td style="padding:8px 0;color:#6b7280">Attachment</td><td style="padding:8px 0">${image.name} (${(image.size / 1024).toFixed(1)} KB)</td></tr>`;
     }
 
-    // Email to the business
-    await sendMail({
+    // Email to the business (the lead — must succeed)
+    const businessEmail = sendMail({
       to: process.env.RECEIVER_EMAIL!,
       subject: `New Quote Request, ${name}`,
       html: `
@@ -96,7 +102,7 @@ export async function POST(req: Request) {
     });
 
     // Confirmation email to the user (no attachment)
-    await sendMail({
+    const confirmationEmail = sendMail({
       to: email,
       subject: "Your quote request is confirmed, Big Hope Sports",
       html: `
@@ -131,6 +137,17 @@ export async function POST(req: Request) {
         </div>
       `,
     });
+
+    // Send both concurrently. The lead email must succeed; a failed user
+    // confirmation is logged but does not fail the submission.
+    const [business, confirmation] = await Promise.allSettled([
+      businessEmail,
+      confirmationEmail,
+    ]);
+    if (business.status === "rejected") throw business.reason;
+    if (confirmation.status === "rejected") {
+      console.error("Confirmation email failed:", confirmation.reason);
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
