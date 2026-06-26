@@ -36,10 +36,12 @@ export async function POST(req: Request) {
       );
     }
 
+    const fmt = (v: string) => (v && v.trim() ? v : "Not provided");
+
     const colorInfo = customColors
       ? "Custom colors (see message)"
       : [primaryColor, secondaryColor].filter(Boolean).join(" / ") ||
-        "Not specified";
+        "Not provided";
 
     const extras =
       [playerNames && "Player Names", playerNumbers && "Player Numbers"]
@@ -51,7 +53,7 @@ export async function POST(req: Request) {
       content: Buffer;
       contentType: string;
     }[] = [];
-    let imageNote = "";
+    let imageNote = "No image attached";
 
     if (image && image.size > 0) {
       const bytes = await image.arrayBuffer();
@@ -62,8 +64,30 @@ export async function POST(req: Request) {
           contentType: image.type,
         },
       ];
-      imageNote = `<tr><td style="padding:8px 0;color:#6b7280">Attachment</td><td style="padding:8px 0">${image.name} (${(image.size / 1024).toFixed(1)} KB)</td></tr>`;
+      imageNote = `${image.name} (${(image.size / 1024).toFixed(1)} KB) — attached`;
     }
+
+    // Full detail rows reused in both the business and confirmation emails so
+    // every submitted field is shown to both the team and the customer.
+    const detailRows = `
+      <tr><td style="padding:8px 0;color:#6b7280;width:150px">Name</td><td style="padding:8px 0;font-weight:600">${name}</td></tr>
+      <tr><td style="padding:8px 0;color:#6b7280">Email</td><td style="padding:8px 0"><a href="mailto:${email}" style="color:#f97316">${email}</a></td></tr>
+      <tr><td style="padding:8px 0;color:#6b7280">Phone</td><td style="padding:8px 0">${fmt(phone)}</td></tr>
+      <tr><td style="padding:8px 0;color:#6b7280">Role</td><td style="padding:8px 0">${fmt(role)}</td></tr>
+      <tr><td style="padding:8px 0;color:#6b7280">Categories</td><td style="padding:8px 0">${categories.join(", ")}</td></tr>
+      <tr><td style="padding:8px 0;color:#6b7280">Order Quantity</td><td style="padding:8px 0">${fmt(orderQuantity)}</td></tr>
+      <tr><td style="padding:8px 0;color:#6b7280">Team Name</td><td style="padding:8px 0">${fmt(teamName)}</td></tr>
+      <tr><td style="padding:8px 0;color:#6b7280">Turnaround Time</td><td style="padding:8px 0">${fmt(turnaround)}</td></tr>
+      <tr><td style="padding:8px 0;color:#6b7280">Colors</td><td style="padding:8px 0">${colorInfo}</td></tr>
+      <tr><td style="padding:8px 0;color:#6b7280">Extras</td><td style="padding:8px 0">${extras}</td></tr>
+      <tr><td style="padding:8px 0;color:#6b7280">Image</td><td style="padding:8px 0">${imageNote}</td></tr>
+    `;
+
+    const messageBlock = query
+      ? `<hr style="border:none;border-top:1px solid #e5e7eb;margin:16px 0" />
+         <p style="color:#6b7280;margin:0 0 8px">Message:</p>
+         <p style="margin:0;white-space:pre-wrap;color:#374151">${query}</p>`
+      : "";
 
     // Email to the business (the lead — must succeed)
     const businessEmail = sendMail({
@@ -76,32 +100,17 @@ export async function POST(req: Request) {
           </div>
           <div style="background:#fff;padding:32px;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 12px 12px">
             <table style="width:100%;border-collapse:collapse">
-              <tr><td style="padding:8px 0;color:#6b7280;width:140px">Name</td><td style="padding:8px 0;font-weight:600">${name}</td></tr>
-              <tr><td style="padding:8px 0;color:#6b7280">Email</td><td style="padding:8px 0"><a href="mailto:${email}" style="color:#f97316">${email}</a></td></tr>
-              <tr><td style="padding:8px 0;color:#6b7280">Phone</td><td style="padding:8px 0">${phone || ","}</td></tr>
-              <tr><td style="padding:8px 0;color:#6b7280">Role</td><td style="padding:8px 0">${role || ","}</td></tr>
-              <tr><td style="padding:8px 0;color:#6b7280">Categories</td><td style="padding:8px 0">${categories.join(", ")}</td></tr>
-              <tr><td style="padding:8px 0;color:#6b7280">Order Quantity</td><td style="padding:8px 0">${orderQuantity || ","}</td></tr>
-              <tr><td style="padding:8px 0;color:#6b7280">Team Name</td><td style="padding:8px 0">${teamName || ","}</td></tr>
-              <tr><td style="padding:8px 0;color:#6b7280">Turnaround Time</td><td style="padding:8px 0">${turnaround || ","}</td></tr>
-              <tr><td style="padding:8px 0;color:#6b7280">Colors</td><td style="padding:8px 0">${colorInfo}</td></tr>
-              <tr><td style="padding:8px 0;color:#6b7280">Extras</td><td style="padding:8px 0">${extras}</td></tr>
-              ${imageNote}
+              ${detailRows}
             </table>
-            ${
-              query
-                ? `<hr style="border:none;border-top:1px solid #e5e7eb;margin:16px 0" />
-                   <p style="color:#6b7280;margin:0 0 8px">Message:</p>
-                   <p style="margin:0;white-space:pre-wrap">${query}</p>`
-                : ""
-            }
+            ${messageBlock}
           </div>
         </div>
       `,
       attachments,
     });
 
-    // Confirmation email to the user (no attachment)
+    // Confirmation email to the user — now shows every detail they submitted,
+    // and re-attaches their uploaded image so they have a copy on record.
     const confirmationEmail = sendMail({
       to: email,
       subject: "Your quote request is confirmed, Big Hope Sports",
@@ -118,24 +127,23 @@ export async function POST(req: Request) {
             <p style="color:#374151;line-height:1.7;margin:0 0 16px">
               Here's what we received:
             </p>
-            <div style="background:#f9fafb;border-radius:8px;padding:16px;margin-bottom:16px">
-              <p style="margin:0 0 4px;color:#6b7280"><strong>Role:</strong> ${role || "Not specified"}</p>
-              <p style="margin:0 0 4px;color:#6b7280"><strong>Categories:</strong> ${categories.join(", ")}</p>
-              <p style="margin:0 0 4px;color:#6b7280"><strong>Quantity:</strong> ${orderQuantity || "Not specified"}</p>
-              <p style="margin:0 0 4px;color:#6b7280"><strong>Team:</strong> ${teamName || "Not specified"}</p>
-              <p style="margin:0 0 4px;color:#6b7280"><strong>Turnaround:</strong> ${turnaround || "Not specified"}</p>
-              <p style="margin:0;color:#6b7280"><strong>Colors:</strong> ${colorInfo}</p>
+            <div style="background:#f9fafb;border-radius:8px;padding:16px 20px;margin-bottom:16px">
+              <table style="width:100%;border-collapse:collapse;font-size:14px">
+                ${detailRows}
+              </table>
             </div>
-            <p style="color:#374151;line-height:1.7;margin:0 0 24px">
+            ${messageBlock}
+            <p style="color:#374151;line-height:1.7;margin:24px 0 0">
               If you have any urgent questions, feel free to call us at
               <a href="tel:+17473547351" style="color:#f97316;text-decoration:none">+1 (747) 354-7351</a>.
             </p>
-            <p style="color:#9ca3af;font-size:13px;margin:0">
-             , The Big Hope Sports Team
+            <p style="color:#9ca3af;font-size:13px;margin:8px 0 0">
+              — The Big Hope Sports Team
             </p>
           </div>
         </div>
       `,
+      attachments,
     });
 
     // Send both concurrently. The lead email must succeed; a failed user
