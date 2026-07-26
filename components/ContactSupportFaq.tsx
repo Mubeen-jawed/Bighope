@@ -13,7 +13,7 @@ const supportFaqs = [
       },
       {
         q: "How long does it take to receive my order?",
-        a: "Standard production takes 2–3 weeks from design approval to delivery. Rush orders can be completed in approximately 15 days. Timeline may vary based on quantity and complexity.",
+        a: "Standard production takes 3–4 weeks from design approval to delivery. Rush orders can be completed in 2–3 weeks, and express orders in 2 weeks. Timeline may vary based on quantity and complexity.",
       },
       {
         q: "What is your minimum order quantity?",

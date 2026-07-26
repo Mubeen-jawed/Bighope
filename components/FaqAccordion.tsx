@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     q: "Can I get samples before bulk production?",
-    a: "Absolutely. Physical samples are available upon request. We also provide photos and videos of samples for remote approval. Standard bulk production takes 2–3 weeks, with rush options available in approximately 15 days.",
+    a: "Absolutely. Physical samples are available upon request. We also provide photos and videos of samples for remote approval. Standard bulk production takes 3–4 weeks, with rush available in 2–3 weeks and express in 2 weeks.",
   },
   {
     q: "What printing methods do you use?",

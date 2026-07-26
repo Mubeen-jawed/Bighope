@@ -282,9 +282,9 @@ export default function ContactPage() {
                   <option value="" disabled>
                     Select an option
                   </option>
-                  <option>Standard (4–6 weeks)</option>
+                  <option>Standard (3–4 weeks)</option>
                   <option>Rush (2–3 weeks)</option>
-                  <option>Express (1–2 weeks)</option>
+                  <option>Express (2 weeks)</option>
                   <option>Flexible / No Rush</option>
                 </select>
               </div>

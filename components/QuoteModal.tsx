@@ -35,9 +35,9 @@ interface QuoteModalProps {
 
 const ROLES = ["Coach", "Program Director", "Player", "Brand Owner", "Other"];
 const TURNAROUNDS = [
-  "Standard (4–6 weeks)",
+  "Standard (3–4 weeks)",
   "Rush (2–3 weeks)",
-  "Express (1–2 weeks)",
+  "Express (2 weeks)",
   "Flexible / No Rush",
 ];
 

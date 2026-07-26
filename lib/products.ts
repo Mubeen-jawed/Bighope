@@ -52,7 +52,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool-Dry Polyester Interlock or Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -113,7 +113,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool-Dry Polyester Interlock or Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -156,7 +156,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool-Dry Polyester or Micro Mesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -199,7 +199,7 @@ export const allProducts: Product[] = [
     fabric: "High-Performance Nylon / Polyester / Spandex Blend",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -242,7 +242,7 @@ export const allProducts: Product[] = [
     fabric: "Premium Moisture-Wicking Polyester or Micro Mesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -290,7 +290,7 @@ export const allProducts: Product[] = [
     fabric: "100% Polyester, Scuba Performance Fabric or Mesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -335,7 +335,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool Dry Polyester Interlock / Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -378,7 +378,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool Dry Polyester Interlock / Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -421,7 +421,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool Dry Polyester Interlock / Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -466,7 +466,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool Dry Polyester Interlock / Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -509,7 +509,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool Dry Polyester Interlock / Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -553,7 +553,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool Dry Polyester Interlock / Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -597,7 +597,7 @@ export const allProducts: Product[] = [
     fabric: "Dry-Fit Stretch Fabric",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -641,7 +641,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool Dry Polyester Interlock / Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -690,7 +690,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool-Dry Polyester Interlock or Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -745,7 +745,7 @@ export const allProducts: Product[] = [
     fabric: "High-Performance Dri-Fit or Compression Fabric",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -790,7 +790,7 @@ export const allProducts: Product[] = [
     fabric: "High-Performance Dri-Fit or Compression Fabric",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -833,7 +833,7 @@ export const allProducts: Product[] = [
     fabric: "High-Performance Dri-Fit or Compression Fabric",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth & Adult",
       printing: "Full-color dye-sublimation",
     },
@@ -876,7 +876,7 @@ export const allProducts: Product[] = [
     fabric: "High-Performance Dri-Fit or Compression Fabric",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -919,7 +919,7 @@ export const allProducts: Product[] = [
     fabric: "High-Performance Dri-Fit or Compression Fabric",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -969,7 +969,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool-Dry Polyester Mesh / Interlock",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1011,7 +1011,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool-Dry Polyester Mesh / Interlock",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1053,7 +1053,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool-Dry Polyester Mesh / Interlock",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1094,7 +1094,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool-Dry Polyester Mesh / Interlock",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1135,7 +1135,7 @@ export const allProducts: Product[] = [
     fabric: "100% Cool-Dry Polyester Mesh / Interlock",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1177,7 +1177,7 @@ export const allProducts: Product[] = [
     fabric: "Premium Satin or Microfiber Fabric",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1219,7 +1219,7 @@ export const allProducts: Product[] = [
     fabric: "Moisture-Wicking Polyester/Spandex 4-Way Stretch",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1260,7 +1260,7 @@ export const allProducts: Product[] = [
     fabric: "4-Way Stretch Spandex / Polyester Blend",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1305,7 +1305,7 @@ export const allProducts: Product[] = [
     fabric: "100% Polyester Fleece (Speedo Fabric)",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1347,7 +1347,7 @@ export const allProducts: Product[] = [
     fabric: "100% Polyester Fleece (Speedo Fabric)",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1390,7 +1390,7 @@ export const allProducts: Product[] = [
     fabric: "100% Polyester Fleece, Speedo or Scuba Fabric",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1435,7 +1435,7 @@ export const allProducts: Product[] = [
     fabric: "100% Polyester, Mesh or Spandex",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1478,7 +1478,7 @@ export const allProducts: Product[] = [
     fabric: "100% Polyester Interlock or Cool Dry Micromesh",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1521,7 +1521,7 @@ export const allProducts: Product[] = [
     fabric: "100% Polyester, Mesh or Fleece",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1564,7 +1564,7 @@ export const allProducts: Product[] = [
     fabric: "100% Polyester, Mesh or Custom Fabric",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },
@@ -1607,7 +1607,7 @@ export const allProducts: Product[] = [
     fabric: "Premium Performance-Grade Polyester & Nylon",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Embroidery, heat transfer, or sublimation",
     },
@@ -1652,7 +1652,7 @@ export const allProducts: Product[] = [
     fabric: "Heavy-Duty Polyester / Nylon",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Custom sizing available",
       printing: "Embroidery, heat transfer or sublimation",
     },
@@ -1695,7 +1695,7 @@ export const allProducts: Product[] = [
     fabric: "Heavy-Duty Polyester / Nylon",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Custom sizing available",
       printing: "Embroidery, heat transfer or sublimation",
     },
@@ -1738,7 +1738,7 @@ export const allProducts: Product[] = [
     fabric: "High-Performance Nylon / Polyester / Spandex Blend",
     specs: {
       minOrder: "10 pieces",
-      turnaround: "2–3 wks (rush) / 2–3 wks (normal)",
+      turnaround: "2–3 wks (rush) / 3–4 wks (standard)",
       sizes: "Youth, Women, Men",
       printing: "Full-color dye-sublimation",
     },

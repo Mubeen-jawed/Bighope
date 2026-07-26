@@ -29,7 +29,7 @@ export default function Footer() {
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Direct manufacturer of custom sports uniforms and teamwear. Free
-              artwork, competitive pricing, low minimums, 2–4 week turnaround.
+              artwork, competitive pricing, low minimums, 3–4 week turnaround.
             </p>
             {/* Social icons */}
             <div className="flex items-center gap-3">

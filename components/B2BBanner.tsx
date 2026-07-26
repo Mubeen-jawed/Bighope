@@ -3,7 +3,7 @@ import Link from "next/link";
 const highlights = [
   { value: "Private Label", label: "Your brand, our factory" },
   { value: "10 pcs", label: "Flexible minimums" },
-  { value: "2–4 Weeks", label: "Predictable turnaround" },
+  { value: "3–4 Weeks", label: "Predictable turnaround" },
   { value: "50+", label: "Countries served" },
 ];
 

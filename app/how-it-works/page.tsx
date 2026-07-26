@@ -119,13 +119,13 @@ const steps = [
 const specs = [
   {
     label: "Standard Turnaround",
-    value: "2–3 Weeks",
+    value: "3–4 Weeks",
     sub: "Design approval to your door",
   },
   {
-    label: "Rush Orders",
-    value: "15 Days",
-    sub: "Subject to capacity & quantity",
+    label: "Rush & Express",
+    value: "2–3 Weeks",
+    sub: "Express in 2 weeks, subject to capacity",
   },
   {
     label: "Minimum Order",

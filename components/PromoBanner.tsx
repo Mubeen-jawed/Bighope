@@ -47,7 +47,7 @@ export default function PromoBanner() {
           {[
             { value: "10,000+", label: "Kits Delivered" },
             { value: "50+", label: "Countries Shipped" },
-            { value: "2–4 Weeks", label: "Avg. Turnaround" },
+            { value: "3–4 Weeks", label: "Avg. Turnaround" },
             { value: "100%", label: "Custom Every Time" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">

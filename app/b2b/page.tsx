@@ -162,7 +162,7 @@ const factoryStats = [
   { value: "10+", label: "Years Experience" },
   { value: "50+", label: "Countries Shipped" },
   { value: "100%", label: "In-House Sublimation" },
-  { value: "3 Wks", label: "Avg. Turnaround" },
+  { value: "3–4 Wks", label: "Avg. Turnaround" },
 ];
 
 export default function B2BPage() {

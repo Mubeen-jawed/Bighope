@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s | Big Hope Sports",
   },
   description:
-    "Big Hope Sports is a direct manufacturer of premium custom sports uniforms and teamwear. Free artwork, competitive pricing, low minimums, 2–4 week turnaround. Rugby, Soccer, Basketball, Cricket and more. Worldwide shipping.",
+    "Big Hope Sports is a direct manufacturer of premium custom sports uniforms and teamwear. Free artwork, competitive pricing, low minimums, 3–4 week turnaround. Rugby, Soccer, Basketball, Cricket and more. Worldwide shipping.",
   keywords:
     "custom sports uniforms, custom teamwear, rugby kits, soccer uniforms, basketball jerseys, cricket kits, sublimated sportswear",
   icons: {
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Big Hope Sports, Custom Sports Uniforms & Teamwear",
     description:
-      "Premium custom sports uniforms and teamwear. Free artwork, worldwide shipping, 2–4 week turnaround.",
+      "Premium custom sports uniforms and teamwear. Free artwork, worldwide shipping, 3–4 week turnaround.",
     type: "website",
     url: "/",
     siteName: "Big Hope Sports",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Big Hope Sports, Custom Sports Uniforms & Teamwear",
     description:
-      "Premium custom sports uniforms and teamwear. Free artwork, worldwide shipping, 2-4 week turnaround.",
+      "Premium custom sports uniforms and teamwear. Free artwork, worldwide shipping, 3-4 week turnaround.",
     images: [previewImage],
   },
 };

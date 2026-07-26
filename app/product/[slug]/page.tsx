@@ -218,7 +218,7 @@ export default async function ProductPage({
           {[
             "Free Custom Design",
             "No Hidden Fees",
-            "2–4 Week Turnaround",
+            "3–4 Week Turnaround",
             "Worldwide Shipping",
           ].map((feat) => (
             <div key={feat} className="flex items-center gap-2">
@@ -273,7 +273,7 @@ export default async function ProductPage({
               {
                 step: "04",
                 title: "We Deliver",
-                desc: "Production in 2–4 weeks with worldwide shipping.",
+                desc: "Production in 3–4 weeks with worldwide shipping.",
               },
             ].map((s) => (
               <div

@@ -106,37 +106,219 @@ async function withRetry<T>(label: string, fn: () => Promise<T>): Promise<T> {
 /* ── Source data not exported elsewhere ────────────────────────── */
 
 const sports = [
-  { slug: "soccer", title: "Soccer / Football", card: "/ranges/soccer/FOOTBALL CTG.png", quoteCategory: "Soccer", order: 10, home: true, description: "Fully sublimated, 100% Cool-Dry Polyester. UPF 50+ protection. Free design included." },
-  { slug: "rugby", title: "Rugby", card: "/ranges/rugby/RUGBY CTG.png", quoteCategory: "Rugby", order: 20, home: true, description: "Durable 100% polyester scuba performance fabric with reinforced stitching for contact sport." },
-  { slug: "basketball", title: "Basketball", card: "/ranges/basketball/BASKETBALL CTG.png", quoteCategory: "Basketball", order: 30, home: true, description: "Cool-dry micromesh jerseys, shorts, and shooting gear for peak court performance." },
-  { slug: "cricket", title: "Cricket", card: "/ranges/cricket/CRICKET CTG.png", quoteCategory: "Cricket", order: 40, home: true, description: "UPF 50+ sun protection in premium Cool-Dry Polyester for all formats." },
-  { slug: "baseball", title: "Baseball / Softball", card: "/ranges/baseball/BASEBALL CTG.png", quoteCategory: "Baseball", order: 50, home: true, description: "100% cool-dry polyester mesh/interlock jerseys for all levels of play." },
-  { slug: "7v7-football", title: "7v7 Football", card: "/sports/7v7-football-uniform.webp", quoteCategory: "7v7 Football", order: 60, home: true, description: "Lightweight, fully sublimated uniforms built for flag and 7v7 football." },
-  { slug: "mma", title: "MMA", card: "/sports/mma-fighter.webp", quoteCategory: "MMA", order: 70, home: true, description: "Custom MMA shorts, rashguards, and wrestling singlets, sublimated for any gym or promotion." },
-  { slug: "teamwear", title: "Hoodies & Teamwear", card: "/sports/teamwear-hoodies.png", quoteCategory: "Teamwear", order: 80, home: true, description: "Hoodies, tracksuits, polo shirts, T-shirts, and jackets, fully sublimated for your team." },
-  { slug: "accessories", title: "Accessories", card: "/ranges/accessories/custom-backpacks.webp", quoteCategory: "Accessories", order: 90, home: false, description: "Durable custom bags and socks built for athletes and clubs." },
+  {
+    slug: "soccer",
+    title: "Soccer / Football",
+    card: "/ranges/soccer/FOOTBALL CTG.png",
+    quoteCategory: "Soccer",
+    order: 10,
+    home: true,
+    description:
+      "Fully sublimated, 100% Cool-Dry Polyester. UPF 50+ protection. Free design included.",
+  },
+  {
+    slug: "rugby",
+    title: "Rugby",
+    card: "/ranges/rugby/RUGBY CTG.png",
+    quoteCategory: "Rugby",
+    order: 20,
+    home: true,
+    description:
+      "Durable 100% polyester performance fabric with reinforced stitching for contact sport.",
+  },
+  {
+    slug: "basketball",
+    title: "Basketball",
+    card: "/ranges/basketball/BASKETBALL CTG.png",
+    quoteCategory: "Basketball",
+    order: 30,
+    home: true,
+    description:
+      "Cool-dry micromesh jerseys, shorts, and shooting gear for peak court performance.",
+  },
+  {
+    slug: "cricket",
+    title: "Cricket",
+    card: "/ranges/cricket/CRICKET CTG.png",
+    quoteCategory: "Cricket",
+    order: 40,
+    home: true,
+    description:
+      "UPF 50+ sun protection in premium Cool-Dry Polyester for all formats.",
+  },
+  {
+    slug: "baseball",
+    title: "Baseball / Softball",
+    card: "/ranges/baseball/BASEBALL CTG.png",
+    quoteCategory: "Baseball",
+    order: 50,
+    home: true,
+    description:
+      "100% cool-dry polyester mesh/interlock jerseys for all levels of play.",
+  },
+  {
+    slug: "7v7-football",
+    title: "7v7 Football",
+    card: "/sports/7v7-football-uniform.webp",
+    quoteCategory: "7v7 Football",
+    order: 60,
+    home: true,
+    description:
+      "Lightweight, fully sublimated uniforms built for flag and 7v7 football.",
+  },
+  {
+    slug: "mma",
+    title: "MMA",
+    card: "/sports/mma-fighter.webp",
+    quoteCategory: "MMA",
+    order: 70,
+    home: true,
+    description:
+      "Custom MMA shorts, rashguards, and wrestling singlets, sublimated for any gym or promotion.",
+  },
+  {
+    slug: "teamwear",
+    title: "Hoodies & Teamwear",
+    card: "/sports/teamwear-hoodies.png",
+    quoteCategory: "Teamwear",
+    order: 80,
+    home: true,
+    description:
+      "Hoodies, tracksuits, polo shirts, T-shirts, and jackets, fully sublimated for your team.",
+  },
+  {
+    slug: "accessories",
+    title: "Accessories",
+    card: "/ranges/accessories/custom-backpacks.webp",
+    quoteCategory: "Accessories",
+    order: 90,
+    home: false,
+    description: "Durable custom bags and socks built for athletes and clubs.",
+  },
 ];
 
 // Sub-collection ranges (mirrors rangeData in the old app/range/[slug] page).
 const ranges = [
-  { slug: "hoodie", title: "Custom Hoodies", category: "Custom Teamwear", description: "Fully sublimated custom hoodies in premium 100% polyester fleece. Unlimited colours, team logos, and player names.", products: ["custom-team-hoodies", "custom-zipper-hoodies"] },
-  { slug: "t-shirts", title: "Custom T-Shirts", category: "Custom Teamwear", description: "Dye-sublimated team T-shirts in 100% cool-dry micromesh or interlock polyester. Men's, women's and youth sizing.", products: ["custom-t-shirts"] },
-  { slug: "polo", title: "Custom Polo Shirts", category: "Custom Teamwear", description: "Moisture-wicking custom polo shirts. Fully dye sublimated, no colour limits. Available in mesh or spandex fabric.", products: ["custom-polo-shirts"] },
-  { slug: "track-suits", title: "Custom Track Suits", category: "Custom Teamwear", description: "Premium 100% polyester fleece or Scuba fabric tracksuits, fully sublimated for your team's identity.", products: ["custom-tracksuits"] },
-  { slug: "quarter-zipper", title: "Custom 1/4 Zipper", category: "Custom Teamwear", description: "Custom 1/4 zip pullovers available in long sleeve and short sleeve. 100% polyester mesh, fully sublimated.", products: ["custom-quarter-zipper-ls", "custom-1-4-zipper-ss"] },
-  { slug: "jackets", title: "Custom Jackets", category: "Custom Teamwear", description: "Durable, fully sublimated custom jackets for teams and clubs. Ideal for warm-ups, travel, and bench wear.", products: ["custom-jackets"] },
-  { slug: "bags-packs", title: "Custom Bags & Packs", category: "Accessories", description: "Heavy-duty polyester/nylon custom backpacks. Personalised with embroidery, heat transfer, or sublimation.", products: ["custom-bags"] },
-  { slug: "duffle-bags", title: "Custom Duffle Bags", category: "Accessories", description: "Team duffle bags in heavy-duty nylon with reinforced stitching. Custom branding via embroidery or sublimation.", products: ["custom-duffle-bags"] },
-  { slug: "socks", title: "Custom Socks", category: "Accessories", description: "High-performance nylon/polyester/spandex blend socks with reinforced heel and toe. Full colour sublimation.", products: ["custom-socks"] },
-  { slug: "hats", title: "Custom Hats", category: "Accessories", description: "Custom sublimated and embroidered sports caps for your team. Coming soon - contact us to enquire.", products: [] },
+  {
+    slug: "hoodie",
+    title: "Custom Hoodies",
+    category: "Custom Teamwear",
+    description:
+      "Fully sublimated custom hoodies in premium 100% polyester fleece. Unlimited colours, team logos, and player names.",
+    products: ["custom-team-hoodies", "custom-zipper-hoodies"],
+  },
+  {
+    slug: "t-shirts",
+    title: "Custom T-Shirts",
+    category: "Custom Teamwear",
+    description:
+      "Dye-sublimated team T-shirts in 100% cool-dry micromesh or interlock polyester. Men's, women's and youth sizing.",
+    products: ["custom-t-shirts"],
+  },
+  {
+    slug: "polo",
+    title: "Custom Polo Shirts",
+    category: "Custom Teamwear",
+    description:
+      "Moisture-wicking custom polo shirts. Fully dye sublimated, no colour limits. Available in mesh or spandex fabric.",
+    products: ["custom-polo-shirts"],
+  },
+  {
+    slug: "track-suits",
+    title: "Custom Track Suits",
+    category: "Custom Teamwear",
+    description:
+      "Premium 100% polyester fleece or Scuba fabric tracksuits, fully sublimated for your team's identity.",
+    products: ["custom-tracksuits"],
+  },
+  {
+    slug: "quarter-zipper",
+    title: "Custom 1/4 Zipper",
+    category: "Custom Teamwear",
+    description:
+      "Custom 1/4 zip pullovers available in long sleeve and short sleeve. 100% polyester mesh, fully sublimated.",
+    products: ["custom-quarter-zipper-ls", "custom-1-4-zipper-ss"],
+  },
+  {
+    slug: "jackets",
+    title: "Custom Jackets",
+    category: "Custom Teamwear",
+    description:
+      "Durable, fully sublimated custom jackets for teams and clubs. Ideal for warm-ups, travel, and bench wear.",
+    products: ["custom-jackets"],
+  },
+  {
+    slug: "bags-packs",
+    title: "Custom Bags & Packs",
+    category: "Accessories",
+    description:
+      "Heavy-duty polyester/nylon custom backpacks. Personalised with embroidery, heat transfer, or sublimation.",
+    products: ["custom-bags"],
+  },
+  {
+    slug: "duffle-bags",
+    title: "Custom Duffle Bags",
+    category: "Accessories",
+    description:
+      "Team duffle bags in heavy-duty nylon with reinforced stitching. Custom branding via embroidery or sublimation.",
+    products: ["custom-duffle-bags"],
+  },
+  {
+    slug: "socks",
+    title: "Custom Socks",
+    category: "Accessories",
+    description:
+      "High-performance nylon/polyester/spandex blend socks with reinforced heel and toe. Full colour sublimation.",
+    products: ["custom-socks"],
+  },
+  {
+    slug: "hats",
+    title: "Custom Hats",
+    category: "Accessories",
+    description:
+      "Custom sublimated and embroidered sports caps for your team. Coming soon - contact us to enquire.",
+    products: [],
+  },
 ];
 
 // Hero slider (mirrors `slides` in components/Hero.tsx).
 const heroSlides = [
-  { desktop: "/hero/FOOTBALL.DESK.SLIDER.png", mobile: "/hero/FOOTBALL.mbl.SLIDER.png", topText: "CUSTOM SOCCER", mainText: "UNIFORMS", description: "Fully sublimated soccer uniforms, unlimited colors and logos. Fast turnaround, worldwide shipping.", link: "/sport/soccer" },
-  { desktop: "/hero/cricket.DESK.SLIDER.png", mobile: "/hero/cricket.mb.SLIDER.png", topText: "CUSTOM CRICKET", mainText: "KITS", description: "Premium quality cricket kits, 100% customized for your team. Free design service included with every order.", link: "/sport/cricket" },
-  { desktop: "/hero/baseBALL.DESK.SLIDER.png", mobile: "/hero/baseBALL.mb.SLIDER.png", topText: "CUSTOM BASEBALL", mainText: "UNIFORMS", description: "Custom baseball uniforms built for champions, designed by you, manufactured by us.", link: "/sport/baseball" },
-  { desktop: "/hero/RUGBY.DSK.SL.png", mobile: "/hero/RUGBY.mb.SL.png", topText: "CUSTOM RUGBY", mainText: "KITS", description: "Premium quality rugby kits, 100% customized for your team. Free design service included with every order.", link: "/sport/rugby" },
+  {
+    desktop: "/hero/FOOTBALL.DESK.SLIDER.png",
+    mobile: "/hero/FOOTBALL.mbl.SLIDER.png",
+    topText: "CUSTOM SOCCER",
+    mainText: "UNIFORMS",
+    description:
+      "Fully sublimated soccer uniforms, unlimited colors and logos. Fast turnaround, worldwide shipping.",
+    link: "/sport/soccer",
+  },
+  {
+    desktop: "/hero/cricket.DESK.SLIDER.png",
+    mobile: "/hero/cricket.mb.SLIDER.png",
+    topText: "CUSTOM CRICKET",
+    mainText: "KITS",
+    description:
+      "Premium quality cricket kits, 100% customized for your team. Free design service included with every order.",
+    link: "/sport/cricket",
+  },
+  {
+    desktop: "/hero/baseBALL.DESK.SLIDER.png",
+    mobile: "/hero/baseBALL.mb.SLIDER.png",
+    topText: "CUSTOM BASEBALL",
+    mainText: "UNIFORMS",
+    description:
+      "Custom baseball uniforms built for champions, designed by you, manufactured by us.",
+    link: "/sport/baseball",
+  },
+  {
+    desktop: "/hero/RUGBY.DSK.SL.png",
+    mobile: "/hero/RUGBY.mb.SL.png",
+    topText: "CUSTOM RUGBY",
+    mainText: "KITS",
+    description:
+      "Premium quality rugby kits, 100% customized for your team. Free design service included with every order.",
+    link: "/sport/rugby",
+  },
 ];
 
 /* ── Migrate ───────────────────────────────────────────────────── */

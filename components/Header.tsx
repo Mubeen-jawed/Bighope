@@ -15,7 +15,12 @@ type NavItem = { label: string; href: string };
 
 // Icons are fixed per group; the items come from Sanity (see RootLayout).
 const uniformsIcon = (
-  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg
+    className="w-4 h-4"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -26,7 +31,12 @@ const uniformsIcon = (
 );
 
 const teamwearIcon = (
-  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg
+    className="w-4 h-4"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -37,7 +47,12 @@ const teamwearIcon = (
 );
 
 const accessoriesIcon = (
-  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg
+    className="w-4 h-4"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -173,7 +188,11 @@ const searchIndex = [
   { label: "Socks", href: "/range/socks", category: "Accessories" },
   { label: "Hats", href: "/range/hats", category: "Accessories" },
   { label: "Packages", href: "/packages", category: "Pages" },
-  { label: "Cricket Packages", href: "/packages/cricket", category: "Packages" },
+  {
+    label: "Cricket Packages",
+    href: "/packages/cricket",
+    category: "Packages",
+  },
   {
     label: "7v7 Football Packages",
     href: "/packages/7v7-football",
@@ -1257,7 +1276,6 @@ export default function Header({
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                +1 (747) 354-7351
               </a>
               <a
                 href="mailto:info@bighopesports.com"

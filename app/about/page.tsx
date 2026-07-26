@@ -36,7 +36,7 @@ const differentiators = [
   },
   {
     title: "Fast Turnaround",
-    desc: "2–3 weeks standard delivery. Rush orders available in as little as 15 days.",
+    desc: "3–4 weeks standard delivery. Rush in 2–3 weeks, express in as little as 2 weeks.",
     icon: (
       <svg
         className="w-8 h-8"
