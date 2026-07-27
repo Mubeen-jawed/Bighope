@@ -47,6 +47,53 @@ export const siteSettingsType = defineType({
               type: "string",
               description: 'Where "View Range" goes, e.g. /sport/soccer',
             }),
+            defineField({
+              name: "startingPrice",
+              title: "Starting price",
+              type: "number",
+              description:
+                "Leave empty to hide the pricing card. Otherwise shown as the big price (e.g. 24.99 for Soccer Uniform).",
+              validation: (rule) => rule.min(0),
+            }),
+            defineField({
+              name: "sampleKitPrice",
+              title: "Sample kit price",
+              type: "number",
+              description:
+                'Price shown in the "SAMPLE KIT" chip. Leave empty to hide the sample chip.',
+              validation: (rule) => rule.min(0),
+            }),
+            defineField({
+              name: "startingPriceLabel",
+              title: "Price heading",
+              type: "string",
+              description:
+                'Small caps line above the price. Defaults to "UNIFORMS STARTING FROM".',
+            }),
+            defineField({
+              name: "startingPriceUnit",
+              title: "Price unit",
+              type: "string",
+              description:
+                'Small caps line below the price. Defaults to "PER UNIFORM".',
+            }),
+            defineField({
+              name: "priceCurrency",
+              title: "Currency",
+              type: "string",
+              description: "Currency for the pricing card. Defaults to USD.",
+              initialValue: "USD",
+              options: {
+                list: [
+                  { title: "US Dollar (USD)", value: "USD" },
+                  { title: "British Pound (GBP)", value: "GBP" },
+                  { title: "Euro (EUR)", value: "EUR" },
+                  { title: "Australian Dollar (AUD)", value: "AUD" },
+                  { title: "Canadian Dollar (CAD)", value: "CAD" },
+                  { title: "Pakistani Rupee (PKR)", value: "PKR" },
+                ],
+              },
+            }),
           ],
           preview: { select: { title: "mainText", subtitle: "topText", media: "desktopImage" } },
         },

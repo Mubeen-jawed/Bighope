@@ -43,6 +43,7 @@ export const productBySlugQuery = groq`
   *[_type == "product" && slug.current == $slug][0]{
     _id, "slug": slug.current, productCode, name, description, longDescription,
     idealFor, mainImage, gallery, alt, fabric, specs, features, customOptions,
+    price, currency, priceUnit,
     "sportId": sport._ref,
     "sportTitle": sport->title,
     "sportSlug": sport->slug.current,
@@ -111,7 +112,10 @@ export const navRangeQuery = groq`{
 
 export const siteSettingsQuery = groq`
   *[_type == "siteSettings"][0]{
-    heroSlides[]{ desktopImage, mobileImage, topText, mainText, description, link },
+    heroSlides[]{
+      desktopImage, mobileImage, topText, mainText, description, link,
+      startingPrice, sampleKitPrice, startingPriceLabel, startingPriceUnit, priceCurrency
+    },
     dspImage
   }
 `;

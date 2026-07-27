@@ -28,6 +28,11 @@ export default async function Home() {
     mainText: h.mainText || "",
     description: h.description || "",
     link: h.link || "#",
+    startingPrice: h.startingPrice,
+    sampleKitPrice: h.sampleKitPrice,
+    startingPriceLabel: h.startingPriceLabel,
+    startingPriceUnit: h.startingPriceUnit,
+    priceCurrency: h.priceCurrency,
   }));
 
   const dspImage =

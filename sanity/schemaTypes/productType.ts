@@ -13,6 +13,7 @@ export const productType = defineType({
     { name: "content", title: "Content", default: true },
     { name: "images", title: "Images" },
     { name: "specs", title: "Specs & Options" },
+    { name: "pricing", title: "Pricing" },
   ],
   fields: [
     defineField({
@@ -121,6 +122,41 @@ export const productType = defineType({
       type: "array",
       of: [{ type: "string" }],
       group: "specs",
+    }),
+    defineField({
+      name: "price",
+      title: "Price",
+      type: "number",
+      group: "pricing",
+      description:
+        "Leave empty to hide pricing on the product page. Enter a positive number to display it.",
+      validation: (rule) => rule.min(0),
+    }),
+    defineField({
+      name: "currency",
+      title: "Currency",
+      type: "string",
+      group: "pricing",
+      description: "Currency shown next to the price.",
+      initialValue: "USD",
+      options: {
+        list: [
+          { title: "US Dollar (USD)", value: "USD" },
+          { title: "British Pound (GBP)", value: "GBP" },
+          { title: "Euro (EUR)", value: "EUR" },
+          { title: "Australian Dollar (AUD)", value: "AUD" },
+          { title: "Canadian Dollar (CAD)", value: "CAD" },
+          { title: "Pakistani Rupee (PKR)", value: "PKR" },
+        ],
+      },
+    }),
+    defineField({
+      name: "priceUnit",
+      title: "Price unit",
+      type: "string",
+      group: "pricing",
+      description:
+        'Optional suffix shown after the price, e.g. "per piece", "per kit".',
     }),
   ],
   preview: {

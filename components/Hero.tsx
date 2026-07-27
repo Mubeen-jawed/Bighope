@@ -5,7 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import CatalogViewer from "@/components/CatalogViewer";
 
-type SplitSlide = {
+type PricingFields = {
+  startingPrice?: number;
+  sampleKitPrice?: number;
+  startingPriceLabel?: string;
+  startingPriceUnit?: string;
+  priceCurrency?: string;
+};
+
+type SplitSlide = PricingFields & {
   fullWidth?: false;
   leftImage: string;
   rightImage: string;
@@ -15,7 +23,7 @@ type SplitSlide = {
   link: string;
 };
 
-type FullWidthSlide = {
+type FullWidthSlide = PricingFields & {
   fullWidth: true;
   pcImage: string;
   mbImage: string;
@@ -27,8 +35,212 @@ type FullWidthSlide = {
 
 type Slide = SplitSlide | FullWidthSlide;
 
+function formatPrice(value: number, currency: string) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency,
+    maximumFractionDigits: Number.isInteger(value) ? 0 : 2,
+  }).format(value);
+}
+
+function PricingCard({
+  slide,
+  variant,
+}: {
+  slide: Slide;
+  variant: "desktop" | "mobile";
+}) {
+  const hasStarting =
+    typeof slide.startingPrice === "number" &&
+    Number.isFinite(slide.startingPrice);
+  if (!hasStarting) return null;
+
+  const currency = slide.priceCurrency || "USD";
+  const startingLabel = slide.startingPriceLabel || "UNIFORMS STARTING FROM";
+  const startingUnit = slide.startingPriceUnit || "PER UNIFORM";
+  const startingFormatted = formatPrice(slide.startingPrice as number, currency);
+
+  const hasSample =
+    typeof slide.sampleKitPrice === "number" &&
+    Number.isFinite(slide.sampleKitPrice);
+  const sampleFormatted = hasSample
+    ? formatPrice(slide.sampleKitPrice as number, currency)
+    : "";
+
+  const isDesktop = variant === "desktop";
+
+  return (
+    <div
+      className={
+        isDesktop
+          ? "mt-4 lg:mt-5 flex items-stretch gap-2.5 lg:gap-3 flex-wrap justify-end text-left w-full"
+          : "mt-3 flex items-stretch gap-2 flex-wrap text-left w-full"
+      }
+    >
+      <div
+        className={
+          isDesktop
+            ? "bg-white rounded-lg shadow-lg flex-1 min-w-[180px]"
+            : "bg-white rounded-md shadow-lg flex-1 min-w-[150px]"
+        }
+        style={{
+          padding: isDesktop
+            ? "clamp(0.75rem, 1.1vw, 1rem) clamp(1rem, 1.4vw, 1.25rem)"
+            : "clamp(0.55rem, 2.2vw, 0.75rem) clamp(0.75rem, 3vw, 0.95rem)",
+        }}
+      >
+        <p
+          className="font-oswald text-[#0f1830] uppercase tracking-wider font-bold leading-none"
+          style={{
+            fontSize: isDesktop
+              ? "clamp(0.65rem, 0.72vw, 0.78rem)"
+              : "clamp(0.55rem, 2.6vw, 0.7rem)",
+          }}
+        >
+          {startingLabel}
+        </p>
+        <p
+          className="font-oswald text-orange-500 leading-none font-bold"
+          style={{
+            fontSize: isDesktop
+              ? "clamp(1.75rem, 2.6vw, 2.6rem)"
+              : "clamp(1.3rem, 6.4vw, 1.9rem)",
+            marginTop: isDesktop ? "0.3rem" : "0.2rem",
+          }}
+        >
+          {startingFormatted}
+        </p>
+        {startingUnit && (
+          <p
+            className="font-oswald text-[#0f1830] uppercase tracking-wider font-semibold leading-none"
+            style={{
+              fontSize: isDesktop
+                ? "clamp(0.6rem, 0.68vw, 0.72rem)"
+                : "clamp(0.5rem, 2.3vw, 0.65rem)",
+              marginTop: isDesktop ? "0.4rem" : "0.28rem",
+            }}
+          >
+            {startingUnit}
+          </p>
+        )}
+      </div>
+      {hasSample && (
+        <div
+          className={
+            isDesktop
+              ? "bg-white rounded-lg shadow-lg flex flex-col items-center justify-center border-2 border-dashed border-orange-500 min-w-[130px]"
+              : "bg-white rounded-md shadow-lg flex flex-col items-center justify-center border-2 border-dashed border-orange-500 min-w-[110px]"
+          }
+          style={{
+            padding: isDesktop
+              ? "clamp(0.75rem, 1.1vw, 1rem) clamp(0.9rem, 1.3vw, 1.15rem)"
+              : "clamp(0.5rem, 2.2vw, 0.7rem) clamp(0.65rem, 2.8vw, 0.9rem)",
+          }}
+        >
+          <p
+            className="font-oswald text-[#0f1830] uppercase tracking-wider font-bold leading-none text-center"
+            style={{
+              fontSize: isDesktop
+                ? "clamp(0.65rem, 0.72vw, 0.78rem)"
+                : "clamp(0.55rem, 2.6vw, 0.7rem)",
+            }}
+          >
+            SAMPLE KIT
+          </p>
+          <p
+            className="font-oswald text-orange-500 leading-none font-bold"
+            style={{
+              fontSize: isDesktop
+                ? "clamp(1.4rem, 2vw, 2.1rem)"
+                : "clamp(1.1rem, 5vw, 1.55rem)",
+              marginTop: isDesktop ? "0.4rem" : "0.25rem",
+            }}
+          >
+            {sampleFormatted}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function PricingCTAs({ variant }: { variant: "desktop" | "mobile" }) {
+  const isDesktop = variant === "desktop";
+  const btnBase = isDesktop
+    ? "inline-flex items-center justify-center gap-2 font-bold uppercase tracking-[0.16em] rounded-sm transition-all duration-200"
+    : "inline-flex items-center justify-center gap-1.5 font-bold uppercase tracking-[0.14em] rounded-sm transition-all duration-200 flex-1 min-w-[130px]";
+
+  const btnStyle: React.CSSProperties = isDesktop
+    ? {
+        fontSize: "clamp(0.62rem, 0.72vw, 0.75rem)",
+        padding:
+          "clamp(0.65rem, 0.9vw, 0.85rem) clamp(1rem, 1.6vw, 1.6rem)",
+      }
+    : {
+        fontSize: "clamp(0.55rem, 2.5vw, 0.72rem)",
+        padding:
+          "clamp(0.6rem, 2.6vw, 0.8rem) clamp(0.8rem, 3.2vw, 1.15rem)",
+      };
+
+  return (
+    <div
+      className={
+        isDesktop
+          ? "mt-3 flex items-center gap-2.5 lg:gap-3 flex-wrap justify-end w-full"
+          : "mt-3 flex items-stretch gap-2 flex-wrap w-full"
+      }
+    >
+      <Link
+        href="/contact"
+        className={`${btnBase} bg-orange-500 text-white hover:bg-orange-600`}
+        style={btnStyle}
+      >
+        GET QUOTE
+        <svg
+          className="shrink-0"
+          style={{ width: "1em", height: "1em" }}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          strokeWidth={2.5}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+          />
+        </svg>
+      </Link>
+      <Link
+        href="/contact?sample=1"
+        className={`${btnBase} bg-white text-[#0f1830] border-2 border-white hover:bg-transparent hover:text-white`}
+        style={btnStyle}
+      >
+        ORDER SAMPLE
+        <svg
+          className="shrink-0"
+          style={{ width: "1em", height: "1em" }}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          strokeWidth={2.5}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+          />
+        </svg>
+      </Link>
+    </div>
+  );
+}
+
 /* ── Shared desktop text block (used by both slide types) ── */
 function DesktopText({ slide }: { slide: Slide }) {
+  const hasPricing =
+    typeof slide.startingPrice === "number" &&
+    Number.isFinite(slide.startingPrice);
   return (
     <div
       className="hidden md:flex md:flex-col md:items-end md:text-right absolute"
@@ -36,7 +248,8 @@ function DesktopText({ slide }: { slide: Slide }) {
         right: "5.5%",
         top: "50%",
         transform: "translateY(-50%)",
-        maxWidth: "40%",
+        maxWidth: hasPricing ? "min(52%, 560px)" : "min(42%, 480px)",
+        width: hasPricing ? "min(52%, 560px)" : undefined,
         zIndex: 3,
       }}
     >
@@ -70,34 +283,44 @@ function DesktopText({ slide }: { slide: Slide }) {
       >
         {slide.description}
       </p>
-      <div className="flex items-end justify-end gap-3 mt-6 flex-wrap">
-        <Link
-          href={slide.link}
-          className="inline-flex items-center gap-2 font-bold uppercase tracking-[0.18em] text-[11px] bg-accent-blue text-white rounded-sm px-7 py-3 hover:bg-blue-500 transition-all duration-200"
-        >
-          VIEW RANGE
-          <svg
-            className="w-3.5 h-3.5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            strokeWidth={2.5}
+      {hasPricing ? (
+        <>
+          <PricingCard slide={slide} variant="desktop" />
+          <PricingCTAs variant="desktop" />
+        </>
+      ) : (
+        <div className="flex items-end justify-end gap-3 mt-6 flex-wrap">
+          <Link
+            href={slide.link}
+            className="inline-flex items-center gap-2 font-bold uppercase tracking-[0.18em] text-[11px] bg-accent-blue text-white rounded-sm px-7 py-3 hover:bg-blue-500 transition-all duration-200"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-            />
-          </svg>
-        </Link>
-        <CatalogViewer label="VIEW CATALOG" variant="hero-desktop" />
-      </div>
+            VIEW RANGE
+            <svg
+              className="w-3.5 h-3.5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              strokeWidth={2.5}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+              />
+            </svg>
+          </Link>
+          <CatalogViewer label="VIEW CATALOG" variant="hero-desktop" />
+        </div>
+      )}
     </div>
   );
 }
 
 /* ── Shared mobile text block ── */
 function MobileText({ slide }: { slide: Slide }) {
+  const hasPricing =
+    typeof slide.startingPrice === "number" &&
+    Number.isFinite(slide.startingPrice);
   return (
     <div className="block md:hidden absolute inset-x-0 bottom-0 z-10 px-5 pb-6">
       <p
@@ -124,28 +347,35 @@ function MobileText({ slide }: { slide: Slide }) {
       >
         {slide.description}
       </p>
-      <div className="flex items-center gap-2.5 mt-4 flex-wrap">
-        <Link
-          href={slide.link}
-          className="inline-flex items-center gap-1.5 font-bold uppercase tracking-[0.16em] text-[9.5px] bg-accent-blue text-white rounded-sm px-5 py-2.5 hover:bg-blue-500 transition-all duration-200"
-        >
-          VIEW RANGE
-          <svg
-            className="w-3 h-3"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            strokeWidth={2.5}
+      {hasPricing ? (
+        <>
+          <PricingCard slide={slide} variant="mobile" />
+          <PricingCTAs variant="mobile" />
+        </>
+      ) : (
+        <div className="flex items-center gap-2.5 mt-4 flex-wrap">
+          <Link
+            href={slide.link}
+            className="inline-flex items-center gap-1.5 font-bold uppercase tracking-[0.16em] text-[9.5px] bg-accent-blue text-white rounded-sm px-5 py-2.5 hover:bg-blue-500 transition-all duration-200"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-            />
-          </svg>
-        </Link>
-        <CatalogViewer label="VIEW CATALOG" variant="hero-mobile" />
-      </div>
+            VIEW RANGE
+            <svg
+              className="w-3 h-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              strokeWidth={2.5}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+              />
+            </svg>
+          </Link>
+          <CatalogViewer label="VIEW CATALOG" variant="hero-mobile" />
+        </div>
+      )}
     </div>
   );
 }

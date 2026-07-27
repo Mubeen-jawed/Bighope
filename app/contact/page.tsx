@@ -459,7 +459,7 @@ export default function ContactPage() {
               </div>
               <h3 className="font-bold text-gray-900 mb-1">Address</h3>
               <p className="text-gray-500 text-sm">
-                Railway Road, Sialkot, Pakistan
+                San Bernardino, California 92405
               </p>
             </div>
             <div>

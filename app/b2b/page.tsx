@@ -391,10 +391,10 @@ export default function B2BPage() {
                 For global partnerships &amp; manufacturing
               </p>
               <a
-                href="tel:+923299766660"
+                href="tel:+17473547351"
                 className="block text-[#1e3056] font-bold mb-1 hover:text-orange-500 transition-colors"
               >
-                +92 (329) 976-6660
+                +1 (747) 354-7351
               </a>
               <a
                 href="mailto:bighopesports@gmail.com"

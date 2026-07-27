@@ -72,6 +72,17 @@ export default async function ProductPage({
 
   const sportName = product.sportTitle || "";
 
+  const hasPrice =
+    typeof product.price === "number" && Number.isFinite(product.price);
+  const currencyCode = product.currency || "USD";
+  const formattedPrice = hasPrice
+    ? new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: currencyCode,
+        maximumFractionDigits: Number.isInteger(product.price as number) ? 0 : 2,
+      }).format(product.price as number)
+    : "";
+
   return (
     <>
       {/* ── Breadcrumb ─────────────────────────────────────────────── */}
@@ -125,6 +136,20 @@ export default async function ProductPage({
               </div>
 
               <hr className="border-gray-100" />
+
+              {/* Pricing */}
+              {hasPrice && (
+                <div className="flex items-baseline gap-2">
+                  <span className="text-3xl md:text-4xl font-[family-name:var(--font-oswald)] font-bold text-orange-500 leading-none">
+                    {formattedPrice}
+                  </span>
+                  {product.priceUnit && (
+                    <span className="text-sm font-medium text-gray-500">
+                      {product.priceUnit}
+                    </span>
+                  )}
+                </div>
+              )}
 
               {/* Quick specs strip */}
               <div className="grid grid-cols-2 gap-2.5">

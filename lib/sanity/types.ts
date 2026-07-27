@@ -52,6 +52,9 @@ export interface ProductDetail {
   specs?: ProductSpecs;
   features?: string[];
   customOptions?: string[];
+  price?: number;
+  currency?: string;
+  priceUnit?: string;
   sportTitle?: string;
   sportSlug?: string;
   sportId?: string;
@@ -93,6 +96,11 @@ export interface HeroSlide {
   mainText?: string;
   description?: string;
   link?: string;
+  startingPrice?: number;
+  sampleKitPrice?: number;
+  startingPriceLabel?: string;
+  startingPriceUnit?: string;
+  priceCurrency?: string;
 }
 
 export interface SiteSettings {
