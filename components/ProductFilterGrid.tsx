@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { imageUrl } from "@/lib/sanity/image";
+import { formatPrice } from "@/lib/format";
 import type { ProductCard } from "@/lib/sanity/types";
 
 type SortKey = "featured" | "az" | "za";
@@ -195,6 +196,19 @@ export default function ProductFilterGrid({
                 <h3 className="font-bold text-gray-900 text-[11px] sm:text-sm uppercase tracking-wider leading-snug mb-2 sm:mb-3">
                   {product.name}
                 </h3>
+                {typeof product.price === "number" &&
+                  Number.isFinite(product.price) && (
+                    <div className="flex items-baseline gap-1.5 mb-2 sm:mb-3">
+                      <span className="font-[family-name:var(--font-oswald)] font-bold text-orange-500 text-base sm:text-lg leading-none">
+                        {formatPrice(product.price, product.currency)}
+                      </span>
+                      {product.priceUnit && (
+                        <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-gray-500 font-medium">
+                          {product.priceUnit}
+                        </span>
+                      )}
+                    </div>
+                  )}
                 <div className="flex items-center justify-between border-t border-gray-200 pt-2 sm:pt-3">
                   <span className="text-[9px] sm:text-xs font-bold uppercase tracking-widest text-gray-600 group-hover:text-orange-500 transition-colors duration-200">
                     View Product

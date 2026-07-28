@@ -28,7 +28,8 @@ export const sportBySlugQuery = groq`
   *[_type == "sport" && slug.current == $slug][0]{
     _id, title, "slug": slug.current, description, quoteCategory,
     "products": *[_type == "product" && references(^._id)] | order(name asc){
-      _id, name, "slug": slug.current, description, mainImage, alt, fabric, productCode
+      _id, name, "slug": slug.current, description, mainImage, alt, fabric, productCode,
+      price, currency, priceUnit
     }
   }
 `;
@@ -55,7 +56,8 @@ export const productBySlugQuery = groq`
 export const relatedProductsQuery = groq`
   *[_type == "product" && sport._ref == $sportId && slug.current != $slug]
     | order(name asc)[0...4]{
-      _id, name, "slug": slug.current, description, mainImage, alt
+      _id, name, "slug": slug.current, description, mainImage, alt,
+      price, currency, priceUnit
     }
 `;
 
@@ -69,7 +71,8 @@ export const rangeBySlugQuery = groq`
   *[_type == "range" && slug.current == $slug][0]{
     title, "slug": slug.current, category, description,
     "products": products[]->{
-      _id, name, "slug": slug.current, description, mainImage, alt
+      _id, name, "slug": slug.current, description, mainImage, alt,
+      price, currency, priceUnit
     }
   }
 `;

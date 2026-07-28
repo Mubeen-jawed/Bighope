@@ -94,12 +94,12 @@ export default async function SportPage({
       </section>
 
       {/* ── CTA ── */}
-      <section className="bg-[#0f1830] py-10 md:py-16">
+      <section className="py-10 md:py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-[family-name:var(--font-oswald)] font-bold text-white uppercase mb-3 md:mb-4">
+          <h2 className="text-2xl sm:text-3xl font-[family-name:var(--font-oswald)] font-bold text-[#1e3056] uppercase mb-3 md:mb-4">
             Ready to Kit Out Your Team?
           </h2>
-          <p className="text-gray-300 text-sm sm:text-base mb-6 md:mb-8 max-w-lg mx-auto">
+          <p className="text-gray-600 text-sm sm:text-base mb-6 md:mb-8 max-w-lg mx-auto">
             Send us your design ideas or let our team create something amazing.
             Free quote, no obligation.
           </p>
@@ -112,7 +112,7 @@ export default async function SportPage({
             </a>
             <Link
               href="/packages"
-              className="border-2 border-white/50 hover:border-white text-white font-bold px-6 sm:px-8 py-3 rounded-lg transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
+              className="border-2 border-[#1e3056]/50 hover:border-[#1e3056] text-[#1e3056] hover:bg-[#1e3056] hover:text-white font-bold px-6 sm:px-8 py-3 rounded-lg transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
             >
               View Packages
             </Link>

@@ -39,12 +39,7 @@ export default async function Categories() {
       <div className="relative max-w-7xl mx-auto px-4">
         {/* Heading */}
         <div className="text-center mb-12">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/10 ring-1 ring-orange-500/20 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
-            <span className="text-orange-600 text-[11px] font-black uppercase tracking-[0.2em]">
-              Browse by Sports
-            </span>
-          </span>
+          
           <h2 className="text-3xl md:text-5xl font-[family-name:var(--font-oswald)] font-bold text-gray-900 uppercase mb-3 tracking-tight">
             Our <span className="text-orange-500">Range</span>
           </h2>
@@ -76,8 +71,11 @@ export default async function Categories() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
                 {/* Hover orange wash */}
                 <div className="overlay absolute inset-0 bg-gradient-to-t from-orange-600/50 via-orange-500/10 to-transparent" />
-                {/* Number badge */}
-                <span className="absolute top-3 left-3 flex items-center justify-center w-8 h-8 rounded-full bg-white/15 backdrop-blur-sm ring-1 ring-white/30 text-white text-xs font-bold font-[family-name:var(--font-oswald)]">
+                {/* Number badge — mix-blend-difference makes it adapt to any bg */}
+                <span
+                  className="absolute top-3 left-3 flex items-center justify-center w-8 h-8 rounded-full text-white text-xs font-bold font-[family-name:var(--font-oswald)]"
+                  style={{ mixBlendMode: "difference" }}
+                >
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </div>

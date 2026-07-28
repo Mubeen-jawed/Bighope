@@ -43,7 +43,26 @@ function formatPrice(value: number, currency: string) {
   }).format(value);
 }
 
-function PricingCard({
+function ArrowIcon() {
+  return (
+    <svg
+      className="shrink-0"
+      style={{ width: "1em", height: "1em" }}
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      strokeWidth={2.5}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+      />
+    </svg>
+  );
+}
+
+function PricingBlock({
   slide,
   variant,
 }: {
@@ -69,106 +88,9 @@ function PricingCard({
 
   const isDesktop = variant === "desktop";
 
-  return (
-    <div
-      className={
-        isDesktop
-          ? "mt-4 lg:mt-5 flex items-stretch gap-2.5 lg:gap-3 flex-wrap justify-end text-left w-full"
-          : "mt-3 flex items-stretch gap-2 flex-wrap text-left w-full"
-      }
-    >
-      <div
-        className={
-          isDesktop
-            ? "bg-white rounded-lg shadow-lg flex-1 min-w-[180px]"
-            : "bg-white rounded-md shadow-lg flex-1 min-w-[150px]"
-        }
-        style={{
-          padding: isDesktop
-            ? "clamp(0.75rem, 1.1vw, 1rem) clamp(1rem, 1.4vw, 1.25rem)"
-            : "clamp(0.55rem, 2.2vw, 0.75rem) clamp(0.75rem, 3vw, 0.95rem)",
-        }}
-      >
-        <p
-          className="font-oswald text-[#0f1830] uppercase tracking-wider font-bold leading-none"
-          style={{
-            fontSize: isDesktop
-              ? "clamp(0.65rem, 0.72vw, 0.78rem)"
-              : "clamp(0.55rem, 2.6vw, 0.7rem)",
-          }}
-        >
-          {startingLabel}
-        </p>
-        <p
-          className="font-oswald text-orange-500 leading-none font-bold"
-          style={{
-            fontSize: isDesktop
-              ? "clamp(1.75rem, 2.6vw, 2.6rem)"
-              : "clamp(1.3rem, 6.4vw, 1.9rem)",
-            marginTop: isDesktop ? "0.3rem" : "0.2rem",
-          }}
-        >
-          {startingFormatted}
-        </p>
-        {startingUnit && (
-          <p
-            className="font-oswald text-[#0f1830] uppercase tracking-wider font-semibold leading-none"
-            style={{
-              fontSize: isDesktop
-                ? "clamp(0.6rem, 0.68vw, 0.72rem)"
-                : "clamp(0.5rem, 2.3vw, 0.65rem)",
-              marginTop: isDesktop ? "0.4rem" : "0.28rem",
-            }}
-          >
-            {startingUnit}
-          </p>
-        )}
-      </div>
-      {hasSample && (
-        <div
-          className={
-            isDesktop
-              ? "bg-white rounded-lg shadow-lg flex flex-col items-center justify-center border-2 border-dashed border-orange-500 min-w-[130px]"
-              : "bg-white rounded-md shadow-lg flex flex-col items-center justify-center border-2 border-dashed border-orange-500 min-w-[110px]"
-          }
-          style={{
-            padding: isDesktop
-              ? "clamp(0.75rem, 1.1vw, 1rem) clamp(0.9rem, 1.3vw, 1.15rem)"
-              : "clamp(0.5rem, 2.2vw, 0.7rem) clamp(0.65rem, 2.8vw, 0.9rem)",
-          }}
-        >
-          <p
-            className="font-oswald text-[#0f1830] uppercase tracking-wider font-bold leading-none text-center"
-            style={{
-              fontSize: isDesktop
-                ? "clamp(0.65rem, 0.72vw, 0.78rem)"
-                : "clamp(0.55rem, 2.6vw, 0.7rem)",
-            }}
-          >
-            SAMPLE KIT
-          </p>
-          <p
-            className="font-oswald text-orange-500 leading-none font-bold"
-            style={{
-              fontSize: isDesktop
-                ? "clamp(1.4rem, 2vw, 2.1rem)"
-                : "clamp(1.1rem, 5vw, 1.55rem)",
-              marginTop: isDesktop ? "0.4rem" : "0.25rem",
-            }}
-          >
-            {sampleFormatted}
-          </p>
-        </div>
-      )}
-    </div>
-  );
-}
-
-function PricingCTAs({ variant }: { variant: "desktop" | "mobile" }) {
-  const isDesktop = variant === "desktop";
   const btnBase = isDesktop
-    ? "inline-flex items-center justify-center gap-2 font-bold uppercase tracking-[0.16em] rounded-sm transition-all duration-200"
-    : "inline-flex items-center justify-center gap-1.5 font-bold uppercase tracking-[0.14em] rounded-sm transition-all duration-200 flex-1 min-w-[130px]";
+    ? "inline-flex items-center justify-center gap-2 font-bold uppercase tracking-[0.16em] rounded-sm transition-all duration-200 w-full"
+    : "inline-flex items-center justify-center gap-1.5 font-bold uppercase tracking-[0.14em] rounded-sm transition-all duration-200 w-full";
 
   const btnStyle: React.CSSProperties = isDesktop
     ? {
@@ -182,56 +104,148 @@ function PricingCTAs({ variant }: { variant: "desktop" | "mobile" }) {
           "clamp(0.6rem, 2.6vw, 0.8rem) clamp(0.8rem, 3.2vw, 1.15rem)",
       };
 
-  return (
+  const startingPriceContent = (
+    <div className="text-left">
+      <p
+        className="font-oswald text-white uppercase font-semibold leading-none"
+        style={{
+          fontSize: isDesktop
+            ? "clamp(0.64rem, 0.72vw, 0.76rem)"
+            : "clamp(0.54rem, 2.55vw, 0.7rem)",
+          letterSpacing: "0.14em",
+          textShadow: "0 1px 5px rgba(0,0,0,0.7)",
+        }}
+      >
+        {startingLabel}
+      </p>
+      <p
+        className="font-oswald text-orange-400 leading-none font-bold"
+        style={{
+          fontSize: isDesktop
+            ? "clamp(1.9rem, 2.85vw, 2.85rem)"
+            : "clamp(1.35rem, 6.2vw, 1.85rem)",
+          marginTop: isDesktop ? "0.45rem" : "0.3rem",
+          textShadow: "0 2px 10px rgba(0,0,0,0.65)",
+        }}
+      >
+        {startingFormatted}
+      </p>
+      {startingUnit && (
+        <p
+          className="font-oswald text-white/85 uppercase font-medium leading-none"
+          style={{
+            fontSize: isDesktop
+              ? "clamp(0.58rem, 0.66vw, 0.7rem)"
+              : "clamp(0.48rem, 2.25vw, 0.62rem)",
+            marginTop: isDesktop ? "0.55rem" : "0.38rem",
+            letterSpacing: "0.16em",
+            textShadow: "0 1px 5px rgba(0,0,0,0.7)",
+          }}
+        >
+          {startingUnit}
+        </p>
+      )}
+    </div>
+  );
+
+  const sampleKitContent = hasSample ? (
     <div
-      className={
-        isDesktop
-          ? "mt-3 flex items-center gap-2.5 lg:gap-3 flex-wrap justify-end w-full"
-          : "mt-3 flex items-stretch gap-2 flex-wrap w-full"
-      }
+      className="rounded-md flex flex-col items-center justify-center"
+      style={{
+        border: "2px dashed rgba(251,146,60,0.9)",
+        padding: isDesktop
+          ? "clamp(0.7rem, 1vw, 0.95rem) clamp(0.95rem, 1.35vw, 1.2rem)"
+          : "clamp(0.45rem, 2vw, 0.65rem) clamp(0.6rem, 2.6vw, 0.85rem)",
+      }}
     >
-      <Link
-        href="/contact"
-        className={`${btnBase} bg-orange-500 text-white hover:bg-orange-600`}
-        style={btnStyle}
+      <p
+        className="font-oswald text-white uppercase font-semibold leading-none text-center"
+        style={{
+          fontSize: isDesktop
+            ? "clamp(0.64rem, 0.72vw, 0.76rem)"
+            : "clamp(0.54rem, 2.55vw, 0.7rem)",
+          letterSpacing: "0.16em",
+          textShadow: "0 1px 5px rgba(0,0,0,0.7)",
+        }}
       >
-        GET QUOTE
-        <svg
-          className="shrink-0"
-          style={{ width: "1em", height: "1em" }}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          strokeWidth={2.5}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-          />
-        </svg>
-      </Link>
-      <Link
-        href="/contact?sample=1"
-        className={`${btnBase} bg-white text-[#0f1830] border-2 border-white hover:bg-transparent hover:text-white`}
-        style={btnStyle}
+        SAMPLE KIT
+      </p>
+      <p
+        className="font-oswald text-orange-400 leading-none font-bold"
+        style={{
+          fontSize: isDesktop
+            ? "clamp(1.5rem, 2.15vw, 2.25rem)"
+            : "clamp(1.1rem, 4.8vw, 1.55rem)",
+          marginTop: isDesktop ? "0.5rem" : "0.35rem",
+          textShadow: "0 2px 10px rgba(0,0,0,0.65)",
+        }}
       >
-        ORDER SAMPLE
-        <svg
-          className="shrink-0"
-          style={{ width: "1em", height: "1em" }}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          strokeWidth={2.5}
+        {sampleFormatted}
+      </p>
+    </div>
+  ) : null;
+
+  const getQuoteButton = (
+    <Link
+      href="/contact"
+      className={`${btnBase} bg-orange-500 text-white border-2 border-orange-500 hover:bg-orange-600 hover:border-orange-600`}
+      style={btnStyle}
+    >
+      GET QUOTE
+      <ArrowIcon />
+    </Link>
+  );
+
+  const orderSampleButton = hasSample ? (
+    <Link
+      href="/contact?sample=1"
+      className={`${btnBase} bg-white text-[#0f1830] border-2 border-white hover:bg-transparent hover:text-white`}
+      style={btnStyle}
+    >
+      ORDER SAMPLE
+      <ArrowIcon />
+    </Link>
+  ) : null;
+
+  /* ── Mobile: two stacked rows — prices row, then buttons row ── */
+  if (!isDesktop) {
+    return (
+      <div className="mt-3 w-full">
+        <div className="flex items-end gap-2 w-full">
+          <div className="flex-1 min-w-0">{startingPriceContent}</div>
+          {sampleKitContent && (
+            <div className="flex-1 min-w-0">{sampleKitContent}</div>
+          )}
+        </div>
+        <div className="mt-3 flex items-stretch gap-2 w-full">
+          <div className="flex-1 min-w-0">{getQuoteButton}</div>
+          {orderSampleButton && (
+            <div className="flex-1 min-w-0">{orderSampleButton}</div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  /* ── Desktop: two aligned columns — price on top, button below ── */
+  return (
+    <div className="mt-4 lg:mt-5 flex items-end gap-3 lg:gap-4 flex-wrap justify-end text-left w-full">
+      <div
+        className="flex flex-col items-stretch text-left"
+        style={{ width: "clamp(220px, 20vw, 280px)" }}
+      >
+        {startingPriceContent}
+        <div className="mt-3">{getQuoteButton}</div>
+      </div>
+      {sampleKitContent && (
+        <div
+          className="flex flex-col items-stretch"
+          style={{ width: "clamp(170px, 15vw, 210px)" }}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-          />
-        </svg>
-      </Link>
+          {sampleKitContent}
+          <div className="mt-3">{orderSampleButton}</div>
+        </div>
+      )}
     </div>
   );
 }
@@ -284,15 +298,12 @@ function DesktopText({ slide }: { slide: Slide }) {
         {slide.description}
       </p>
       {hasPricing ? (
-        <>
-          <PricingCard slide={slide} variant="desktop" />
-          <PricingCTAs variant="desktop" />
-        </>
+        <PricingBlock slide={slide} variant="desktop" />
       ) : (
         <div className="flex items-end justify-end gap-3 mt-6 flex-wrap">
           <Link
             href={slide.link}
-            className="inline-flex items-center gap-2 font-bold uppercase tracking-[0.18em] text-[11px] bg-accent-blue text-white rounded-sm px-7 py-3 hover:bg-blue-500 transition-all duration-200"
+            className="inline-flex items-center gap-2 font-bold uppercase tracking-[0.18em] text-[11px] bg-orange-500 text-white rounded-sm px-7 py-3 hover:bg-orange-600 transition-all duration-200"
           >
             VIEW RANGE
             <svg
@@ -348,15 +359,12 @@ function MobileText({ slide }: { slide: Slide }) {
         {slide.description}
       </p>
       {hasPricing ? (
-        <>
-          <PricingCard slide={slide} variant="mobile" />
-          <PricingCTAs variant="mobile" />
-        </>
+        <PricingBlock slide={slide} variant="mobile" />
       ) : (
         <div className="flex items-center gap-2.5 mt-4 flex-wrap">
           <Link
             href={slide.link}
-            className="inline-flex items-center gap-1.5 font-bold uppercase tracking-[0.16em] text-[9.5px] bg-accent-blue text-white rounded-sm px-5 py-2.5 hover:bg-blue-500 transition-all duration-200"
+            className="inline-flex items-center gap-1.5 font-bold uppercase tracking-[0.16em] text-[9.5px] bg-orange-500 text-white rounded-sm px-5 py-2.5 hover:bg-orange-600 transition-all duration-200"
           >
             VIEW RANGE
             <svg

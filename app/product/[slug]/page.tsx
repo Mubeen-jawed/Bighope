@@ -11,6 +11,7 @@ import {
   TAGS,
 } from "@/lib/sanity/queries";
 import { imageUrl } from "@/lib/sanity/image";
+import { formatPrice } from "@/lib/format";
 import type { ProductCard, ProductDetail } from "@/lib/sanity/types";
 
 export const dynamicParams = true;
@@ -238,7 +239,7 @@ export default async function ProductPage({
       </section>
 
       {/* ── Feature strip ──────────────────────────────────────────── */}
-      <div className="bg-[#1e3056] text-white py-5">
+      <div className="bg-[#111827] text-white py-5">
         <div className="max-w-7xl mx-auto px-4 flex flex-wrap justify-center gap-x-6 gap-y-2 sm:gap-8 text-xs sm:text-sm font-medium">
           {[
             "Free Custom Design",
@@ -322,13 +323,13 @@ export default async function ProductPage({
       {related.length > 0 && (
         <section className="py-10 md:py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-[#1e3056] rounded-xl px-4 sm:px-6 py-3 sm:py-4 mb-6 sm:mb-8">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-black text-white uppercase tracking-wide">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-4 sm:px-6 py-3 sm:py-4 mb-6 sm:mb-8">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-black text-[#1e3056] uppercase tracking-wide">
                 More {sportName} Products
               </h2>
               <Link
                 href={`/sport/${product.sportSlug}`}
-                className="text-xs sm:text-sm font-semibold text-white border border-white/50 hover:border-white hover:bg-white hover:text-[#1e3056] px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all duration-200 whitespace-nowrap"
+                className="text-xs sm:text-sm font-semibold text-[#1e3056] border border-[#1e3056]/50 hover:border-[#1e3056] hover:bg-[#1e3056] hover:text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-all duration-200 whitespace-nowrap"
               >
                 View All {sportName}
               </Link>
@@ -356,6 +357,19 @@ export default async function ProductPage({
                     <h3 className="font-bold text-gray-900 text-[11px] sm:text-sm uppercase tracking-wider leading-snug mb-2 sm:mb-3">
                       {rel.name}
                     </h3>
+                    {typeof rel.price === "number" &&
+                      Number.isFinite(rel.price) && (
+                        <div className="flex items-baseline gap-1.5 mb-2 sm:mb-3">
+                          <span className="font-[family-name:var(--font-oswald)] font-bold text-orange-500 text-base sm:text-lg leading-none">
+                            {formatPrice(rel.price, rel.currency)}
+                          </span>
+                          {rel.priceUnit && (
+                            <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-gray-500 font-medium">
+                              {rel.priceUnit}
+                            </span>
+                          )}
+                        </div>
+                      )}
                     <div className="flex items-center justify-between border-t border-gray-200 pt-2 sm:pt-3">
                       <span className="text-[9px] sm:text-xs font-bold uppercase tracking-widest text-gray-600 group-hover:text-orange-500 transition-colors duration-200">
                         View Product
@@ -383,12 +397,12 @@ export default async function ProductPage({
       )}
 
       {/* ── CTA Banner ─────────────────────────────────────────────── */}
-      <section className="bg-[#0f1830] py-10 md:py-16">
+      <section className="py-10 md:py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-2xl sm:text-3xl font-[family-name:var(--font-oswald)] font-bold text-white uppercase mb-3 md:mb-4">
+          <h2 className="text-2xl sm:text-3xl font-[family-name:var(--font-oswald)] font-bold text-[#1e3056] uppercase mb-3 md:mb-4">
             Ready to Kit Out Your Team?
           </h2>
-          <p className="text-gray-300 text-sm sm:text-base mb-6 md:mb-8 max-w-lg mx-auto">
+          <p className="text-gray-600 text-sm sm:text-base mb-6 md:mb-8 max-w-lg mx-auto">
             Send us your design ideas or let our team create something amazing.
             Free quote, no obligation.
           </p>
@@ -401,7 +415,7 @@ export default async function ProductPage({
             </Link>
             <Link
               href="/packages"
-              className="border-2 border-white/50 hover:border-white text-white font-bold px-6 sm:px-8 py-3 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
+              className="border-2 border-[#1e3056]/50 hover:border-[#1e3056] text-[#1e3056] hover:bg-[#1e3056] hover:text-white font-bold px-6 sm:px-8 py-3 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
             >
               View Packages
             </Link>

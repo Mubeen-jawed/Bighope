@@ -19,6 +19,9 @@ export interface ProductCard {
   alt?: string;
   fabric?: string;
   productCode?: string;
+  price?: number;
+  currency?: string;
+  priceUnit?: string;
 }
 
 export interface SportPage {

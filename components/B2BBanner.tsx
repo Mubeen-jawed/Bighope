@@ -85,7 +85,7 @@ export default function B2BBanner() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
           <Link
             href="/b2b"
-            className="group inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-full text-sm transition-all duration-200 hover:-translate-y-0.5 shadow-[0_0_30px_rgba(249,115,22,0.25)] hover:shadow-[0_0_40px_rgba(249,115,22,0.4)]"
+            className="group inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-full text-sm transition-all duration-200 hover:-translate-y-0.5"
           >
             Explore B2B Partnerships
             <svg

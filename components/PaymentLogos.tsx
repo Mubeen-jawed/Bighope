@@ -239,7 +239,7 @@ export function PaymentLogoBadges() {
         <div
           key={method.id}
           title={method.name}
-          className="flex items-center gap-1.5 bg-gray-800 border border-gray-700 rounded-md px-2.5 py-1.5 cursor-default"
+          className="flex items-center gap-1.5 border border-white/60 rounded-md px-2.5 py-1.5 cursor-default"
         >
           {/* Icon, 20 × 20 */}
           <span className="w-5 h-5 rounded overflow-hidden flex items-center justify-center shrink-0">

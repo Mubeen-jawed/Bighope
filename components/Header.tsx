@@ -141,67 +141,137 @@ const infoLinks = [
   },
 ];
 
-const searchIndex = [
+const searchIndex: {
+  label: string;
+  href: string;
+  category: string;
+  image?: string;
+}[] = [
   {
     label: "Soccer / Football Uniforms",
     href: "/sport/soccer",
     category: "Custom Uniforms",
+    image: "/sports/soccer-kit.webp",
   },
-  { label: "Rugby Kits", href: "/sport/rugby", category: "Custom Uniforms" },
+  {
+    label: "Rugby Kits",
+    href: "/sport/rugby",
+    category: "Custom Uniforms",
+    image: "/sports/rugby-kit-front.webp",
+  },
   {
     label: "Basketball Uniforms",
     href: "/sport/basketball",
     category: "Custom Uniforms",
+    image: "/sports/basketball-jersey.webp",
   },
   {
     label: "Cricket Uniforms",
     href: "/sport/cricket",
     category: "Custom Uniforms",
+    image: "/sports/cricket-kit.webp",
   },
   {
     label: "7v7 Football Uniforms",
     href: "/sport/7v7-football",
     category: "Custom Uniforms",
+    image: "/sports/7v7-football-uniform.webp",
   },
   {
     label: "Baseball / Softball Uniforms",
     href: "/sport/baseball",
     category: "Custom Uniforms",
+    image: "/sports/product-misc-1.webp",
   },
-  { label: "MMA Gear", href: "/sport/mma", category: "Custom Uniforms" },
-  { label: "Hoodie", href: "/range/hoodie", category: "Custom Teamwear" },
-  { label: "T-Shirts", href: "/range/t-shirts", category: "Custom Teamwear" },
-  { label: "Polo", href: "/range/polo", category: "Custom Teamwear" },
+  {
+    label: "MMA Gear",
+    href: "/sport/mma",
+    category: "Custom Uniforms",
+    image: "/sports/mma-fighter.webp",
+  },
+  {
+    label: "Hoodie",
+    href: "/range/hoodie",
+    category: "Custom Teamwear",
+    image: "/sports/team-hoodies.webp",
+  },
+  {
+    label: "T-Shirts",
+    href: "/range/t-shirts",
+    category: "Custom Teamwear",
+    image: "/sports/custom-t-shirts.webp",
+  },
+  {
+    label: "Polo",
+    href: "/range/polo",
+    category: "Custom Teamwear",
+    image: "/sports/polo-shirts.webp",
+  },
   {
     label: "Track Suits",
     href: "/range/track-suits",
     category: "Custom Teamwear",
+    image: "/sports/tracksuits.webp",
   },
   {
     label: "1/4 Zipper",
     href: "/range/quarter-zipper",
     category: "Custom Teamwear",
+    image: "/sports/quarter-zipper-short-sleeve.webp",
   },
-  { label: "Jackets", href: "/range/jackets", category: "Custom Teamwear" },
-  { label: "Bags & Packs", href: "/range/bags-packs", category: "Accessories" },
-  { label: "Duffle Bags", href: "/range/duffle-bags", category: "Accessories" },
-  { label: "Socks", href: "/range/socks", category: "Accessories" },
-  { label: "Hats", href: "/range/hats", category: "Accessories" },
-  { label: "Packages", href: "/packages", category: "Pages" },
+  {
+    label: "Jackets",
+    href: "/range/jackets",
+    category: "Custom Teamwear",
+    image: "/sports/zipper-hoodies.webp",
+  },
+  {
+    label: "Bags & Packs",
+    href: "/range/bags-packs",
+    category: "Accessories",
+    image: "/sports/backpacks.webp",
+  },
+  {
+    label: "Duffle Bags",
+    href: "/range/duffle-bags",
+    category: "Accessories",
+    image: "/sports/duffle-bags.webp",
+  },
+  {
+    label: "Socks",
+    href: "/range/socks",
+    category: "Accessories",
+    image: "/sports/soccer-socks.webp",
+  },
+  {
+    label: "Hats",
+    href: "/range/hats",
+    category: "Accessories",
+    image: "/sports/product-misc-2.webp",
+  },
+  {
+    label: "Packages",
+    href: "/packages",
+    category: "Pages",
+    image: "/packages/soccer-package.png",
+  },
   {
     label: "Cricket Packages",
     href: "/packages/cricket",
     category: "Packages",
+    image: "/packages/cricket-inside-package.png",
   },
   {
     label: "7v7 Football Packages",
     href: "/packages/7v7-football",
     category: "Packages",
+    image: "/packages/7v7-package.png",
   },
   {
     label: "Cricket Kit Packages",
     href: "/packages/cricket-kit",
     category: "Packages",
+    image: "/packages/cricket-inside-package.png",
   },
   { label: "B2B Services", href: "/b2b", category: "Pages" },
   { label: "About Us", href: "/about", category: "Pages" },
@@ -248,6 +318,8 @@ export default function Header({
   const mobileSearchRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const mobileSearchInputRef = useRef<HTMLInputElement>(null);
+  const searchToggleRef = useRef<HTMLButtonElement>(null);
+  const mobileSearchToggleRef = useRef<HTMLButtonElement>(null);
   const rangeCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const packagesCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const infoCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -316,6 +388,8 @@ export default function Header({
     setSearchOpen(false);
     setSearchQuery("");
     setSearchResults([]);
+    searchInputRef.current?.blur();
+    mobileSearchInputRef.current?.blur();
   }, []);
 
   const handleSearchChange = useCallback((query: string) => {
@@ -364,7 +438,15 @@ export default function Header({
       const target = e.target as Node;
       const insideDesktopSearch = searchRef.current?.contains(target);
       const insideMobileSearch = mobileSearchRef.current?.contains(target);
-      if (!insideDesktopSearch && !insideMobileSearch) closeSearch();
+      const onDesktopToggle = searchToggleRef.current?.contains(target);
+      const onMobileToggle = mobileSearchToggleRef.current?.contains(target);
+      if (
+        !insideDesktopSearch &&
+        !insideMobileSearch &&
+        !onDesktopToggle &&
+        !onMobileToggle
+      )
+        closeSearch();
     };
     window.addEventListener("scroll", handleScroll);
     document.addEventListener("mousedown", handleClickOutside);
@@ -512,8 +594,8 @@ export default function Header({
       <div
         className={`transition-all duration-300 ease-in-out sm:px-12 px-4 ${
           scrolled
-            ? "bg-[#16254a]/95 backdrop-blur-md py-2 border-b border-white/10"
-            : "bg-[#1e3056] py-3 border-b border-transparent"
+            ? "bg-[#111827] py-2 border-b border-white/10"
+            : "bg-[#111827] py-3 border-b border-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
@@ -814,19 +896,20 @@ export default function Header({
                       if (e.key === "Escape") closeSearch();
                     }}
                     placeholder="Search..."
-                    className="w-44 xl:w-52 bg-white/10 text-white placeholder-gray-400 text-sm px-3 py-1.5 rounded-l-lg border border-white/20 border-r-0 outline-none focus:bg-white/15"
+                    className="w-44 xl:w-52 bg-transparent text-white placeholder-gray-400 text-sm px-1 py-1.5 border-b border-white/30 focus:border-white/70 outline-none transition-colors"
                   />
                 </div>
                 <button
+                  ref={searchToggleRef}
                   aria-label="Search"
                   onClick={() => {
-                    if (searchOpen) handleSearchSubmit();
+                    if (searchOpen) closeSearch();
                     else setSearchOpen(true);
                   }}
-                  className={`flex items-center justify-center w-9 h-9 transition-all duration-200 ${
+                  className={`flex items-center justify-center w-9 h-9 rounded-lg transition-colors ${
                     searchOpen
-                      ? "bg-orange-500 hover:bg-orange-600 text-white rounded-r-lg"
-                      : "text-gray-300 hover:text-white hover:bg-white/10 rounded-lg"
+                      ? "text-orange-400"
+                      : "text-gray-300 hover:text-white hover:bg-white/10"
                   }`}
                 >
                   <svg
@@ -878,7 +961,7 @@ export default function Header({
             <QuoteModal
               key={`desktop-${autoCategory}`}
               defaultCategory={autoCategory}
-              buttonClassName="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-sm font-semibold px-4 py-2 rounded-lg shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 transition-all duration-200"
+              buttonClassName="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-all duration-200"
               buttonLabel="Get a Quote"
             />
           </div>
@@ -887,14 +970,24 @@ export default function Header({
           <div className="lg:hidden flex items-center gap-1">
             {/* Mobile search icon */}
             <button
+              ref={mobileSearchToggleRef}
               aria-label="Search"
               onClick={() => {
-                setSearchOpen(!searchOpen);
-                setMobileOpen(false);
+                setSearchOpen((prev) => {
+                  if (prev) {
+                    setSearchQuery("");
+                    setSearchResults([]);
+                    searchInputRef.current?.blur();
+                    mobileSearchInputRef.current?.blur();
+                    return false;
+                  }
+                  setMobileOpen(false);
+                  return true;
+                });
               }}
               className={`flex items-center justify-center w-9 h-9 rounded-lg transition-colors ${
                 searchOpen
-                  ? "bg-orange-500/20 text-orange-400"
+                  ? "text-orange-400"
                   : "text-gray-300 hover:text-white hover:bg-white/10"
               }`}
             >
@@ -954,15 +1047,15 @@ export default function Header({
       <div
         className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
           searchOpen && !mobileOpen
-            ? "max-h-24 opacity-100"
+            ? "max-h-[80vh] opacity-100"
             : "max-h-0 opacity-0"
         }`}
       >
         <div
-          className="bg-[#16254a] border-t border-white/10 px-4 py-2.5"
+          className="bg-[#111827] border-t border-white/10 px-4 py-2.5"
           ref={mobileSearchRef}
         >
-          <div className="flex items-center bg-white/10 rounded-xl px-3 py-2 gap-2 max-w-lg mx-auto">
+          <div className="flex items-center bg-transparent border-b border-white/30 focus-within:border-white/70 transition-colors px-1 py-2 gap-2 max-w-lg mx-auto">
             <svg
               className="w-4 h-4 text-gray-400 shrink-0"
               fill="none"
@@ -993,7 +1086,11 @@ export default function Header({
             />
             {searchQuery && (
               <button
-                onClick={closeSearch}
+                onClick={() => {
+                  setSearchQuery("");
+                  setSearchResults([]);
+                  mobileSearchInputRef.current?.focus();
+                }}
                 className="text-gray-500 hover:text-white transition-colors"
               >
                 <svg
@@ -1013,16 +1110,27 @@ export default function Header({
             )}
           </div>
           {searchQuery && searchResults.length > 0 && (
-            <div className="mt-1 bg-[#162440] rounded-xl overflow-hidden border border-white/10 max-w-lg mx-auto">
+            <div className="mt-1 bg-transparent rounded-xl overflow-y-auto max-h-[60vh] max-w-lg mx-auto">
               {searchResults.map((result) => (
                 <Link
                   key={result.href}
                   href={result.href}
-                  className="flex items-center justify-between px-3 py-2 text-sm hover:bg-white/10 border-b border-white/5 last:border-0"
+                  className="flex items-center gap-3 px-3 py-2 text-sm hover:bg-white/10 border-b border-white/5 last:border-0"
                   onClick={closeSearch}
                 >
-                  <span className="text-gray-200">{result.label}</span>
-                  <span className="text-xs text-gray-500">
+                  {result.image ? (
+                    <Image
+                      src={result.image}
+                      alt={result.label}
+                      width={40}
+                      height={40}
+                      className="w-10 h-10 rounded-md object-cover shrink-0 bg-white/5"
+                    />
+                  ) : (
+                    <div className="w-10 h-10 rounded-md bg-white/5 shrink-0" />
+                  )}
+                  <span className="flex-1 text-gray-200">{result.label}</span>
+                  <span className="text-xs text-gray-500 shrink-0">
                     {result.category}
                   </span>
                 </Link>
@@ -1038,15 +1146,15 @@ export default function Header({
           mobileOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="bg-[#0f1c3a] border-t border-white/10 text-white max-h-[80vh] overflow-y-auto">
+        <div className="bg-[#111827] border-t border-white/10 text-white max-h-[80vh] overflow-y-auto">
           <div className="px-4 pt-3 pb-3 flex flex-col gap-0.5">
             {/* Home */}
             <Link
               href="/"
               className={`flex items-center gap-2 px-4 py-3 text-sm font-medium rounded-xl transition-colors ${
                 isActive("/")
-                  ? "text-orange-400 bg-white/10"
-                  : "text-gray-300 hover:text-white hover:bg-white/5"
+                  ? "text-orange-400"
+                  : "text-gray-300 hover:text-white"
               }`}
               onClick={() => setMobileOpen(false)}
             >
@@ -1054,18 +1162,20 @@ export default function Header({
             </Link>
 
             {/* Our Range accordion */}
-            <div className="rounded-xl overflow-hidden border border-white/5">
+            <div className="rounded-xl overflow-hidden">
               <button
                 className={`w-full flex items-center justify-between px-4 py-3 text-sm font-medium transition-colors ${
                   mobileRangeOpen
-                    ? "bg-white/10 text-white"
-                    : "text-gray-300 hover:bg-white/5 hover:text-white"
+                    ? "text-white"
+                    : isRangeActive()
+                      ? "text-orange-400"
+                      : "text-gray-300 hover:bg-white/5 hover:text-white"
                 }`}
                 onClick={() => setMobileRangeOpen(!mobileRangeOpen)}
               >
                 <span>Our Range</span>
                 <svg
-                  className={`w-4 h-4 transition-transform duration-200 ${mobileRangeOpen ? "rotate-180 text-orange-400" : "text-gray-500"}`}
+                  className={`w-4 h-4 text-white transition-transform duration-200 ${mobileRangeOpen ? "rotate-180" : ""}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -1081,15 +1191,12 @@ export default function Header({
               <div
                 className={`overflow-hidden transition-all duration-200 ${mobileRangeOpen ? "max-h-[1000px]" : "max-h-0"}`}
               >
-                <div className="bg-[#0c1629] border-t border-white/5">
-                  {rangeCategories.map((cat, idx) => (
-                    <div
-                      key={cat.heading}
-                      className={idx > 0 ? "border-t border-white/5" : ""}
-                    >
+                <div>
+                  {rangeCategories.map((cat) => (
+                    <div key={cat.heading}>
                       <div className="flex items-center gap-2 px-5 pt-3 pb-1">
-                        <span className="text-orange-400">{cat.icon}</span>
-                        <p className="text-xs font-black uppercase tracking-widest text-orange-400">
+                        <span className="text-white/80">{cat.icon}</span>
+                        <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-500">
                           {cat.heading}
                         </p>
                       </div>
@@ -1097,14 +1204,14 @@ export default function Header({
                         <Link
                           key={item.label}
                           href={item.href}
-                          className={`flex items-center gap-2 px-8 py-2 text-sm transition-colors ${
+                          className={`flex items-center gap-2 pl-8 pr-4 py-2 text-sm transition-colors ${
                             pathname === item.href
-                              ? "text-orange-400 bg-orange-500/10"
-                              : "text-gray-400 hover:text-white hover:bg-white/5"
+                              ? "text-orange-400"
+                              : "text-gray-400 hover:text-white"
                           }`}
                           onClick={() => setMobileOpen(false)}
                         >
-                          <span className="w-1 h-1 rounded-full bg-current shrink-0" />
+                          <span className="text-current shrink-0">—</span>
                           {item.label}
                         </Link>
                       ))}
@@ -1116,18 +1223,20 @@ export default function Header({
             </div>
 
             {/* Packages accordion */}
-            <div className="rounded-xl overflow-hidden border border-white/5">
+            <div className="rounded-xl overflow-hidden">
               <button
                 className={`w-full flex items-center justify-between px-4 py-3 text-sm font-medium transition-colors ${
                   mobilePackagesOpen
-                    ? "bg-white/10 text-white"
-                    : "text-gray-300 hover:bg-white/5 hover:text-white"
+                    ? "text-white"
+                    : isPackagesActive()
+                      ? "text-orange-400"
+                      : "text-gray-300 hover:bg-white/5 hover:text-white"
                 }`}
                 onClick={() => setMobilePackagesOpen(!mobilePackagesOpen)}
               >
                 <span>Packages</span>
                 <svg
-                  className={`w-4 h-4 transition-transform duration-200 ${mobilePackagesOpen ? "rotate-180 text-orange-400" : "text-gray-500"}`}
+                  className={`w-4 h-4 text-white transition-transform duration-200 ${mobilePackagesOpen ? "rotate-180" : ""}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -1143,13 +1252,13 @@ export default function Header({
               <div
                 className={`overflow-hidden transition-all duration-200 ${mobilePackagesOpen ? "max-h-[400px]" : "max-h-0"}`}
               >
-                <div className="bg-[#0c1629] border-t border-white/5 p-1.5">
+                <div className="py-1.5">
                   <Link
                     href="/packages"
-                    className={`flex items-center gap-2.5 px-4 py-2.5 text-sm rounded-lg transition-colors ${
+                    className={`flex items-center gap-2.5 px-4 py-2.5 text-sm transition-colors ${
                       pathname === "/packages"
-                        ? "text-orange-400 bg-orange-500/10 font-medium"
-                        : "text-gray-400 hover:text-white hover:bg-white/5"
+                        ? "text-orange-400 font-medium"
+                        : "text-gray-400 hover:text-white"
                     }`}
                     onClick={() => setMobileOpen(false)}
                   >
@@ -1159,14 +1268,14 @@ export default function Header({
                     <Link
                       key={pkg.href}
                       href={pkg.href}
-                      className={`flex items-center gap-2 px-8 py-2 text-sm transition-colors ${
+                      className={`flex items-center gap-2 pl-8 pr-4 py-2 text-sm transition-colors ${
                         pathname === pkg.href
-                          ? "text-orange-400 bg-orange-500/10"
-                          : "text-gray-400 hover:text-white hover:bg-white/5"
+                          ? "text-orange-400"
+                          : "text-gray-400 hover:text-white"
                       }`}
                       onClick={() => setMobileOpen(false)}
                     >
-                      <span className="w-1 h-1 rounded-full bg-current shrink-0" />
+                      <span className="text-current shrink-0">—</span>
                       {pkg.label}
                     </Link>
                   ))}
@@ -1179,8 +1288,8 @@ export default function Header({
               href="/b2b"
               className={`flex items-center gap-2 px-4 py-3 text-sm font-medium rounded-xl transition-colors ${
                 isActive("/b2b")
-                  ? "text-orange-400 bg-white/10"
-                  : "text-gray-300 hover:text-white hover:bg-white/5"
+                  ? "text-orange-400"
+                  : "text-gray-300 hover:text-white"
               }`}
               onClick={() => setMobileOpen(false)}
             >
@@ -1188,18 +1297,20 @@ export default function Header({
             </Link>
 
             {/* Info & About accordion */}
-            <div className="rounded-xl overflow-hidden border border-white/5">
+            <div className="rounded-xl overflow-hidden">
               <button
                 className={`w-full flex items-center justify-between px-4 py-3 text-sm font-medium transition-colors ${
                   mobileInfoOpen
-                    ? "bg-white/10 text-white"
-                    : "text-gray-300 hover:bg-white/5 hover:text-white"
+                    ? "text-white"
+                    : isInfoActive()
+                      ? "text-orange-400"
+                      : "text-gray-300 hover:bg-white/5 hover:text-white"
                 }`}
                 onClick={() => setMobileInfoOpen(!mobileInfoOpen)}
               >
                 <span>Info & About</span>
                 <svg
-                  className={`w-4 h-4 transition-transform duration-200 ${mobileInfoOpen ? "rotate-180 text-orange-400" : "text-gray-500"}`}
+                  className={`w-4 h-4 text-white transition-transform duration-200 ${mobileInfoOpen ? "rotate-180" : ""}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -1215,15 +1326,15 @@ export default function Header({
               <div
                 className={`overflow-hidden transition-all duration-200 ${mobileInfoOpen ? "max-h-[300px]" : "max-h-0"}`}
               >
-                <div className="bg-[#0c1629] border-t border-white/5 p-1.5">
+                <div className="py-1.5">
                   {infoLinks.map((item) => (
                     <Link
                       key={item.label}
                       href={item.href}
-                      className={`flex items-center gap-2.5 px-4 py-2.5 text-sm rounded-lg transition-colors ${
+                      className={`flex items-center gap-2.5 px-4 py-2.5 text-sm transition-colors ${
                         isActive(item.href)
-                          ? "text-orange-400 bg-orange-500/10 font-medium"
-                          : "text-gray-400 hover:text-white hover:bg-white/5"
+                          ? "text-orange-400 font-medium"
+                          : "text-gray-400 hover:text-white"
                       }`}
                       onClick={() => setMobileOpen(false)}
                     >
@@ -1239,8 +1350,8 @@ export default function Header({
               href="/contact"
               className={`flex items-center gap-2 px-4 py-3 text-sm font-medium rounded-xl transition-colors ${
                 isActive("/contact")
-                  ? "text-orange-400 bg-white/10"
-                  : "text-gray-300 hover:text-white hover:bg-white/5"
+                  ? "text-orange-400"
+                  : "text-gray-300 hover:text-white"
               }`}
               onClick={() => setMobileOpen(false)}
             >
@@ -1252,7 +1363,7 @@ export default function Header({
               <QuoteModal
                 key={`mobile-${autoCategory}`}
                 defaultCategory={autoCategory}
-                buttonClassName="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-sm font-semibold px-4 py-3 rounded-xl shadow-lg shadow-orange-500/20 transition-all duration-200"
+                buttonClassName="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-sm font-semibold px-4 py-3 rounded-xl transition-all duration-200"
                 buttonLabel="Get a Quote"
               />
             </div>

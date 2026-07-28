@@ -75,96 +75,35 @@ export default function CatalogPDFModal({ onClose }: Props) {
           animation: "catalogFadeIn 0.18s cubic-bezier(0.4,0,0.2,1) both",
         }}
       >
-        {/* Header */}
-        <div
-          className="flex items-center justify-between px-4 flex-shrink-0"
-          style={{
-            background: "#111827",
-            borderBottom: "1px solid rgba(255,255,255,0.08)",
-            minHeight: "44px",
-          }}
+        {/* Floating close button */}
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 flex items-center justify-center w-9 h-9 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all z-20"
+          aria-label="Close"
         >
-          <a
-            href={PDF_PATH}
-            download="BigHopeSports-ProductCatalog.pdf"
-            className="flex items-center gap-2 font-semibold text-white hover:text-orange-400 transition-colors select-none"
-            style={{ fontSize: "13px" }}
+          <svg
+            width="16"
+            height="16"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2.5}
           >
-            <svg
-              width="15"
-              height="15"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2.4}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-              />
-            </svg>
-            Download
-          </a>
-
-          <div className="flex items-center gap-4">
-            <a
-              href={PDF_PATH}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 font-semibold text-white hover:text-blue-400 transition-colors select-none"
-              style={{ fontSize: "13px" }}
-            >
-              <svg
-                width="15"
-                height="15"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2.4}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                />
-              </svg>
-              Open in new tab
-            </a>
-
-            <button
-              onClick={onClose}
-              className="flex items-center justify-center w-8 h-8 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-all"
-              aria-label="Close"
-            >
-              <svg
-                width="14"
-                height="14"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2.5}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
 
         {/* Loading overlay, covers until first page is painted */}
         {!ready && (
           <div
             className="absolute inset-0 flex items-center justify-center"
-            style={{ background: "#525659", zIndex: 10, top: "44px" }}
+            style={{ background: "#525659", zIndex: 10 }}
           >
-            <div className="flex flex-col items-center gap-3">
-              <div className="catalogSpinner" />
-              <span className="text-white/70 text-sm">Loading catalog...</span>
-            </div>
+            <div className="catalogSpinner" />
           </div>
         )}
 
@@ -211,7 +150,7 @@ export default function CatalogPDFModal({ onClose }: Props) {
           width: 32px;
           height: 32px;
           border: 3px solid rgba(255,255,255,0.15);
-          border-top-color: #f97316;
+          border-top-color: #ffffff;
           border-radius: 50%;
           animation: catalogSpin 0.7s linear infinite;
         }

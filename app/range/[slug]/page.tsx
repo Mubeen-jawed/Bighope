@@ -6,6 +6,7 @@ import CatalogViewer from "@/components/CatalogViewer";
 import { sanityFetch } from "@/lib/sanity/client";
 import { rangeBySlugQuery, rangeSlugsQuery, TAGS } from "@/lib/sanity/queries";
 import { imageUrl } from "@/lib/sanity/image";
+import { formatPrice } from "@/lib/format";
 import type { RangePage as RangePageData } from "@/lib/sanity/types";
 
 export const dynamicParams = true;
@@ -123,7 +124,7 @@ export default async function RangePage({
                 </p>
                 <a
                   href="/contact"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-7 py-3 rounded-xl shadow-lg shadow-orange-500/25 transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-7 py-3 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
                 >
                   Enquire Now
                   <svg
@@ -171,6 +172,19 @@ export default async function RangePage({
                     <h3 className="font-bold text-gray-900 text-[11px] sm:text-sm uppercase tracking-wider leading-snug mb-2 sm:mb-3 group-hover:text-orange-600 transition-colors">
                       {product.name}
                     </h3>
+                    {typeof product.price === "number" &&
+                      Number.isFinite(product.price) && (
+                        <div className="flex items-baseline gap-1.5 mb-2 sm:mb-3">
+                          <span className="font-[family-name:var(--font-oswald)] font-bold text-orange-500 text-base sm:text-lg leading-none">
+                            {formatPrice(product.price, product.currency)}
+                          </span>
+                          {product.priceUnit && (
+                            <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-gray-500 font-medium">
+                              {product.priceUnit}
+                            </span>
+                          )}
+                        </div>
+                      )}
                     <div className="flex items-center justify-between border-t border-gray-100 pt-2 sm:pt-3">
                       <span className="text-[9px] sm:text-xs font-bold uppercase tracking-widest text-gray-600 group-hover:text-orange-500 transition-colors duration-200">
                         View Product
@@ -198,50 +212,31 @@ export default async function RangePage({
       </section>
 
       {/* ── CTA ── */}
-      <section className="relative overflow-hidden bg-[#0f1830] py-12 md:py-20">
-        {/* texture */}
-        <div className="pointer-events-none absolute inset-0">
-          <div
-            className="absolute inset-0 opacity-20"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 20% 20%, rgba(249,115,22,0.5) 0, transparent 45%), radial-gradient(circle at 80% 80%, rgba(37,99,235,0.4) 0, transparent 45%)",
-            }}
-          />
-          <div
-            className="absolute inset-0 opacity-[0.06]"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(255,255,255,0.7) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.7) 1px, transparent 1px)",
-              backgroundSize: "40px 40px",
-            }}
-          />
-        </div>
-
+      <section className="py-12 md:py-20">
         <div className="relative max-w-7xl mx-auto px-4 text-center">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 ring-1 ring-white/15 mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
-            <span className="text-orange-300 text-[11px] font-black uppercase tracking-[0.2em]">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 ring-1 ring-orange-200 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+            <span className="text-orange-600 text-[11px] font-black uppercase tracking-[0.2em]">
               Custom Teamwear
             </span>
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-[family-name:var(--font-oswald)] font-bold text-white uppercase mb-3 md:mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-[family-name:var(--font-oswald)] font-bold text-[#1e3056] uppercase mb-3 md:mb-4">
             Ready to Kit Out Your Team?
           </h2>
-          <p className="text-gray-300 text-sm sm:text-base mb-7 md:mb-9 max-w-lg mx-auto">
+          <p className="text-gray-600 text-sm sm:text-base mb-7 md:mb-9 max-w-lg mx-auto">
             Send us your design ideas or let our team create something amazing.
             Free quote, no obligation.
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
             <a
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-7 sm:px-8 py-3 rounded-xl shadow-lg shadow-orange-500/25 transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
+              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold px-7 sm:px-8 py-3 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
             >
               Get a Free Quote
             </a>
             <Link
               href="/packages"
-              className="border-2 border-white/40 hover:border-white hover:bg-white/5 text-white font-bold px-7 sm:px-8 py-3 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
+              className="border-2 border-[#1e3056]/40 hover:border-[#1e3056] hover:bg-[#1e3056] hover:text-white text-[#1e3056] font-bold px-7 sm:px-8 py-3 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-sm sm:text-base"
             >
               View Packages
             </Link>

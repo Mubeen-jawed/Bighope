@@ -171,7 +171,7 @@ export default function Footer() {
                     className="hover:text-white hover:pl-1 transition-all duration-200 flex items-center gap-1"
                   >
                     <svg
-                      className="w-3 h-3 text-orange-500 shrink-0"
+                      className="w-3 h-3 text-white shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -209,7 +209,7 @@ export default function Footer() {
                     className="hover:text-white hover:pl-1 transition-all duration-200 flex items-center gap-1"
                   >
                     <svg
-                      className="w-3 h-3 text-orange-500 shrink-0"
+                      className="w-3 h-3 text-white shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -238,7 +238,7 @@ export default function Footer() {
                 <details className="group">
                   <summary className="hover:text-white cursor-pointer transition-all duration-200 flex items-center gap-1 list-none [&::-webkit-details-marker]:hidden">
                     <svg
-                      className="w-3 h-3 text-orange-500 shrink-0 transition-transform duration-200 group-open:rotate-90"
+                      className="w-3 h-3 text-white shrink-0 transition-transform duration-200 group-open:rotate-90"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -288,7 +288,7 @@ export default function Footer() {
                       },
                     ].map((cat) => (
                       <div key={cat.heading}>
-                        <p className="text-xs font-bold uppercase tracking-widest text-orange-500 mb-1">
+                        <p className="text-xs font-bold uppercase tracking-widest text-white mb-1">
                           {cat.heading}
                         </p>
                         <ul className="space-y-1">
@@ -320,7 +320,7 @@ export default function Footer() {
                     className="hover:text-white hover:pl-1 transition-all duration-200 flex items-center gap-1"
                   >
                     <svg
-                      className="w-3 h-3 text-orange-500 shrink-0"
+                      className="w-3 h-3 text-white shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -353,7 +353,7 @@ export default function Footer() {
               {partnerFlags.map((f) => (
                 <div
                   key={f.code}
-                  className="w-7 h-7 rounded-full overflow-hidden border-2 border-gray-700 hover:border-orange-500 transition-colors duration-200 shrink-0"
+                  className="w-7 h-7 rounded-full overflow-hidden border-2 border-gray-700 hover:border-white transition-colors duration-200 shrink-0"
                   title={f.name}
                 >
                   <Image
