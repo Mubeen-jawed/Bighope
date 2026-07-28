@@ -152,6 +152,22 @@ export default async function ProductPage({
                 </div>
               )}
 
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  href="/contact"
+                  className="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-bold text-center py-4 px-6 rounded-xl transition-all duration-200 hover:-translate-y-0.5 shadow-sm text-sm"
+                >
+                  Request a Quote
+                </Link>
+                <Link
+                  href="/contact?type=sample"
+                  className="flex-1 border-2 border-[#1e3056] text-[#1e3056] hover:bg-[#1e3056] hover:text-white font-bold text-center py-3.5 px-6 rounded-xl transition-all duration-200 hover:-translate-y-0.5 text-sm"
+                >
+                  Order Sample Kit
+                </Link>
+              </div>
+
               {/* Quick specs strip */}
               <div className="grid grid-cols-2 gap-2.5">
                 {[
@@ -183,16 +199,6 @@ export default async function ProductPage({
                 customOptions={product.customOptions || []}
                 specs={specs}
               />
-
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3 pt-1">
-                <Link
-                  href="/contact"
-                  className="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-bold text-center py-4 px-6 rounded-xl transition-all duration-200 hover:-translate-y-0.5 shadow-sm text-sm"
-                >
-                  Request a Quote
-                </Link>
-              </div>
 
               {/* Trust badges */}
               <div className="grid grid-cols-3 gap-2.5 pt-1">
